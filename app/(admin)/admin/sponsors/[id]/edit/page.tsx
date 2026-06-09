@@ -11,7 +11,7 @@ export default async function EditSponsorPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const supabase = createServiceClient();
+  const supabase = await createServiceClient();
   const { data } = await supabase.from("sponsors").select("*").eq("id", id).single();
   if (!data) notFound();
 

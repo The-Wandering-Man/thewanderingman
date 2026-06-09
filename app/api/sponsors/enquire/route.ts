@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    const supabase = createServiceClient();
+    const supabase = await createServiceClient();
     const { error } = await supabase.from("sponsor_enquiries").insert({
       org_name: org_name.trim(),
       contact_name: contact_name.trim(),

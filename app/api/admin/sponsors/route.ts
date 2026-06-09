@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const { id, ...fields } = await req.json();
-    const supabase = createServiceClient();
+    const supabase = await createServiceClient();
 
     if (id) {
       const { error } = await supabase.from("sponsors").update(fields).eq("id", id);

@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
           .filter(Boolean)
       : [];
 
-    const supabase = createServiceClient();
+    const supabase = await createServiceClient();
     const { error } = await supabase.from("member_profiles").insert({
       display_name,
       suburb: suburb || null,

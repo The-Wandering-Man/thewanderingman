@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
         ? `${owner_first_name.trim()} ${owner_last_initial.trim().toUpperCase()}.`
         : owner_first_name?.trim() || null;
 
-    const supabase = createServiceClient();
+    const supabase = await createServiceClient();
     const { error } = await supabase.from("member_businesses").insert({
       business_name: business_name.trim(),
       owner_display_name,

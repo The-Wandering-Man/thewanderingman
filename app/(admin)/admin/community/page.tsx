@@ -24,7 +24,7 @@ interface MemberBusiness {
 }
 
 export default async function AdminCommunityPage() {
-  const supabase = createServiceClient();
+  const supabase = await createServiceClient();
 
   const [{ data: profilesData }, { data: bizData }] = await Promise.all([
     supabase

@@ -22,7 +22,7 @@ const TIER_COLOURS: Record<string, string> = {
 };
 
 export default async function AdminSponsorsPage() {
-  const supabase = createServiceClient();
+  const supabase = await createServiceClient();
   const { data } = await supabase
     .from("sponsors")
     .select("id, org_name, slug, tier, is_active, renewal_date, contact_email, created_at")

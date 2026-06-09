@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid table" }, { status: 400 });
     }
 
-    const supabase = createServiceClient();
+    const supabase = await createServiceClient();
     const { error } = await supabase
       .from(table as AllowedTable)
       .update({ is_approved: approve })
