@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import NewsletterForm from "@/components/site/NewsletterForm";
+import { createClient } from "@/lib/supabase/server";
+import EventCard, { type Event } from "@/components/site/EventCard";
+import PostCard, { type Post } from "@/components/site/PostCard";
 
 export const metadata: Metadata = {
   title: "The Wandering Man | Men's Mental Health Community Geelong",
@@ -10,7 +13,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const upcomingEvents = [
+export const revalidate = 3600;
+
+const staticEvents = [
   {
     title: "Saturday Morning Walk",
     recurrence: "Every Saturday, 7:00am",
@@ -34,7 +39,39 @@ const upcomingEvents = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const supabase = await createClient();
+
+  const [{ data: featuredPost }, { data: liveEvents }, { data: recentPosts }] =
+    await Promise.all([
+      supabase
+        .from("posts")
+        .select("id, title, slug, excerpt, featured_image_url, content_type, category, published_at, author:authors(name, slug, photo_url)")
+        .eq("status", "published")
+        .eq("is_featured", true)
+        .single(),
+      supabase
+        .from("events")
+        .select("*")
+        .eq("is_active", true)
+        .gte("starts_at", new Date().toISOString())
+        .order("starts_at", { ascending: true })
+        .limit(3),
+      supabase
+        .from("posts")
+        .select("id, title, slug, excerpt, featured_image_url, content_type, category, published_at, author:authors(name, slug, photo_url)")
+        .eq("status", "published")
+        .eq("is_featured", false)
+        .order("published_at", { ascending: false })
+        .limit(3),
+    ]);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const normalisePost = (p: any): Post => ({
+    ...p,
+    author: Array.isArray(p.author) ? (p.author[0] ?? null) : p.author,
+  });
+
   return (
     <>
       {/* Hero */}
@@ -93,8 +130,33 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Featured post */}
+      {featuredPost && (
+        <section className="px-4 sm:px-6 lg:px-8 py-16 border-b" style={{ borderColor: "#E2E0DC" }}>
+          <div className="max-w-5xl mx-auto">
+            <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: "#39E75F" }}>Featured Story</p>
+            <Link href={`/blog/${featuredPost.slug}`} className="group grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              {featuredPost.featured_image_url && (
+                <div className="relative w-full rounded-2xl overflow-hidden" style={{ paddingBottom: "56.25%" }}>
+                  <Image src={featuredPost.featured_image_url} alt={featuredPost.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" sizes="(max-width: 768px) 100vw, 50vw" />
+                </div>
+              )}
+              <div>
+                <h2 className="text-2xl sm:text-3xl font-extrabold mb-4 group-hover:underline underline-offset-4" style={{ color: "#0D0D0D" }}>
+                  {featuredPost.title}
+                </h2>
+                {featuredPost.excerpt && (
+                  <p className="text-base leading-relaxed mb-6" style={{ color: "#6B6B6B" }}>{featuredPost.excerpt}</p>
+                )}
+                <span className="text-sm font-bold" style={{ color: "#39E75F" }}>Read more &rarr;</span>
+              </div>
+            </Link>
+          </div>
+        </section>
+      )}
+
       {/* Events strip */}
-      <section className="px-4 sm:px-6 lg:px-8 py-16 border-y" style={{ borderColor: "#E2E0DC" }}>
+      <section className="px-4 sm:px-6 lg:px-8 py-16 border-b" style={{ borderColor: "#E2E0DC" }}>
         <div className="max-w-7xl mx-auto">
           <div className="flex items-end justify-between mb-10 gap-4 flex-wrap">
             <div>
@@ -105,23 +167,46 @@ export default function HomePage() {
               All events &rarr;
             </Link>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {upcomingEvents.map((event) => (
-              <Link key={event.title} href={event.href}
-                className="block p-6 rounded-2xl border transition-shadow hover:shadow-md"
-                style={{ borderColor: "#E2E0DC" }}>
-                <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wide mb-4"
-                  style={{ backgroundColor: "#E8F5E9", color: "#2E7D32" }}>
-                  {event.type}
-                </span>
-                <h3 className="text-base font-bold mb-2" style={{ color: "#0D0D0D" }}>{event.title}</h3>
-                <p className="text-sm mb-1" style={{ color: "#6B6B6B" }}>{event.recurrence}</p>
-                <p className="text-sm" style={{ color: "#6B6B6B" }}>{event.location}</p>
-              </Link>
-            ))}
-          </div>
+          {liveEvents && liveEvents.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {liveEvents.map((event) => <EventCard key={event.id} event={event as Event} />)}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {staticEvents.map((event) => (
+                <Link key={event.title} href={event.href} className="block p-6 rounded-2xl border transition-shadow hover:shadow-md" style={{ borderColor: "#E2E0DC" }}>
+                  <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold uppercase tracking-wide mb-4" style={{ backgroundColor: "#E8F5E9", color: "#2E7D32" }}>
+                    {event.type}
+                  </span>
+                  <h3 className="text-base font-bold mb-2" style={{ color: "#0D0D0D" }}>{event.title}</h3>
+                  <p className="text-sm mb-1" style={{ color: "#6B6B6B" }}>{event.recurrence}</p>
+                  <p className="text-sm" style={{ color: "#6B6B6B" }}>{event.location}</p>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
+
+      {/* Recent posts */}
+      {recentPosts && recentPosts.length > 0 && (
+        <section className="px-4 sm:px-6 lg:px-8 py-16 border-b" style={{ borderColor: "#E2E0DC" }}>
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-end justify-between mb-10 gap-4 flex-wrap">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#39E75F" }}>From the Community</p>
+                <h2 className="text-2xl sm:text-3xl font-bold" style={{ color: "#0D0D0D" }}>Recent Stories</h2>
+              </div>
+              <Link href="/blog" className="text-sm font-medium underline underline-offset-4 hover:opacity-70 transition-opacity" style={{ color: "#0D0D0D" }}>
+                All stories &rarr;
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {recentPosts.map((post) => <PostCard key={post.id} post={normalisePost(post)} />)}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="px-4 sm:px-6 lg:px-8 py-24">
