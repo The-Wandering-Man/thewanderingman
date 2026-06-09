@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 const navLinks = [
@@ -24,12 +25,15 @@ export default function Header() {
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <Link
-          href="/"
-          className="text-lg font-bold tracking-tight"
-          style={{ color: "#0D0D0D" }}
-        >
-          The Wandering Man
+        <Link href="/" className="flex items-center" aria-label="The Wandering Man - Home">
+          <Image
+            src="/TWN-New-BW.png"
+            alt="The Wandering Man"
+            width={140}
+            height={44}
+            className="h-10 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}

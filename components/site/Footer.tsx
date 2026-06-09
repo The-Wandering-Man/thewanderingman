@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const crisisLines = [
   { name: "Lifeline", number: "13 11 14", tel: "131114" },
@@ -21,9 +22,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}
           <div>
-            <p className="text-lg font-bold mb-3" style={{ color: "#0D0D0D" }}>
-              The Wandering Man
-            </p>
+            <Link href="/" className="inline-block mb-4" aria-label="The Wandering Man">
+              <Image
+                src="/TWN-New-BW.png"
+                alt="The Wandering Man"
+                width={160}
+                height={50}
+                className="h-12 w-auto object-contain"
+              />
+            </Link>
             <p className="text-sm leading-relaxed" style={{ color: "#6B6B6B" }}>
               A men's mental health community in Geelong, Victoria. Real
               conversations. Genuine support.
