@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About | The Wandering Man Geelong",
@@ -31,11 +32,20 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section
-        className="px-4 sm:px-6 lg:px-8 py-20 md:py-28"
-        style={{ backgroundColor: "#0D0D0D" }}
-      >
-        <div className="max-w-3xl mx-auto">
+      <section className="relative px-4 sm:px-6 lg:px-8 py-20 md:py-28 overflow-hidden">
+        <Image
+          src="/hero.jpg"
+          alt="The Wandering Man community"
+          fill
+          className="object-cover object-top"
+          priority
+          sizes="100vw"
+        />
+        <div
+          className="absolute inset-0"
+          style={{ backgroundColor: "rgba(13,13,13,0.78)" }}
+        />
+        <div className="relative max-w-3xl mx-auto">
           <p
             className="text-xs font-bold uppercase tracking-widest mb-5"
             style={{ color: "#39E75F" }}
@@ -48,7 +58,7 @@ export default function AboutPage() {
           >
             Built by men who needed it. Run by men who get it.
           </h1>
-          <p className="text-lg leading-relaxed" style={{ color: "#6B6B6B" }}>
+          <p className="text-lg leading-relaxed" style={{ color: "rgba(248,247,244,0.75)" }}>
             The Wandering Man started with a simple decision: get out of the house, go for a walk,
             and actually talk. What happened next surprised everyone involved.
           </p>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import NewsletterForm from "@/components/site/NewsletterForm";
 
 export const metadata: Metadata = {
@@ -37,11 +38,23 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section
-        className="px-4 sm:px-6 lg:px-8 py-24 md:py-32"
-        style={{ backgroundColor: "#0D0D0D" }}
-      >
-        <div className="max-w-4xl mx-auto">
+      <section className="relative px-4 sm:px-6 lg:px-8 py-24 md:py-36 overflow-hidden">
+        {/* Background photo */}
+        <Image
+          src="/hero.jpg"
+          alt="The Wandering Man community in Geelong"
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="100vw"
+        />
+        {/* Dark overlay */}
+        <div
+          className="absolute inset-0"
+          style={{ backgroundColor: "rgba(13,13,13,0.72)" }}
+        />
+        {/* Content */}
+        <div className="relative max-w-4xl mx-auto">
           <p
             className="text-xs font-bold uppercase tracking-widest mb-6"
             style={{ color: "#39E75F" }}
@@ -57,7 +70,7 @@ export default function HomePage() {
           </h1>
           <p
             className="text-lg sm:text-xl mb-10 max-w-2xl"
-            style={{ color: "#6B6B6B" }}
+            style={{ color: "rgba(248,247,244,0.75)" }}
           >
             We're here to change that - one conversation at a time.
           </p>
