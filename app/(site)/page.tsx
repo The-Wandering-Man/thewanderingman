@@ -5,11 +5,12 @@ import NewsletterForm from "@/components/site/NewsletterForm";
 import { createClient } from "@/lib/supabase/server";
 import EventCard, { type Event } from "@/components/site/EventCard";
 import ContentSpotlight, { type SpotlightPost } from "@/components/site/ContentSpotlight";
+import InlineSponsorAd from "@/components/site/InlineSponsorAd";
 
 export const metadata: Metadata = {
   title: "The Wandering Man | Men's Mental Health Community Geelong",
   description:
-    "A men's mental health community in Geelong, Victoria. We show up, we talk, we support each other. Join us.",
+    "A men's mental health community in Geelong, Victoria. Show Up. Step Up. Stay Connected. Join us for walks, gatherings, and real conversations.",
   alternates: { canonical: "/" },
 };
 
@@ -17,25 +18,25 @@ export const revalidate = 3600;
 
 const staticEvents = [
   {
-    title: "Saturday Morning Walk",
+    title: "Sunrise Swim",
     recurrence: "Every Saturday, 7:00am",
-    location: "Geelong Waterfront",
+    location: "Eastern Beach Tower, Geelong",
+    href: "/events",
+    type: "weekly",
+  },
+  {
+    title: "Coffee Club Catchup",
+    recurrence: "Every Wednesday, 12:00pm - 1:30pm",
+    location: "Orchid & Co Coffee Shop",
     href: "/events",
     type: "weekly",
   },
   {
     title: "Monthly Gathering",
-    recurrence: "First Thursday of the month, 7:00pm",
+    recurrence: "Monthly — guest speakers & open conversation",
     location: "Geelong CBD",
     href: "/events",
     type: "monthly",
-  },
-  {
-    title: "Men's Mindfulness Session",
-    recurrence: "Fortnightly Wednesday, 6:30pm",
-    location: "Geelong Community Hub",
-    href: "/events",
-    type: "special",
   },
 ];
 
@@ -50,7 +51,7 @@ function normaliseSpotlight(p: any): SpotlightPost {
 export default async function HomePage() {
   const supabase = await createClient();
 
-  const [{ data: liveEvents }, { data: allSpotlight }] = await Promise.all([
+  const [{ data: liveEvents }, { data: allSpotlight }, { data: activeSponsors }] = await Promise.all([
     supabase
       .from("events")
       .select("*")
@@ -58,7 +59,6 @@ export default async function HomePage() {
       .gte("starts_at", new Date().toISOString())
       .order("starts_at", { ascending: true })
       .limit(3),
-    // Fetch: featured post + spotlighted posts + latest (up to 6 total)
     supabase
       .from("posts")
       .select(POST_SELECT)
@@ -67,9 +67,13 @@ export default async function HomePage() {
       .order("is_featured", { ascending: false })
       .order("spotlight_order", { ascending: true })
       .limit(6),
+    supabase
+      .from("sponsors")
+      .select("id, org_name, slug, tier, tagline, logo_url, use_landing_page, external_url, suburb")
+      .eq("is_active", true)
+      .order("created_at", { ascending: true }),
   ]);
 
-  // Fallback: if no spotlighted content, grab latest 4 posts
   const { data: latestPosts } =
     !allSpotlight || allSpotlight.length === 0
       ? await supabase
@@ -83,6 +87,7 @@ export default async function HomePage() {
   const spotlightPosts = (allSpotlight ?? latestPosts ?? []).map(normaliseSpotlight);
   const heroPost = spotlightPosts[0] ?? null;
   const sidebarPosts = spotlightPosts.slice(1, 4);
+  const sponsors = activeSponsors ?? [];
 
   return (
     <>
@@ -101,36 +106,52 @@ export default async function HomePage() {
           <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: "#39E75F" }}>
             Geelong, Victoria
           </p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-8" style={{ color: "#F8F7F4" }}>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6" style={{ color: "#F8F7F4" }}>
             While men's mental health has been hidden from the public eye, it is
             of paramount importance to the well-being of our community.
           </h1>
-          <p className="text-lg sm:text-xl mb-10 max-w-2xl" style={{ color: "rgba(248,247,244,0.75)" }}>
+          <p className="text-lg sm:text-xl mb-3 max-w-2xl font-bold italic" style={{ color: "#39E75F" }}>
+            Show Up. Step Up. Stay Connected.
+          </p>
+          <p className="text-base mb-10 max-w-2xl" style={{ color: "rgba(248,247,244,0.7)" }}>
             We're here to change that - one conversation at a time.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/events"
+            <Link
+              href="/events"
               className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold transition-opacity hover:opacity-90"
-              style={{ backgroundColor: "#39E75F", color: "#0D0D0D" }}>
+              style={{ backgroundColor: "#39E75F", color: "#0D0D0D" }}
+            >
               Join Us at an Event
             </Link>
-            <Link href="/resources"
+            <Link
+              href="/resources"
               className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-medium border transition-colors hover:bg-white hover:text-black"
-              style={{ borderColor: "#F8F7F4", color: "#F8F7F4" }}>
+              style={{ borderColor: "#F8F7F4", color: "#F8F7F4" }}
+            >
               Talk to Someone
             </Link>
           </div>
         </div>
       </section>
 
-      {/* What we do */}
+      {/* Three pillars — tied to motto */}
       <section className="px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
-              { heading: "Show Up", body: "No agenda. No pressure. Just men making the decision to be present with each other. Our events are low-key and welcoming to anyone, wherever you're at." },
-              { heading: "Have the Conversation", body: "We believe the most powerful thing a man can do is open up. We create the space for honest, judgment-free conversations about what's really going on." },
-              { heading: "Build Community", body: "Isolation is one of the biggest risks to men's mental health. The Wandering Man exists to make sure no one in Geelong has to go through it alone." },
+              {
+                heading: "Show Up",
+                body: "No agenda. No pressure. Just men making the decision to be present with each other. Our events are low-key and welcoming to anyone, wherever you're at.",
+              },
+              {
+                heading: "Step Up",
+                body: "We believe the most powerful thing a man can do is open up. We create the space for honest, judgment-free conversations about what's really going on.",
+              },
+              {
+                heading: "Stay Connected",
+                body: "Isolation is one of the biggest risks to men's mental health. The Wandering Man exists to make sure no man in Geelong has to go through it alone.",
+              },
             ].map((item) => (
               <div key={item.heading}>
                 <div className="w-8 h-1 mb-6 rounded-full" style={{ backgroundColor: "#39E75F" }} />
@@ -182,7 +203,62 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Inline sponsor ad — between events and newsletter */}
+      <InlineSponsorAd />
+
+      {/* Sponsors strip — only when sponsors exist in DB */}
+      {sponsors.length > 0 && (
+        <section className="px-4 sm:px-6 lg:px-8 py-14 border-y" style={{ borderColor: "#E2E0DC" }}>
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-center justify-between mb-8 gap-4 flex-wrap">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#39E75F" }}>
+                  Community partners
+                </p>
+                <h2 className="text-xl font-bold" style={{ color: "#0D0D0D" }}>
+                  Businesses that back us
+                </h2>
+              </div>
+              <Link href="/sponsors" className="text-sm font-medium underline underline-offset-4 hover:opacity-70 transition-opacity" style={{ color: "#0D0D0D" }}>
+                Become a sponsor &rarr;
+              </Link>
+            </div>
+            <div className="flex flex-wrap items-center gap-4">
+              {sponsors.map((s) => {
+                const href = s.use_landing_page ? `/sponsors/${s.slug}` : (s.external_url ?? "#");
+                return (
+                  <Link
+                    key={s.id}
+                    href={href}
+                    target={s.use_landing_page ? undefined : "_blank"}
+                    rel={s.use_landing_page ? undefined : "noopener noreferrer"}
+                    className="flex items-center gap-3 px-5 py-3 rounded-xl border transition-shadow hover:shadow-md"
+                    style={{ borderColor: "#E2E0DC" }}
+                  >
+                    {s.logo_url ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={s.logo_url} alt={s.org_name} className="h-8 w-auto object-contain" />
+                    ) : (
+                      <div
+                        className="w-8 h-8 rounded flex items-center justify-center text-xs font-extrabold shrink-0"
+                        style={{ backgroundColor: "#0D0D0D", color: "#39E75F" }}
+                      >
+                        {s.org_name[0]}
+                      </div>
+                    )}
+                    <div>
+                      <p className="text-sm font-bold" style={{ color: "#0D0D0D" }}>{s.org_name}</p>
+                      {s.suburb && <p className="text-xs" style={{ color: "#6B6B6B" }}>{s.suburb}</p>}
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Newsletter CTA */}
       <section className="px-4 sm:px-6 lg:px-8 py-24">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#39E75F" }}>Stay Connected</p>
@@ -209,9 +285,11 @@ export default async function HomePage() {
             </p>
           </div>
           <div className="shrink-0">
-            <Link href="/speaking"
+            <Link
+              href="/speaking"
               className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold transition-opacity hover:opacity-90"
-              style={{ backgroundColor: "#F8F7F4", color: "#0D0D0D" }}>
+              style={{ backgroundColor: "#F8F7F4", color: "#0D0D0D" }}
+            >
               Book a Talk
             </Link>
           </div>

@@ -32,6 +32,18 @@ const crisisLines = [
     tel: "1300659467",
     desc: "24/7 counselling for people affected by suicide",
   },
+  {
+    name: "Headspace",
+    number: "1800 650 890",
+    tel: "1800650890",
+    desc: "Mental health support for young people aged 12-25",
+  },
+  {
+    name: "QLife",
+    number: "1800 184 527",
+    tel: "1800184527",
+    desc: "Anonymous LGBTQ+ peer support and referral - 3pm to midnight daily",
+  },
 ];
 
 export default function ResourcesPage() {

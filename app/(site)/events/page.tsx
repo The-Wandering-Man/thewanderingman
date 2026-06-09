@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import EventCard, { type Event } from "@/components/site/EventCard";
+import InlineSponsorAd from "@/components/site/InlineSponsorAd";
 
 export const metadata: Metadata = {
   title: "Events | The Wandering Man Geelong",
@@ -97,6 +98,8 @@ export default async function EventsPage() {
                   </div>
                 </div>
               )}
+
+              <InlineSponsorAd />
             </>
           )}
         </div>

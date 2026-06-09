@@ -9,8 +9,8 @@ const navLinks = [
   { label: "Events", href: "/events" },
   { label: "Stories", href: "/blog" },
   { label: "Community", href: "/community/jobs" },
+  { label: "Sponsors", href: "/sponsors" },
   { label: "Resources", href: "/resources" },
-  { label: "Speaking", href: "/speaking" },
 ];
 
 export default function Header() {

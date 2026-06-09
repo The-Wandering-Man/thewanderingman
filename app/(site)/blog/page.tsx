@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import PostCard, { type Post } from "@/components/site/PostCard";
+import InlineSponsorAd from "@/components/site/InlineSponsorAd";
 
 export const metadata: Metadata = {
   title: "Stories | The Wandering Man Geelong",
@@ -98,17 +99,36 @@ export default async function BlogPage({ searchParams }: Props) {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {posts.map((post) => (
-                <PostCard
-                  key={post.id}
-                  post={{
-                    ...post,
-                    author: Array.isArray(post.author) ? post.author[0] ?? null : post.author,
-                  } as Post}
-                />
-              ))}
-            </div>
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {posts.slice(0, 3).map((post) => (
+                  <PostCard
+                    key={post.id}
+                    post={{
+                      ...post,
+                      author: Array.isArray(post.author) ? post.author[0] ?? null : post.author,
+                    } as Post}
+                  />
+                ))}
+              </div>
+
+              {posts.length > 3 && (
+                <>
+                  <InlineSponsorAd />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {posts.slice(3).map((post) => (
+                      <PostCard
+                        key={post.id}
+                        post={{
+                          ...post,
+                          author: Array.isArray(post.author) ? post.author[0] ?? null : post.author,
+                        } as Post}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </>
           )}
         </div>
       </section>
