@@ -33,6 +33,8 @@ interface WizardState {
   category: string;
   tags: string;
   author_id: string;
+  is_featured: boolean;
+  spotlight_order: string;
 }
 
 const CONTENT_TYPES: { value: ContentType; label: string; desc: string; emoji: string }[] = [
@@ -77,6 +79,8 @@ export default function PostWizard({ authors, initialPost }: { authors: Author[]
     category: initialPost?.category ?? "",
     tags: initialPost?.tags?.join(", ") ?? "",
     author_id: initialPost?.author_id ?? authors[0]?.id ?? "",
+    is_featured: (initialPost as any)?.is_featured ?? false,
+    spotlight_order: (initialPost as any)?.spotlight_order?.toString() ?? "",
   });
 
   function update(field: keyof WizardState, value: string) {
@@ -100,6 +104,8 @@ export default function PostWizard({ authors, initialPost }: { authors: Author[]
         youtube_embed_id: data.youtube_embed_id || null,
         author_id: data.author_id || null,
         tags: data.tags ? data.tags.split(",").map((t) => t.trim()).filter(Boolean) : [],
+        is_featured: data.is_featured === true || data.is_featured === ("true" as unknown),
+        spotlight_order: data.spotlight_order ? parseInt(data.spotlight_order as string) : null,
         status: "draft",
       };
 
@@ -136,6 +142,8 @@ export default function PostWizard({ authors, initialPost }: { authors: Author[]
       youtube_embed_id: state.youtube_embed_id || null,
       author_id: state.author_id || null,
       tags: state.tags ? state.tags.split(",").map((t) => t.trim()).filter(Boolean) : [],
+      is_featured: state.is_featured === true || (state.is_featured as unknown) === "true",
+      spotlight_order: state.spotlight_order ? parseInt(state.spotlight_order) : null,
       status: "published",
       published_at: new Date().toISOString(),
     };
@@ -362,6 +370,46 @@ export default function PostWizard({ authors, initialPost }: { authors: Author[]
               </select>
             </div>
           )}
+
+          {/* Homepage placement */}
+          <div
+            className="p-4 rounded-xl border"
+            style={{ borderColor: "#E2E0DC", backgroundColor: "#FAFAF9" }}
+          >
+            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#6B6B6B" }}>
+              Homepage placement
+            </p>
+            <div className="flex flex-col gap-3">
+              <label className="flex items-center gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={state.is_featured}
+                  onChange={(e) => update("is_featured", e.target.checked ? "true" : "")}
+                  className="w-4 h-4 rounded"
+                />
+                <div>
+                  <p className="text-sm font-bold" style={{ color: "#0D0D0D" }}>Hero post</p>
+                  <p className="text-xs" style={{ color: "#6B6B6B" }}>Large card on the left of the spotlight panel</p>
+                </div>
+              </label>
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#6B6B6B" }}>
+                  Spotlight position (1, 2 or 3 — sidebar)
+                </label>
+                <select
+                  value={state.spotlight_order}
+                  onChange={(e) => update("spotlight_order", e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl text-sm border focus:outline-none"
+                  style={{ borderColor: "#E2E0DC" }}
+                >
+                  <option value="">Not in spotlight</option>
+                  <option value="1">Position 1 (top)</option>
+                  <option value="2">Position 2 (middle)</option>
+                  <option value="3">Position 3 (bottom)</option>
+                </select>
+              </div>
+            </div>
+          </div>
         </div>
       )}
 
