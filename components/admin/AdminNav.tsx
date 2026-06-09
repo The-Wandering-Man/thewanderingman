@@ -8,6 +8,8 @@ const links = [
   { label: "Dashboard", href: "/admin" },
   { label: "New Post", href: "/admin/posts/new" },
   { label: "New Event", href: "/admin/events/new" },
+  { label: "Sponsors", href: "/admin/sponsors" },
+  { label: "Community", href: "/admin/community" },
 ];
 
 export default function AdminNav() {
