@@ -32,6 +32,7 @@ export default function Header() {
             width={140}
             height={44}
             className="h-10 w-auto object-contain"
+            style={{ mixBlendMode: "multiply" }}
             priority
           />
         </Link>
