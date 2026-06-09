@@ -159,7 +159,7 @@ export default function AboutPage() {
           alt="The Wandering Man community"
           fill
           className="object-cover"
-          style={{ objectPosition: "center 60%" }}
+          style={{ objectPosition: "center 30%" }}
           priority
           sizes="100vw"
         />
