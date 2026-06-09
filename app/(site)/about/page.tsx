@@ -158,7 +158,8 @@ export default function AboutPage() {
           src="/hero.jpg"
           alt="The Wandering Man community"
           fill
-          className="object-cover object-top"
+          className="object-cover"
+          style={{ objectPosition: "center 60%" }}
           priority
           sizes="100vw"
         />
