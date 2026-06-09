@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { createClient } from "@/lib/supabase/server";
 
 export const revalidate = 3600;
@@ -79,11 +80,10 @@ export default async function EventPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
       />
 
-      <section
-        className="px-4 sm:px-6 lg:px-8 py-16"
-        style={{ backgroundColor: "#0D0D0D" }}
-      >
-        <div className="max-w-3xl mx-auto">
+      <section className="relative px-4 sm:px-6 lg:px-8 py-16 overflow-hidden">
+        <Image src="/hero.jpg" alt="The Wandering Man community" fill className="object-cover" style={{ objectPosition: "center 30%" }} priority sizes="100vw" />
+        <div className="absolute inset-0" style={{ backgroundColor: "rgba(13,13,13,0.75)" }} />
+        <div className="relative max-w-3xl mx-auto">
           {event.event_type && (
             <p
               className="text-xs font-bold uppercase tracking-widest mb-4"

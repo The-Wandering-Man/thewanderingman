@@ -74,11 +74,10 @@ export default async function AuthorPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
 
-      <section
-        className="px-4 sm:px-6 lg:px-8 py-16"
-        style={{ backgroundColor: "#0D0D0D" }}
-      >
-        <div className="max-w-3xl mx-auto flex items-start gap-6">
+      <section className="relative px-4 sm:px-6 lg:px-8 py-16 overflow-hidden">
+        <Image src="/hero.jpg" alt="The Wandering Man community" fill className="object-cover" style={{ objectPosition: "center 30%" }} priority sizes="100vw" />
+        <div className="absolute inset-0" style={{ backgroundColor: "rgba(13,13,13,0.75)" }} />
+        <div className="relative max-w-3xl mx-auto flex items-start gap-6">
           {author.photo_url && (
             <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0">
               <Image

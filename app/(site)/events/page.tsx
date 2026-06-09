@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { createClient } from "@/lib/supabase/server";
 import EventCard, { type Event } from "@/components/site/EventCard";
 import InlineSponsorAd from "@/components/site/InlineSponsorAd";
@@ -29,26 +30,18 @@ export default async function EventsPage() {
   return (
     <>
       {/* Hero */}
-      <section
-        className="px-4 sm:px-6 lg:px-8 py-20"
-        style={{ backgroundColor: "#0D0D0D" }}
-      >
-        <div className="max-w-3xl mx-auto">
-          <p
-            className="text-xs font-bold uppercase tracking-widest mb-5"
-            style={{ color: "#39E75F" }}
-          >
+      <section className="relative px-4 sm:px-6 lg:px-8 py-20 overflow-hidden">
+        <Image src="/hero.jpg" alt="The Wandering Man community" fill className="object-cover" style={{ objectPosition: "center 30%" }} priority sizes="100vw" />
+        <div className="absolute inset-0" style={{ backgroundColor: "rgba(13,13,13,0.75)" }} />
+        <div className="relative max-w-3xl mx-auto">
+          <p className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "#39E75F" }}>
             What's On in Geelong
           </p>
-          <h1
-            className="text-4xl sm:text-5xl font-extrabold leading-tight mb-5"
-            style={{ color: "#F8F7F4" }}
-          >
+          <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-5" style={{ color: "#F8F7F4" }}>
             Show up. That's all we ask.
           </h1>
-          <p className="text-lg" style={{ color: "#6B6B6B" }}>
-            All events are free, informal, and open to any man who wants to be there. No experience
-            required.
+          <p className="text-lg" style={{ color: "rgba(248,247,244,0.7)" }}>
+            All events are free, informal, and open to any man who wants to be there. No experience required.
           </p>
         </div>
       </section>

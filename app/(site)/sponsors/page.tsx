@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { createClient } from "@/lib/supabase/server";
 import SponsorEnquiryForm from "@/components/site/SponsorEnquiryForm";
 
@@ -96,27 +97,18 @@ export default async function SponsorsPage() {
   return (
     <>
       {/* Hero */}
-      <section
-        className="px-4 sm:px-6 lg:px-8 py-20 md:py-28 border-b"
-        style={{ borderColor: "#E2E0DC", backgroundColor: "#0D0D0D" }}
-      >
-        <div className="max-w-4xl mx-auto">
-          <p
-            className="text-xs font-bold uppercase tracking-widest mb-4"
-            style={{ color: "#39E75F" }}
-          >
+      <section className="relative px-4 sm:px-6 lg:px-8 py-20 md:py-28 overflow-hidden border-b" style={{ borderColor: "#E2E0DC" }}>
+        <Image src="/hero.jpg" alt="The Wandering Man community" fill className="object-cover" style={{ objectPosition: "center 30%" }} priority sizes="100vw" />
+        <div className="absolute inset-0" style={{ backgroundColor: "rgba(13,13,13,0.75)" }} />
+        <div className="relative max-w-4xl mx-auto">
+          <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#39E75F" }}>
             Community Partners
           </p>
-          <h1
-            className="text-4xl sm:text-5xl font-extrabold mb-6"
-            style={{ color: "#F8F7F4" }}
-          >
+          <h1 className="text-4xl sm:text-5xl font-extrabold mb-6" style={{ color: "#F8F7F4" }}>
             Sponsor The Wandering Man
           </h1>
           <p className="text-lg max-w-2xl" style={{ color: "rgba(248,247,244,0.7)" }}>
-            The Wandering Man is Geelong's home for men's mental health. Back our
-            community and get in front of hundreds of local men who care about
-            where they spend their money.
+            The Wandering Man is Geelong's home for men's mental health. Back our community and get in front of hundreds of local men who care about where they spend their money.
           </p>
         </div>
       </section>
