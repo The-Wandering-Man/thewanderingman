@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import AdminNav from "@/components/admin/AdminNav";
 import PostWizard from "@/components/admin/PostWizard";
 
+export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "New Post | TWM Admin" };
 
 export default async function NewPostPage() {

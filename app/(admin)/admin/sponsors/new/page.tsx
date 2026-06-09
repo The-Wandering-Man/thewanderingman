@@ -1,6 +1,8 @@
 import Link from "next/link";
 import SponsorForm from "@/components/admin/SponsorForm";
 
+export const dynamic = "force-dynamic";
+
 export default function NewSponsorPage() {
   return (
     <div className="min-h-screen p-8" style={{ backgroundColor: "#0D0D0D" }}>

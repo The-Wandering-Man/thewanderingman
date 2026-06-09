@@ -3,6 +3,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import AdminNav from "@/components/admin/AdminNav";
 
+export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Dashboard | TWM Admin" };
 
 export default async function AdminDashboard() {
@@ -66,10 +67,7 @@ export default async function AdminDashboard() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Recent published */}
-          <div
-            className="md:col-span-1 rounded-2xl border p-5"
-            style={{ borderColor: "#E2E0DC" }}
-          >
+          <div className="md:col-span-1 rounded-2xl border p-5" style={{ borderColor: "#E2E0DC" }}>
             <h2 className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#6B6B6B" }}>
               Recently Published
             </h2>
@@ -79,18 +77,12 @@ export default async function AdminDashboard() {
               <ul className="flex flex-col gap-3">
                 {recentPosts.map((post) => (
                   <li key={post.id}>
-                    <Link
-                      href={`/admin/posts/${post.id}/edit`}
-                      className="text-sm font-medium hover:underline block truncate"
-                      style={{ color: "#0D0D0D" }}
-                    >
+                    <Link href={`/admin/posts/${post.id}/edit`} className="text-sm font-medium hover:underline block truncate" style={{ color: "#0D0D0D" }}>
                       {post.title}
                     </Link>
                     <p className="text-xs" style={{ color: "#6B6B6B" }}>
                       {post.content_type} &middot;{" "}
-                      {post.published_at
-                        ? new Date(post.published_at).toLocaleDateString("en-AU")
-                        : "—"}
+                      {post.published_at ? new Date(post.published_at).toLocaleDateString("en-AU") : "—"}
                     </p>
                   </li>
                 ))}
@@ -99,10 +91,7 @@ export default async function AdminDashboard() {
           </div>
 
           {/* Drafts */}
-          <div
-            className="md:col-span-1 rounded-2xl border p-5"
-            style={{ borderColor: "#E2E0DC" }}
-          >
+          <div className="md:col-span-1 rounded-2xl border p-5" style={{ borderColor: "#E2E0DC" }}>
             <h2 className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#6B6B6B" }}>
               Drafts
             </h2>
@@ -112,11 +101,7 @@ export default async function AdminDashboard() {
               <ul className="flex flex-col gap-3">
                 {drafts.map((post) => (
                   <li key={post.id}>
-                    <Link
-                      href={`/admin/posts/${post.id}/edit`}
-                      className="text-sm font-medium hover:underline block truncate"
-                      style={{ color: "#0D0D0D" }}
-                    >
+                    <Link href={`/admin/posts/${post.id}/edit`} className="text-sm font-medium hover:underline block truncate" style={{ color: "#0D0D0D" }}>
                       {post.title}
                     </Link>
                     <p className="text-xs" style={{ color: "#6B6B6B" }}>
@@ -130,10 +115,7 @@ export default async function AdminDashboard() {
           </div>
 
           {/* Upcoming events */}
-          <div
-            className="md:col-span-1 rounded-2xl border p-5"
-            style={{ borderColor: "#E2E0DC" }}
-          >
+          <div className="md:col-span-1 rounded-2xl border p-5" style={{ borderColor: "#E2E0DC" }}>
             <h2 className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#6B6B6B" }}>
               Upcoming Events
             </h2>
@@ -143,18 +125,11 @@ export default async function AdminDashboard() {
               <ul className="flex flex-col gap-3">
                 {upcomingEvents.map((event) => (
                   <li key={event.id}>
-                    <Link
-                      href={`/admin/events/${event.id}/edit`}
-                      className="text-sm font-medium hover:underline block truncate"
-                      style={{ color: "#0D0D0D" }}
-                    >
+                    <Link href={`/admin/events/${event.id}/edit`} className="text-sm font-medium hover:underline block truncate" style={{ color: "#0D0D0D" }}>
                       {event.title}
                     </Link>
                     <p className="text-xs" style={{ color: "#6B6B6B" }}>
-                      {new Date(event.starts_at).toLocaleDateString("en-AU", {
-                        day: "numeric",
-                        month: "short",
-                      })}{" "}
+                      {new Date(event.starts_at).toLocaleDateString("en-AU", { day: "numeric", month: "short" })}{" "}
                       &middot; {event.location_name ?? "—"}
                     </p>
                   </li>

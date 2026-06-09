@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import AdminNav from "@/components/admin/AdminNav";
 import EventForm from "@/components/admin/EventForm";
 
+export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "New Event | TWM Admin" };
 
 export default function NewEventPage() {

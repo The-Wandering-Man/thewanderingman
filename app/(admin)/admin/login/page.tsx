@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import LoginForm from "./LoginForm";
 
+export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Admin Login | The Wandering Man" };
 
 export default function AdminLoginPage() {

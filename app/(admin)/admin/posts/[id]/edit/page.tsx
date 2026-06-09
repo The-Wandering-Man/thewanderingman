@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import AdminNav from "@/components/admin/AdminNav";
 import PostWizard from "@/components/admin/PostWizard";
 
+export const dynamic = "force-dynamic";
 export const metadata: Metadata = { title: "Edit Post | TWM Admin" };
 
 type Props = { params: Promise<{ id: string }> };
