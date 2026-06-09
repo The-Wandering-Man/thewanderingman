@@ -76,6 +76,13 @@ function jsonLd(s: Sponsor) {
   };
 }
 
+const TIER_LABEL: Record<string, string> = {
+  gold: "Gold Partner",
+  silver: "Silver Partner",
+  bronze: "Bronze Partner",
+  community: "Community Partner",
+};
+
 export default async function SponsorPage({
   params,
 }: {
@@ -95,6 +102,7 @@ export default async function SponsorPage({
   const s = data as Sponsor;
   const accent = s.lp_color_primary ?? "#0D0D0D";
   const aboutParagraphs = s.lp_about?.split("\n\n").filter(Boolean) ?? [];
+  const hours = s.opening_hours?.split(" · ") ?? [];
 
   return (
     <>
@@ -103,62 +111,110 @@ export default async function SponsorPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(s)) }}
       />
 
-      {/* Hero */}
-      <section
-        className="px-4 sm:px-6 lg:px-8 py-20 md:py-28"
-        style={{ backgroundColor: accent }}
+      {/* Back nav */}
+      <div
+        className="px-4 sm:px-6 lg:px-8 py-4 border-b"
+        style={{ borderColor: "#E2E0DC" }}
       >
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <Link
             href="/sponsors"
-            className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-widest mb-8 opacity-60 hover:opacity-100 transition-opacity"
-            style={{ color: "#F8F7F4" }}
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity"
+            style={{ color: "#0D0D0D" }}
           >
-            &larr; Our sponsors
+            <span>&larr;</span> Community Partners
           </Link>
+        </div>
+      </div>
+
+      {/* Hero — full bleed with brand colour */}
+      <section
+        className="relative overflow-hidden px-4 sm:px-6 lg:px-8 py-24 md:py-36"
+        style={{ backgroundColor: accent }}
+      >
+        {/* Subtle texture overlay */}
+        <div
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)",
+            backgroundSize: "12px 12px",
+          }}
+        />
+        <div className="relative max-w-6xl mx-auto">
+          <div className="flex items-center gap-3 mb-8">
+            <span
+              className="inline-block px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-widest"
+              style={{ backgroundColor: "rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.8)" }}
+            >
+              {TIER_LABEL[s.tier] ?? "Sponsor"}
+            </span>
+            {s.suburb && (
+              <span className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
+                {s.suburb}, VIC
+              </span>
+            )}
+          </div>
+
           {s.logo_url && (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={s.logo_url}
               alt={s.org_name}
-              className="h-14 w-auto object-contain mb-8 brightness-0 invert"
+              className="h-16 w-auto object-contain mb-10 brightness-0 invert opacity-90"
             />
           )}
-          <p
-            className="text-xs font-bold uppercase tracking-widest mb-4"
-            style={{ color: "rgba(248,247,244,0.55)" }}
-          >
-            TWM Community Partner &middot; {s.suburb ?? "Geelong"}
-          </p>
+
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6 max-w-4xl"
             style={{ color: "#F8F7F4" }}
           >
             {s.lp_hero_headline ?? s.org_name}
           </h1>
+
           {s.lp_hero_subheading && (
             <p
-              className="text-lg sm:text-xl max-w-2xl"
-              style={{ color: "rgba(248,247,244,0.75)" }}
+              className="text-xl sm:text-2xl max-w-2xl leading-relaxed"
+              style={{ color: "rgba(248,247,244,0.7)" }}
             >
               {s.lp_hero_subheading}
             </p>
           )}
+
+          {/* Quick contact strip */}
+          <div className="flex flex-wrap items-center gap-6 mt-12 pt-10 border-t" style={{ borderColor: "rgba(255,255,255,0.15)" }}>
+            {s.phone && (
+              <a
+                href={`tel:${s.phone.replace(/\s/g, "")}`}
+                className="flex items-center gap-2 text-sm font-bold hover:opacity-80 transition-opacity"
+                style={{ color: "#F8F7F4" }}
+              >
+                <span className="text-base">📞</span> {s.phone}
+              </a>
+            )}
+            {s.address && (
+              <span className="flex items-center gap-2 text-sm" style={{ color: "rgba(248,247,244,0.65)" }}>
+                <span>📍</span> {s.address}
+              </span>
+            )}
+            {hours[0] && (
+              <span className="text-sm" style={{ color: "rgba(248,247,244,0.65)" }}>
+                🕐 {hours[0]}
+              </span>
+            )}
+          </div>
         </div>
       </section>
 
-      {/* Offer highlight */}
+      {/* Member offer — high contrast band */}
       {s.lp_offer && (
-        <section
-          className="px-4 sm:px-6 lg:px-8 py-10"
-          style={{ backgroundColor: "#39E75F" }}
-        >
-          <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+        <section style={{ backgroundColor: "#39E75F" }}>
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#0D0D0D" }}>
-                Member Offer
+              <p className="text-xs font-extrabold uppercase tracking-widest mb-1" style={{ color: "rgba(13,13,13,0.5)" }}>
+                Exclusive member offer
               </p>
-              <p className="text-lg font-extrabold" style={{ color: "#0D0D0D" }}>
+              <p className="text-xl sm:text-2xl font-extrabold" style={{ color: "#0D0D0D" }}>
                 {s.lp_offer}
               </p>
             </div>
@@ -167,170 +223,199 @@ export default async function SponsorPage({
                 href={s.lp_offer_cta_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shrink-0 inline-flex items-center justify-center px-7 py-3 rounded-full text-sm font-bold transition-opacity hover:opacity-90"
+                className="shrink-0 inline-flex items-center justify-center px-8 py-4 rounded-full text-sm font-extrabold transition-all hover:scale-105"
                 style={{ backgroundColor: "#0D0D0D", color: "#F8F7F4" }}
               >
-                {s.lp_offer_cta_text}
+                {s.lp_offer_cta_text} &rarr;
               </Link>
             )}
           </div>
         </section>
       )}
 
-      {/* About */}
-      {aboutParagraphs.length > 0 && (
-        <section className="px-4 sm:px-6 lg:px-8 py-16 border-b" style={{ borderColor: "#E2E0DC" }}>
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="md:col-span-2 space-y-5">
-              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#39E75F" }}>
-                About {s.org_name}
-              </p>
+      {/* Main content — about + contact sidebar */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 border-b" style={{ borderColor: "#E2E0DC" }}>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16">
+
+          {/* About copy */}
+          <div className="lg:col-span-2">
+            <p className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "#39E75F" }}>
+              About {s.org_name}
+            </p>
+            <div className="space-y-6">
               {aboutParagraphs.map((para, i) => (
-                <p key={i} className="text-base leading-relaxed" style={{ color: "#0D0D0D" }}>
+                <p
+                  key={i}
+                  className={`leading-relaxed ${i === 0 ? "text-xl font-medium" : "text-base"}`}
+                  style={{ color: i === 0 ? "#0D0D0D" : "#6B6B6B" }}
+                >
                   {para}
                 </p>
               ))}
             </div>
+          </div>
 
-            {/* Contact sidebar */}
+          {/* Contact card */}
+          <div className="lg:col-span-1">
             <div
-              className="rounded-2xl border p-6 h-fit"
-              style={{ borderColor: "#E2E0DC" }}
+              className="rounded-2xl p-7 sticky top-8"
+              style={{ backgroundColor: "#0D0D0D" }}
             >
-              <h2 className="text-sm font-extrabold mb-5" style={{ color: "#0D0D0D" }}>
-                Visit {s.org_name}
-              </h2>
+              <p className="text-xs font-extrabold uppercase tracking-widest mb-6" style={{ color: "#39E75F" }}>
+                Find us
+              </p>
+
               {s.address && (
-                <div className="mb-4">
-                  <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#6B6B6B" }}>
+                <div className="mb-5">
+                  <p className="text-xs font-bold uppercase tracking-widest mb-1.5" style={{ color: "rgba(248,247,244,0.4)" }}>
                     Address
                   </p>
-                  <p className="text-sm" style={{ color: "#0D0D0D" }}>{s.address}</p>
+                  <p className="text-sm font-medium" style={{ color: "#F8F7F4" }}>{s.address}</p>
                 </div>
               )}
+
               {s.phone && (
-                <div className="mb-4">
-                  <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#6B6B6B" }}>
+                <div className="mb-5">
+                  <p className="text-xs font-bold uppercase tracking-widest mb-1.5" style={{ color: "rgba(248,247,244,0.4)" }}>
                     Phone
                   </p>
                   <a
                     href={`tel:${s.phone.replace(/\s/g, "")}`}
-                    className="text-sm font-medium hover:underline"
-                    style={{ color: "#0D0D0D" }}
+                    className="text-sm font-bold hover:underline"
+                    style={{ color: "#39E75F" }}
                   >
                     {s.phone}
                   </a>
                 </div>
               )}
-              {s.opening_hours && (
-                <div className="mb-4">
-                  <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "#6B6B6B" }}>
-                    Hours
+
+              {hours.length > 0 && (
+                <div className="mb-6">
+                  <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "rgba(248,247,244,0.4)" }}>
+                    Opening hours
                   </p>
-                  <p className="text-sm whitespace-pre-line" style={{ color: "#0D0D0D" }}>
-                    {s.opening_hours.split(" · ").join("\n")}
-                  </p>
+                  <div className="space-y-1.5">
+                    {hours.map((h, i) => (
+                      <p key={i} className="text-sm" style={{ color: "#F8F7F4" }}>{h}</p>
+                    ))}
+                  </div>
                 </div>
               )}
-              {s.website_url && (
-                <a
-                  href={s.website_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block text-xs font-bold underline underline-offset-2 hover:opacity-70 transition-opacity"
-                  style={{ color: "#0D0D0D" }}
-                >
-                  Visit website &rarr;
-                </a>
-              )}
-              {s.address && (
-                <div className="mt-4">
+
+              <div className="flex flex-col gap-3">
+                {s.address && (
                   <a
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.address)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex w-full items-center justify-center px-5 py-3 rounded-full text-sm font-bold border transition-colors hover:bg-black hover:text-white hover:border-black"
-                    style={{ borderColor: "#0D0D0D", color: "#0D0D0D" }}
+                    className="inline-flex items-center justify-center w-full px-5 py-3 rounded-full text-sm font-bold transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: "#39E75F", color: "#0D0D0D" }}
                   >
                     Get directions
                   </a>
+                )}
+                {s.website_url && (
+                  <a
+                    href={s.website_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center w-full px-5 py-3 rounded-full text-sm font-bold border transition-colors hover:bg-white hover:text-black"
+                    style={{ borderColor: "rgba(248,247,244,0.2)", color: "#F8F7F4" }}
+                  >
+                    Visit website
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services grid */}
+      {s.lp_services && s.lp_services.length > 0 && (
+        <section className="px-4 sm:px-6 lg:px-8 py-20 border-b" style={{ borderColor: "#E2E0DC" }}>
+          <div className="max-w-6xl mx-auto">
+            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#39E75F" }}>
+              What they do
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-extrabold mb-12" style={{ color: "#0D0D0D" }}>
+              Products &amp; Services
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {s.lp_services.map((item, i) => (
+                <div
+                  key={i}
+                  className="flex items-start gap-4 rounded-2xl border p-6"
+                  style={{ borderColor: "#E2E0DC" }}
+                >
+                  <div
+                    className="w-8 h-8 rounded-lg shrink-0 flex items-center justify-center text-xs font-extrabold mt-0.5"
+                    style={{ backgroundColor: "#39E75F", color: "#0D0D0D" }}
+                  >
+                    {i + 1}
+                  </div>
+                  <p className="text-sm font-medium leading-snug pt-1.5" style={{ color: "#0D0D0D" }}>
+                    {item}
+                  </p>
                 </div>
-              )}
+              ))}
             </div>
           </div>
         </section>
       )}
 
-      {/* Services */}
-      {s.lp_services && s.lp_services.length > 0 && (
-        <section className="px-4 sm:px-6 lg:px-8 py-16 border-b" style={{ borderColor: "#E2E0DC" }}>
-          <div className="max-w-4xl mx-auto">
+      {/* TWM connection CTA */}
+      <section
+        className="px-4 sm:px-6 lg:px-8 py-20"
+        style={{ backgroundColor: "#0D0D0D" }}
+      >
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div>
             <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#39E75F" }}>
-              What they offer
+              Why they sponsor us
             </p>
-            <h2 className="text-2xl font-bold mb-8" style={{ color: "#0D0D0D" }}>
-              Products &amp; Services
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-6 leading-tight" style={{ color: "#F8F7F4" }}>
+              {s.org_name} believes in what we're doing.
             </h2>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {s.lp_services.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span
-                    className="mt-1 w-4 h-4 rounded-full shrink-0 flex items-center justify-center text-xs font-bold"
-                    style={{ backgroundColor: "#39E75F", color: "#0D0D0D" }}
-                  >
-                    ✓
-                  </span>
-                  <span className="text-sm" style={{ color: "#0D0D0D" }}>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
-
-      {/* TWM connection / CTA */}
-      <section className="px-4 sm:px-6 lg:px-8 py-16">
-        <div className="max-w-4xl mx-auto">
-          <div
-            className="rounded-2xl p-8 md:p-12"
-            style={{ backgroundColor: "#0D0D0D" }}
-          >
-            <p
-              className="text-xs font-bold uppercase tracking-widest mb-3"
-              style={{ color: "#39E75F" }}
-            >
-              Supporting men's mental health
-            </p>
-            <h2
-              className="text-2xl sm:text-3xl font-extrabold mb-4"
-              style={{ color: "#F8F7F4" }}
-            >
-              {s.org_name} supports The Wandering Man
-            </h2>
-            <p
-              className="text-base mb-8 max-w-2xl"
-              style={{ color: "rgba(248,247,244,0.65)" }}
-            >
-              By choosing {s.org_name}, you're backing a local business that backs our
-              community. The Wandering Man brings men together across Geelong to talk,
-              connect, and support each other through life's challenges.
+            <p className="text-base leading-relaxed mb-8" style={{ color: "rgba(248,247,244,0.6)" }}>
+              When you choose a business that backs The Wandering Man, you're part of something
+              bigger. You're supporting a local community that's quietly changing how men in
+              Geelong think about their mental health - one walk, one conversation, one Saturday
+              morning at a time.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/events"
-                className="inline-flex items-center justify-center px-7 py-3 rounded-full text-sm font-bold transition-opacity hover:opacity-90"
+                className="inline-flex items-center justify-center px-7 py-4 rounded-full text-sm font-extrabold transition-opacity hover:opacity-90"
                 style={{ backgroundColor: "#39E75F", color: "#0D0D0D" }}
               >
-                Join us at an event
+                Come to an event
               </Link>
               <Link
                 href="/sponsors"
-                className="inline-flex items-center justify-center px-7 py-3 rounded-full text-sm font-medium border transition-colors hover:bg-white hover:text-black"
-                style={{ borderColor: "#F8F7F4", color: "#F8F7F4" }}
+                className="inline-flex items-center justify-center px-7 py-4 rounded-full text-sm font-medium border transition-colors hover:bg-white hover:text-black"
+                style={{ borderColor: "rgba(248,247,244,0.25)", color: "#F8F7F4" }}
               >
                 Become a sponsor
               </Link>
             </div>
+          </div>
+          <div
+            className="rounded-2xl p-8 border"
+            style={{ borderColor: "rgba(248,247,244,0.1)" }}
+          >
+            <p className="text-4xl font-extrabold mb-2" style={{ color: "#39E75F" }}>3x</p>
+            <p className="text-sm mb-8" style={{ color: "rgba(248,247,244,0.5)" }}>
+              Men die by suicide at three times the rate of women in Australia
+            </p>
+            <p className="text-4xl font-extrabold mb-2" style={{ color: "#F8F7F4" }}>100+</p>
+            <p className="text-sm mb-8" style={{ color: "rgba(248,247,244,0.5)" }}>
+              Men in Geelong coming together through The Wandering Man
+            </p>
+            <p className="text-4xl font-extrabold mb-2" style={{ color: "#F8F7F4" }}>0</p>
+            <p className="text-sm" style={{ color: "rgba(248,247,244,0.5)" }}>
+              Barriers to joining. You just have to show up.
+            </p>
           </div>
         </div>
       </section>
