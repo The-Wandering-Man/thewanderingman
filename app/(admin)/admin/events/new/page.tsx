@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
+import AdminNav from "@/components/admin/AdminNav";
+import EventForm from "@/components/admin/EventForm";
 
-export const metadata: Metadata = { title: "New Event | Admin" };
+export const metadata: Metadata = { title: "New Event | TWM Admin" };
 
 export default function NewEventPage() {
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-extrabold mb-4" style={{ color: "#0D0D0D" }}>
-        New Event
-      </h1>
-      <p style={{ color: "#6B6B6B" }}>Event form — coming soon.</p>
+    <div className="min-h-screen" style={{ backgroundColor: "#F8F7F4" }}>
+      <AdminNav />
+      <EventForm />
     </div>
   );
 }

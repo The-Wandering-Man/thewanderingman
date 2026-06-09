@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import TalkToSomeoneBanner from "@/components/site/TalkToSomeoneBanner";
-import Header from "@/components/site/Header";
-import Footer from "@/components/site/Footer";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -21,9 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.thewanderingman.com.au"
   ),
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   openGraph: {
     siteName: "The Wandering Man",
     locale: "en_AU",
@@ -36,8 +31,7 @@ const orgJsonLd = {
   "@type": "Organization",
   name: "The Wandering Man",
   url: "https://www.thewanderingman.com.au",
-  description:
-    "A men's mental health community based in Geelong, Victoria, Australia.",
+  description: "A men's mental health community based in Geelong, Victoria, Australia.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Geelong",
@@ -46,9 +40,7 @@ const orgJsonLd = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${jakarta.variable} h-full`}>
       <body className="min-h-full flex flex-col">
@@ -56,10 +48,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
-        <TalkToSomeoneBanner />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

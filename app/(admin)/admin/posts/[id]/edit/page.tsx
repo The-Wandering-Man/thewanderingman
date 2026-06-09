@@ -1,14 +1,28 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
+import AdminNav from "@/components/admin/AdminNav";
+import PostWizard from "@/components/admin/PostWizard";
 
-export const metadata: Metadata = { title: "Edit Post | Admin" };
+export const metadata: Metadata = { title: "Edit Post | TWM Admin" };
 
-export default function EditPostPage({ params }: { params: { id: string } }) {
+type Props = { params: Promise<{ id: string }> };
+
+export default async function EditPostPage({ params }: Props) {
+  const { id } = await params;
+  const supabase = await createClient();
+
+  const [{ data: post }, { data: authors }] = await Promise.all([
+    supabase.from("posts").select("*").eq("id", id).single(),
+    supabase.from("authors").select("id, name").eq("is_active", true).order("name"),
+  ]);
+
+  if (!post) notFound();
+
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-extrabold mb-4" style={{ color: "#0D0D0D" }}>
-        Edit Post
-      </h1>
-      <p style={{ color: "#6B6B6B" }}>Editing post {params.id} — coming soon.</p>
+    <div className="min-h-screen" style={{ backgroundColor: "#F8F7F4" }}>
+      <AdminNav />
+      <PostWizard authors={authors ?? []} initialPost={post} />
     </div>
   );
 }

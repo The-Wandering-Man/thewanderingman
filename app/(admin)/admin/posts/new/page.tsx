@@ -1,14 +1,22 @@
 import type { Metadata } from "next";
+import { createClient } from "@/lib/supabase/server";
+import AdminNav from "@/components/admin/AdminNav";
+import PostWizard from "@/components/admin/PostWizard";
 
-export const metadata: Metadata = { title: "New Post | Admin" };
+export const metadata: Metadata = { title: "New Post | TWM Admin" };
 
-export default function NewPostPage() {
+export default async function NewPostPage() {
+  const supabase = await createClient();
+  const { data: authors } = await supabase
+    .from("authors")
+    .select("id, name")
+    .eq("is_active", true)
+    .order("name");
+
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-extrabold mb-4" style={{ color: "#0D0D0D" }}>
-        New Post
-      </h1>
-      <p style={{ color: "#6B6B6B" }}>Post wizard — coming soon.</p>
+    <div className="min-h-screen" style={{ backgroundColor: "#F8F7F4" }}>
+      <AdminNav />
+      <PostWizard authors={authors ?? []} />
     </div>
   );
 }

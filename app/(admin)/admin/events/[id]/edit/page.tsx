@@ -1,14 +1,24 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
+import AdminNav from "@/components/admin/AdminNav";
+import EventForm from "@/components/admin/EventForm";
 
-export const metadata: Metadata = { title: "Edit Event | Admin" };
+export const metadata: Metadata = { title: "Edit Event | TWM Admin" };
 
-export default function EditEventPage({ params }: { params: { id: string } }) {
+type Props = { params: Promise<{ id: string }> };
+
+export default async function EditEventPage({ params }: Props) {
+  const { id } = await params;
+  const supabase = await createClient();
+  const { data: event } = await supabase.from("events").select("*").eq("id", id).single();
+
+  if (!event) notFound();
+
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-extrabold mb-4" style={{ color: "#0D0D0D" }}>
-        Edit Event
-      </h1>
-      <p style={{ color: "#6B6B6B" }}>Editing event {params.id} — coming soon.</p>
+    <div className="min-h-screen" style={{ backgroundColor: "#F8F7F4" }}>
+      <AdminNav />
+      <EventForm initial={event} />
     </div>
   );
 }
