@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import Badge from "@/components/ui/Badge";
 
 export interface Post {
   id: string;
@@ -20,21 +19,22 @@ export interface Post {
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-AU", {
-    day: "numeric",
     month: "long",
     year: "numeric",
   });
 }
 
 export default function PostCard({ post }: { post: Post }) {
+  const label = [post.content_type, post.category].filter(Boolean).join(" · ");
+
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group flex flex-col rounded-2xl border overflow-hidden hover:shadow-md transition-shadow"
-      style={{ borderColor: "#E2E0DC" }}
+      className="group flex flex-col rounded-2xl overflow-hidden transition-all duration-250 hover:-translate-y-1"
+      style={{ background: "#FFFFFF", border: "1px solid #E5DCC9", textDecoration: "none", boxShadow: "0 1px 4px rgba(36,53,43,0.04)" }}
     >
       {post.featured_image_url && (
-        <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+        <div className="relative w-full" style={{ height: 190 }}>
           <Image
             src={post.featured_image_url}
             alt={post.title}
@@ -45,48 +45,27 @@ export default function PostCard({ post }: { post: Post }) {
         </div>
       )}
 
-      <div className="flex flex-col gap-3 p-5 flex-1">
-        <div className="flex items-center gap-2">
-          <Badge type={post.content_type} />
-          {post.category && (
-            <span className="text-xs" style={{ color: "#6B6B6B" }}>
-              {post.category}
-            </span>
-          )}
-        </div>
+      <div className="flex flex-col gap-2 p-6 flex-1">
+        {label && (
+          <span style={{ fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: "13px", color: "#48745A", letterSpacing: "0.12em", textTransform: "uppercase" }}>
+            {label}
+          </span>
+        )}
 
-        <h3
-          className="text-base font-bold leading-snug group-hover:underline underline-offset-2"
-          style={{ color: "#0D0D0D" }}
-        >
+        <h3 style={{ margin: 0, fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "22px", lineHeight: 1.25, color: "#24352B" }}>
           {post.title}
         </h3>
 
         {post.excerpt && (
-          <p className="text-sm leading-relaxed line-clamp-2" style={{ color: "#6B6B6B" }}>
+          <p className="line-clamp-3 flex-1" style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: "17px", lineHeight: 1.55, color: "#5C6B60" }}>
             {post.excerpt}
           </p>
         )}
 
-        <div className="flex items-center gap-2 mt-auto pt-2">
-          {post.author?.photo_url && (
-            <div className="relative w-6 h-6 rounded-full overflow-hidden shrink-0">
-              <Image
-                src={post.author.photo_url}
-                alt={post.author.name}
-                fill
-                className="object-cover"
-                sizes="24px"
-              />
-            </div>
-          )}
-          <span className="text-xs" style={{ color: "#6B6B6B" }}>
-            {post.author?.name ?? "The Wandering Man"}
-            {post.published_at && (
-              <> &middot; {formatDate(post.published_at)}</>
-            )}
-          </span>
-        </div>
+        <p style={{ margin: "4px 0 0", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: "15px", color: "#87988A" }}>
+          {post.author?.name ?? "The Wandering Man"}
+          {post.published_at && <> · {formatDate(post.published_at)}</>}
+        </p>
       </div>
     </Link>
   );

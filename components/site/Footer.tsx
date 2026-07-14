@@ -52,11 +52,8 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer
-      className="border-t mt-16"
-      style={{ borderColor: "#E2E0DC", backgroundColor: "#F8F7F4" }}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer style={{ backgroundColor: "#0D1512" }}>
+      <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="md:col-span-1">
@@ -64,28 +61,21 @@ export default function Footer() {
               <Image
                 src="/TWN-New-BW.png"
                 alt="The Wandering Man"
-                width={160}
-                height={50}
-                className="h-12 w-auto object-contain"
-                style={{ mixBlendMode: "multiply" }}
+                width={140}
+                height={44}
+                className="h-11 w-auto object-contain"
               />
             </Link>
-            <p className="text-sm leading-relaxed mb-4" style={{ color: "#6B6B6B" }}>
-              A men's mental health community in Geelong, Victoria. Real conversations. Genuine support.
+            <p className="text-sm leading-relaxed mb-2" style={{ color: "#5C6B60", fontFamily: "var(--font-body), sans-serif" }}>
+              A men's mental health community in Geelong, Victoria.
             </p>
-            <p className="text-xs font-bold italic mb-5" style={{ color: "#0D0D0D" }}>
-              "Show Up. Step Up. Stay Connected."
+            <p className="text-xs font-semibold italic mb-5" style={{ color: "#87988A", fontFamily: "var(--font-body), sans-serif" }}>
+              Show Up. Step Up. Stay Connected.
             </p>
-            {/* Social */}
             <div className="flex items-center gap-3">
               {socialLinks.map((s) =>
                 s.comingSoon ? (
-                  <span
-                    key={s.label}
-                    title="LinkedIn coming soon"
-                    className="cursor-default"
-                    style={{ color: "#C5C3BF" }}
-                  >
+                  <span key={s.label} title="LinkedIn coming soon" className="cursor-default" style={{ color: "#3C4A40" }}>
                     {s.icon}
                   </span>
                 ) : (
@@ -95,8 +85,8 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.label}
-                    className="hover:opacity-60 transition-opacity"
-                    style={{ color: "#0D0D0D" }}
+                    className="transition-opacity hover:opacity-60"
+                    style={{ color: "#5C6B60" }}
                   >
                     {s.icon}
                   </a>
@@ -107,7 +97,7 @@ export default function Footer() {
 
           {/* Navigate */}
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#6B6B6B" }}>
+            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#3C4A40", fontFamily: "var(--font-body), sans-serif" }}>
               Navigate
             </p>
             <ul className="flex flex-col gap-2">
@@ -119,7 +109,7 @@ export default function Footer() {
                 ["Sponsors", "/sponsors"],
               ].map(([label, href]) => (
                 <li key={href}>
-                  <Link href={href} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "#0D0D0D" }}>
+                  <Link href={href} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "#87988A", textDecoration: "none", fontFamily: "var(--font-body), sans-serif" }}>
                     {label}
                   </Link>
                 </li>
@@ -129,7 +119,7 @@ export default function Footer() {
 
           {/* Community */}
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#6B6B6B" }}>
+            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#3C4A40", fontFamily: "var(--font-body), sans-serif" }}>
               Community
             </p>
             <ul className="flex flex-col gap-2">
@@ -140,7 +130,7 @@ export default function Footer() {
                 ["Contact", "mailto:hello@thewanderingman.com.au"],
               ].map(([label, href]) => (
                 <li key={href}>
-                  <Link href={href} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "#0D0D0D" }}>
+                  <Link href={href} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "#87988A", textDecoration: "none", fontFamily: "var(--font-body), sans-serif" }}>
                     {label}
                   </Link>
                 </li>
@@ -150,14 +140,14 @@ export default function Footer() {
 
           {/* Crisis lines */}
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#6B6B6B" }}>
+            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#3C4A40", fontFamily: "var(--font-body), sans-serif" }}>
               If you need help now
             </p>
             <ul className="flex flex-col gap-2">
               {crisisLines.map((line) => (
                 <li key={line.tel} className="text-sm">
-                  <span style={{ color: "#6B6B6B" }}>{line.name} </span>
-                  <a href={`tel:${line.tel}`} className="font-bold hover:opacity-70 transition-opacity" style={{ color: "#0D0D0D" }}>
+                  <span style={{ color: "#5C6B60", fontFamily: "var(--font-body), sans-serif" }}>{line.name} </span>
+                  <a href={`tel:${line.tel}`} className="font-bold hover:opacity-70 transition-opacity" style={{ color: "#79A886", textDecoration: "none", fontFamily: "var(--font-body), sans-serif" }}>
                     {line.number}
                   </a>
                 </li>
@@ -166,12 +156,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div
-          className="mt-10 pt-6 border-t text-xs flex flex-col sm:flex-row justify-between gap-2"
-          style={{ borderColor: "#E2E0DC", color: "#6B6B6B" }}
-        >
-          <p>&copy; {new Date().getFullYear()} The Wandering Man. Geelong, Victoria, Australia. ABN 707 257 545 13</p>
-          <a href="mailto:hello@thewanderingman.com.au" className="hover:opacity-70 transition-opacity" style={{ color: "#6B6B6B" }}>
+        <div className="mt-10 pt-6 border-t text-xs flex flex-col sm:flex-row justify-between gap-2" style={{ borderColor: "rgba(93,138,108,0.15)", color: "#3C4A40", fontFamily: "var(--font-body), sans-serif" }}>
+          <p>© {new Date().getFullYear()} The Wandering Man Inc. Geelong, Victoria, Australia. ABN 707 257 545 13</p>
+          <a href="mailto:hello@thewanderingman.com.au" className="hover:opacity-70 transition-opacity" style={{ color: "#5C6B60", textDecoration: "none" }}>
             hello@thewanderingman.com.au
           </a>
         </div>
