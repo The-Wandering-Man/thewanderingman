@@ -6,7 +6,6 @@ const bricolage = Bricolage_Grotesque({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
-  axes: ["opsz"],
 });
 
 const sourceSans = Source_Sans_3({
