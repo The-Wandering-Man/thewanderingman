@@ -59,7 +59,7 @@ export default function Footer() {
           <div className="md:col-span-1">
             <Link href="/" className="inline-block mb-4" aria-label="The Wandering Man">
               <Image
-                src="/TWN-New-BW.png"
+                src="/twm-logo-green.png"
                 alt="The Wandering Man"
                 width={140}
                 height={44}

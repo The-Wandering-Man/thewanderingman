@@ -22,7 +22,7 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-3" style={{ textDecoration: "none" }} aria-label="The Wandering Man — Home">
           <div className="rounded-full overflow-hidden shrink-0 flex items-center justify-center" style={{ width: 46, height: 46, background: "#192821" }}>
             <Image
-              src="/TWN-New-BW.png"
+              src="/twm-logo-green.png"
               alt="The Wandering Man"
               width={46}
               height={46}
