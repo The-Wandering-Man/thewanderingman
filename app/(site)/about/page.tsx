@@ -3,9 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "About | The Wandering Man Geelong",
+  title: "About | The Wandering Man Geelong - Our Story, Mission & People",
   description:
-    "The Wandering Man is a men's mental health community born in Geelong, Victoria. Learn about our story, our mission, and the people who keep it running.",
+    "The Wandering Man is a men's mental health peer community born in Geelong, Victoria. Built by men who needed it. Run by men who get it.",
   alternates: { canonical: "/about" },
 };
 
@@ -24,314 +24,210 @@ const values = [
   },
   {
     heading: "Geelong-rooted.",
-    body: "We exist in and for Geelong. Our walks are local, our faces are familiar, and our support is grounded in the reality of living and working in this city.",
+    body: "We exist in and for Geelong. Our events are local, our faces are familiar, and our support is grounded in the reality of living and working in this city.",
   },
 ];
 
-// Org chart data — update names/roles/photos as needed
-const ORG: {
-  tier: string;
-  members: { name: string; role: string; initials: string; bio?: string }[];
-}[] = [
+const leadership = [
   {
-    tier: "Leadership",
-    members: [
-      {
-        name: "Jamie",
-        role: "Founder & Community Lead",
-        initials: "J",
-        bio: "Jamie started The Wandering Man because he needed it. He's been showing up for Geelong men ever since — in parks, on walking tracks, in workplaces, and wherever the conversation needs to happen.",
-      },
-    ],
+    initial: "J",
+    name: "Jamie",
+    role: "Founder & Community Lead",
+    bio: "Jamie started The Wandering Man because he needed it. He's been showing up for Geelong men ever since - in parks, on walking tracks, in workplaces, and wherever the conversation needs to happen.",
   },
   {
-    tier: "Core Team",
-    members: [
-      {
-        name: "Team Member",
-        role: "Events Coordinator",
-        initials: "?",
-      },
-      {
-        name: "Team Member",
-        role: "Community Support",
-        initials: "?",
-      },
-      {
-        name: "Team Member",
-        role: "Communications",
-        initials: "?",
-      },
-    ],
+    initial: "H",
+    name: "Hoffy",
+    role: "Coffee Catch-Up Host",
+    bio: "The first face you'll see at the Wednesday Coffee Catch-Up. Hoffy makes sure no bloke stands at the door wondering if he's in the right place.",
   },
   {
-    tier: "Volunteers",
-    members: [
-      {
-        name: "Volunteer",
-        role: "Walk Leader",
-        initials: "?",
-      },
-      {
-        name: "Volunteer",
-        role: "Walk Leader",
-        initials: "?",
-      },
-      {
-        name: "Volunteer",
-        role: "Event Support",
-        initials: "?",
-      },
-      {
-        name: "Volunteer",
-        role: "Event Support",
-        initials: "?",
-      },
-    ],
+    initial: "A",
+    name: "Aldo",
+    role: "Events & Rosters",
+    bio: "The bloke who turns a good idea into an actual event - rosters, BBQs, logistics, done.",
   },
 ];
 
-function TeamCard({
-  name,
-  role,
-  initials,
-  bio,
-  large = false,
-}: {
-  name: string;
-  role: string;
-  initials: string;
-  bio?: string;
-  large?: boolean;
-}) {
-  const isPlaceholder = initials === "?";
-  return (
-    <div
-      className={`flex flex-col items-center text-center rounded-2xl border p-6 ${large ? "p-8" : ""}`}
-      style={{ borderColor: "#E2E0DC" }}
-    >
-      {/* Avatar */}
-      <div
-        className={`rounded-full flex items-center justify-center mb-4 font-extrabold ${large ? "w-24 h-24 text-2xl" : "w-16 h-16 text-lg"}`}
-        style={{
-          backgroundColor: isPlaceholder ? "#E2E0DC" : "#0D0D0D",
-          color: isPlaceholder ? "#6B6B6B" : "#39E75F",
-          border: isPlaceholder ? "2px dashed #C5C3BF" : "none",
-        }}
-      >
-        {isPlaceholder ? (
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="8" r="4" stroke="#9CA3AF" strokeWidth="1.5" />
-            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#9CA3AF" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-        ) : (
-          initials
-        )}
-      </div>
-      <p
-        className={`font-extrabold ${large ? "text-xl" : "text-base"}`}
-        style={{ color: isPlaceholder ? "#9CA3AF" : "#0D0D0D" }}
-      >
-        {isPlaceholder ? "Coming soon" : name}
-      </p>
-      <p
-        className="text-xs font-bold uppercase tracking-widest mt-1"
-        style={{ color: isPlaceholder ? "#C5C3BF" : "#39E75F" }}
-      >
-        {role}
-      </p>
-      {bio && !isPlaceholder && (
-        <p className="text-sm leading-relaxed mt-4 max-w-xs" style={{ color: "#6B6B6B" }}>
-          {bio}
-        </p>
-      )}
-    </div>
-  );
-}
+const openRoles = ["Events Coordinator", "Community Support", "Communications", "Event Support"];
 
 export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative px-4 sm:px-6 lg:px-8 py-20 md:py-28 overflow-hidden">
-        <Image
-          src="/hero.jpg"
-          alt="The Wandering Man community"
-          fill
-          className="object-cover"
-          style={{ objectPosition: "center 30%" }}
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0" style={{ backgroundColor: "rgba(13,13,13,0.78)" }} />
-        <div className="relative max-w-3xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "#39E75F" }}>
-            Our Story
-          </p>
-          <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-6" style={{ color: "#F8F7F4" }}>
-            Built by men who needed it. Run by men who get it.
-          </h1>
-          <p className="text-lg leading-relaxed" style={{ color: "rgba(248,247,244,0.75)" }}>
-            The Wandering Man started with a simple decision: get out of the house, go for a walk,
-            and actually talk. What happened next surprised everyone involved.
-          </p>
-        </div>
-      </section>
-
-      {/* Origin story */}
-      <section className="px-4 sm:px-6 lg:px-8 py-20">
-        <div className="max-w-3xl mx-auto">
-          <div className="w-8 h-1 rounded-full mb-8" style={{ backgroundColor: "#39E75F" }} />
-          <div className="space-y-6">
-            <p className="text-lg leading-relaxed" style={{ color: "#0D0D0D" }}>
-              Men's mental health has long been one of the most underdiscussed crises in Australian
-              communities. Men die by suicide at three times the rate of women. They are less likely
-              to seek help. Less likely to name what they are feeling. Less likely to reach out.
-            </p>
-            <p className="text-base leading-relaxed" style={{ color: "#6B6B6B" }}>
-              The Wandering Man was founded on the belief that the solution isn't complicated - it's
-              just hard. Getting men out of isolation and into genuine connection with other men is
-              the most powerful thing we can do.
-            </p>
-            <p className="text-base leading-relaxed" style={{ color: "#6B6B6B" }}>
-              We started in Geelong with Saturday morning walks. A few blokes, some fresh air, and
-              the kind of conversation that doesn't happen at the pub or in a waiting room. Word
-              spread the way it does when something fills a need people didn't know how to name.
-            </p>
-            <p className="text-base leading-relaxed" style={{ color: "#6B6B6B" }}>
-              Today we run regular events across Geelong - walks, gatherings, mindfulness sessions -
-              and we show up in workplaces to help organisations take men's mental health seriously.
-              All of it traces back to that first walk and the decision to just show up.
+      <header style={{ background: "#111C16", padding: "72px 28px 80px" }}>
+        <div
+          style={{
+            maxWidth: 1240,
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
+            gap: 48,
+            alignItems: "center",
+          }}
+        >
+          <div>
+            <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 15, color: "#79A886", letterSpacing: "0.16em", textTransform: "uppercase" }}>Our story</p>
+            <h1
+              style={{
+                margin: "0 0 22px",
+                fontFamily: "var(--font-display), sans-serif",
+                fontWeight: 700,
+                fontSize: "clamp(36px, 5.4vw, 60px)",
+                lineHeight: 1.08,
+                color: "#F4F1EA",
+                maxWidth: "16ch",
+              }}
+            >
+              Built by men who needed it. Run by men who get it.
+            </h1>
+            <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: "clamp(19px, 2.2vw, 22px)", lineHeight: 1.55, color: "#CBD5CB", maxWidth: "52ch" }}>
+              The Wandering Man started with a simple decision: get out of the house, show up, and actually talk. What happened next surprised everyone involved.
             </p>
           </div>
+          <div className="relative w-full rounded-2xl overflow-hidden" style={{ aspectRatio: "4/3", boxShadow: "0 24px 60px rgba(0,0,0,0.4)" }}>
+            <Image
+              src="/about-hero.png"
+              alt="A Wandering Man gathering - men seated in a circle"
+              fill
+              className="object-cover"
+              style={{ objectPosition: "center 30%" }}
+              priority
+              sizes="(max-width: 768px) 100vw, 560px"
+            />
+          </div>
+        </div>
+      </header>
+
+      {/* Why we exist */}
+      <section style={{ background: "#F4F1EA", padding: "92px 28px" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <h2 style={{ margin: "0 0 20px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(28px, 3.6vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Why we exist</h2>
+          <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontSize: 20, lineHeight: 1.65, color: "#46534A" }}>
+            Men&apos;s mental health has long been one of the most underdiscussed crises in Australian communities. Men die by suicide at three times the rate of women. They&apos;re less likely to seek help, less likely to name what they&apos;re feeling, less likely to reach out.
+          </p>
+          <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontSize: 20, lineHeight: 1.65, color: "#46534A" }}>
+            The Wandering Man was founded on the belief that the solution isn&apos;t complicated - it&apos;s just hard. Getting men out of isolation and into genuine connection with other men is the most powerful thing we can do.
+          </p>
+          <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: 20, lineHeight: 1.65, color: "#46534A" }}>
+            We started in Geelong with a handful of blokes and the kind of conversation that doesn&apos;t happen at the pub or in a waiting room. Word spread the way it does when something fills a need people didn&apos;t know how to name. Today there&apos;s a rhythm to every week - coffee on Wednesday, a swim and a walk on Saturday, a river stroll on Sunday, BBQs and guest speakers through the year - and we show up in workplaces to help organisations take men&apos;s mental health seriously.
+          </p>
         </div>
       </section>
 
-      {/* Stats band */}
-      <section className="px-4 sm:px-6 lg:px-8 py-14 border-y" style={{ borderColor: "#E2E0DC", backgroundColor: "#F8F7F4" }}>
-        <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+      {/* Stats */}
+      <section style={{ background: "#192821", padding: "72px 28px" }}>
+        <div
+          style={{
+            maxWidth: 1120,
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: 20,
+          }}
+        >
           {[
-            { stat: "3x", label: "Men die by suicide at 3 times the rate of women" },
+            { stat: "3x", label: "Men die by suicide at three times the rate of women" },
             { stat: "100+", label: "Geelong men in our community" },
             { stat: "50+", label: "Events held across Geelong" },
             { stat: "0", label: "Barriers to joining - everyone welcome" },
           ].map((item) => (
-            <div key={item.stat}>
-              <p className="text-4xl font-extrabold mb-2" style={{ color: "#0D0D0D" }}>
-                {item.stat}
-              </p>
-              <p className="text-xs leading-snug" style={{ color: "#6B6B6B" }}>
-                {item.label}
-              </p>
+            <div key={item.stat} style={{ textAlign: "center", padding: "24px 16px" }}>
+              <p style={{ margin: "0 0 8px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(44px, 5vw, 64px)", lineHeight: 1, color: "#79A886" }}>{item.stat}</p>
+              <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.5, color: "#CBD5CB" }}>{item.label}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Values */}
-      <section className="px-4 sm:px-6 lg:px-8 py-20 border-b" style={{ borderColor: "#E2E0DC" }}>
-        <div className="max-w-5xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#39E75F" }}>
-            What we believe
-          </p>
-          <h2 className="text-3xl font-extrabold mb-14" style={{ color: "#0D0D0D" }}>
-            How we show up
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+      {/* What we believe */}
+      <section style={{ background: "#FBF8F1", borderTop: "1px solid #E5DCC9", padding: "92px 28px" }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+          <p style={{ margin: "0 0 12px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 15, color: "#48745A", letterSpacing: "0.16em", textTransform: "uppercase" }}>What we believe</p>
+          <h2 style={{ margin: "0 0 44px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(28px, 3.6vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>How we show up</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
             {values.map((v) => (
-              <div key={v.heading}>
-                <div className="w-6 h-1 rounded-full mb-4" style={{ backgroundColor: "#39E75F" }} />
-                <h3 className="text-lg font-bold mb-2" style={{ color: "#0D0D0D" }}>
-                  {v.heading}
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: "#6B6B6B" }}>
-                  {v.body}
-                </p>
+              <div key={v.heading} style={{ background: "#FFFFFF", border: "1px solid #E5DCC9", borderRadius: 14, padding: "30px 32px" }}>
+                <h3 style={{ margin: "0 0 10px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 22, lineHeight: 1.25, color: "#24352B" }}>{v.heading}</h3>
+                <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.6, color: "#5C6B60" }}>{v.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Team / Org chart */}
-      <section className="px-4 sm:px-6 lg:px-8 py-20 border-b" style={{ borderColor: "#E2E0DC" }}>
-        <div className="max-w-5xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#39E75F" }}>
-            The people
-          </p>
-          <h2 className="text-3xl font-extrabold mb-4" style={{ color: "#0D0D0D" }}>
-            Meet the team
-          </h2>
-          <p className="text-base mb-14 max-w-xl" style={{ color: "#6B6B6B" }}>
-            The Wandering Man is volunteer-powered. Every event, every walk, every conversation
-            exists because these people choose to show up.
-          </p>
+      {/* The people */}
+      <section style={{ background: "#F4F1EA", borderTop: "1px solid #E5DCC9", padding: "92px 28px" }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+          <p style={{ margin: "0 0 12px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 15, color: "#48745A", letterSpacing: "0.16em", textTransform: "uppercase" }}>The people</p>
+          <h2 style={{ margin: "0 0 16px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(28px, 3.6vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Meet the team</h2>
+          <p style={{ margin: "0 0 44px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#5C6B60", maxWidth: "62ch" }}>The Wandering Man is volunteer-powered. Every event, every walk, every conversation exists because these people choose to show up.</p>
 
-          {ORG.map((tier, ti) => (
-            <div key={tier.tier} className={ti < ORG.length - 1 ? "mb-14" : ""}>
-              {/* Tier label */}
-              <div className="flex items-center gap-4 mb-6">
-                <span
-                  className="text-xs font-bold uppercase tracking-widest"
-                  style={{ color: "#6B6B6B" }}
+          <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.12em", textTransform: "uppercase" }}>Leadership</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20, marginBottom: 44 }}>
+            {leadership.map((m) => (
+              <div key={m.name} style={{ background: "#FFFFFF", border: "1px solid #E5DCC9", borderRadius: 14, padding: "30px 32px" }}>
+                <div
+                  style={{
+                    width: 72,
+                    height: 72,
+                    borderRadius: "50%",
+                    background: "#24352B",
+                    color: "#79A886",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontFamily: "var(--font-display), sans-serif",
+                    fontWeight: 700,
+                    fontSize: 28,
+                    marginBottom: 16,
+                  }}
                 >
-                  {tier.tier}
-                </span>
-                <div className="flex-1 h-px" style={{ backgroundColor: "#E2E0DC" }} />
-              </div>
-
-              {/* Connector line from leadership to core */}
-              {ti === 0 && (
-                <div className="flex justify-center mb-0">
-                  <div className="w-px h-8" style={{ backgroundColor: "#E2E0DC" }} />
+                  {m.initial}
                 </div>
-              )}
-
-              <div
-                className={`grid gap-5 ${
-                  tier.members.length === 1
-                    ? "grid-cols-1 max-w-xs mx-auto"
-                    : tier.members.length <= 3
-                    ? "grid-cols-1 sm:grid-cols-3"
-                    : "grid-cols-2 sm:grid-cols-4"
-                }`}
-              >
-                {tier.members.map((m, i) => (
-                  <TeamCard
-                    key={i}
-                    name={m.name}
-                    role={m.role}
-                    initials={m.initials}
-                    bio={m.bio}
-                    large={tier.tier === "Leadership"}
-                  />
-                ))}
+                <h3 style={{ margin: "0 0 4px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 22, lineHeight: 1.25, color: "#24352B" }}>{m.name}</h3>
+                <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 16, lineHeight: 1.4, color: "#48745A" }}>{m.role}</p>
+                <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: 17, lineHeight: 1.55, color: "#5C6B60" }}>{m.bio}</p>
               </div>
+            ))}
+          </div>
 
-              {/* Connector from leadership */}
-              {ti === 0 && (
-                <div className="flex justify-center mt-0">
-                  <div className="w-px h-8" style={{ backgroundColor: "#E2E0DC" }} />
+          <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.12em", textTransform: "uppercase" }}>Core team &amp; volunteers</p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16, marginBottom: 44 }}>
+            {openRoles.map((role) => (
+              <div key={role} style={{ background: "#EDE7D8", border: "1px dashed #C9BC9F", borderRadius: 14, padding: "24px 26px" }}>
+                <div
+                  style={{
+                    width: 56,
+                    height: 56,
+                    borderRadius: "50%",
+                    background: "#DCD3BE",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontFamily: "var(--font-display), sans-serif",
+                    fontWeight: 700,
+                    fontSize: 22,
+                    color: "#8A7F68",
+                    marginBottom: 12,
+                  }}
+                >
+                  ?
                 </div>
-              )}
+                <h3 style={{ margin: "0 0 4px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 18, lineHeight: 1.3, color: "#24352B" }}>Coming soon</h3>
+                <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 15, lineHeight: 1.4, color: "#8A7F68" }}>{role}</p>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ background: "#24352B", borderRadius: 14, padding: "34px 36px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap" }}>
+            <div>
+              <h3 style={{ margin: "0 0 8px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 24, lineHeight: 1.2, color: "#F4F1EA" }}>Want to get involved?</h3>
+              <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.55, color: "#CBD5CB", maxWidth: "56ch" }}>We&apos;re always looking for good men to help run events and keep the community going. Some of our best volunteers are men who came for themselves and stayed to walk with others. No experience needed. Just willingness.</p>
             </div>
-          ))}
-
-          <div
-            className="rounded-2xl border border-dashed p-8 text-center mt-6"
-            style={{ borderColor: "#C5C3BF" }}
-          >
-            <p className="text-base font-bold mb-2" style={{ color: "#0D0D0D" }}>
-              Want to get involved?
-            </p>
-            <p className="text-sm mb-5" style={{ color: "#6B6B6B" }}>
-              We're always looking for good men to help run events, lead walks, and keep the
-              community going. No experience needed. Just willingness.
-            </p>
             <Link
               href="/events"
-              className="inline-flex items-center justify-center px-7 py-3 rounded-full text-sm font-bold transition-opacity hover:opacity-90"
-              style={{ backgroundColor: "#39E75F", color: "#0D0D0D" }}
+              style={{ background: "#5D8A6C", color: "#111C16", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 18, textDecoration: "none", padding: "16px 26px", borderRadius: 10, flexShrink: 0 }}
             >
               Come to an event first
             </Link>
@@ -340,30 +236,13 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="px-4 sm:px-6 lg:px-8 py-24">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-extrabold mb-4" style={{ color: "#0D0D0D" }}>
-            Ready to show up?
-          </h2>
-          <p className="text-base mb-10" style={{ color: "#6B6B6B" }}>
-            You don't need to be in crisis to come along. You just need to be a man who's willing
-            to show up. That's the only qualification.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/events"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold transition-opacity hover:opacity-90"
-              style={{ backgroundColor: "#39E75F", color: "#0D0D0D" }}
-            >
-              See Upcoming Events
-            </Link>
-            <Link
-              href="/resources"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-medium border transition-colors"
-              style={{ borderColor: "#0D0D0D", color: "#0D0D0D" }}
-            >
-              Get Support Now
-            </Link>
+      <section style={{ background: "#E6DECC", padding: "80px 28px" }}>
+        <div style={{ maxWidth: 780, margin: "0 auto", textAlign: "center" }}>
+          <h2 style={{ margin: "0 0 14px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(28px, 3.6vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Ready to show up?</h2>
+          <p style={{ margin: "0 0 30px auto", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#5C6B60", maxWidth: "52ch" }}>You don&apos;t need to be in crisis to come along. You just need to be a man who&apos;s willing to show up. That&apos;s the only qualification.</p>
+          <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+            <Link href="/events" style={{ background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 18, textDecoration: "none", padding: "17px 28px", borderRadius: 10 }}>See upcoming events</Link>
+            <Link href="/resources" style={{ border: "1.5px solid #24352B", color: "#24352B", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 18, textDecoration: "none", padding: "17px 28px", borderRadius: 10 }}>Get support now</Link>
           </div>
         </div>
       </section>

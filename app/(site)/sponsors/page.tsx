@@ -1,261 +1,148 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import { createClient } from "@/lib/supabase/server";
-import SponsorEnquiryForm from "@/components/site/SponsorEnquiryForm";
 
 export const metadata: Metadata = {
-  title: "Sponsor The Wandering Man | Men's Mental Health Geelong",
+  title: "Our Sponsors - Grovedale Meats & more | The Wandering Man, Geelong",
   description:
-    "Partner with The Wandering Man and reach Geelong's most engaged community of men. Sponsorship packages from Community to Gold tier.",
+    "Local sponsors who keep our community events free for every man in Geelong. Back them the way they back us.",
   alternates: { canonical: "/sponsors" },
 };
 
-export const revalidate = 3600;
-
-const TIERS = [
-  {
-    key: "gold",
-    label: "Gold",
-    price: "POA",
-    tagline: "Maximum visibility. Primary partner status.",
-    perks: [
-      "4x banner impressions per page load",
-      "Dedicated landing page on TWM website",
-      "Logo on all event collateral",
-      "Social media shoutouts",
-      "Named at every event",
-      "First right of renewal",
-    ],
-    highlight: true,
-  },
-  {
-    key: "silver",
-    label: "Silver",
-    price: "POA",
-    tagline: "Strong presence throughout the site and events.",
-    perks: [
-      "3x banner impressions per page load",
-      "Sponsor listing page with logo",
-      "Logo on major event collateral",
-      "Quarterly social media mention",
-    ],
-    highlight: false,
-  },
-  {
-    key: "bronze",
-    label: "Bronze",
-    price: "POA",
-    tagline: "Solid community presence. Great for local businesses.",
-    perks: [
-      "2x banner impressions per page load",
-      "Sponsor listing page with logo",
-      "Name on event signage",
-    ],
-    highlight: false,
-  },
-  {
-    key: "community",
-    label: "Community",
-    price: "POA",
-    tagline: "Show your support. Perfect for sole traders.",
-    perks: [
-      "1x banner impression per page load",
-      "Name on sponsors page",
-    ],
-    highlight: false,
-  },
-];
-
-interface Sponsor {
-  id: string;
-  org_name: string;
-  slug: string;
-  tier: string;
-  tagline: string | null;
-  logo_url: string | null;
-  use_landing_page: boolean;
-  external_url: string | null;
-  suburb: string | null;
-}
-
-export default async function SponsorsPage() {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("sponsors")
-    .select("id, org_name, slug, tier, tagline, logo_url, use_landing_page, external_url, suburb")
-    .eq("is_active", true)
-    .order("created_at", { ascending: true });
-
-  const sponsors = (data ?? []) as Sponsor[];
-  const tierOrder = ["gold", "silver", "bronze", "community"];
-  const byTier = tierOrder.map((t) => ({
-    tier: t,
-    items: sponsors.filter((s) => s.tier === t),
-  }));
-
+export default function SponsorsPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative px-4 sm:px-6 lg:px-8 py-20 md:py-28 overflow-hidden border-b" style={{ borderColor: "#E2E0DC" }}>
-        <Image src="/hero.jpg" alt="The Wandering Man community" fill className="object-cover" style={{ objectPosition: "center 30%" }} priority sizes="100vw" />
-        <div className="absolute inset-0" style={{ backgroundColor: "rgba(13,13,13,0.75)" }} />
-        <div className="relative max-w-4xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#39E75F" }}>
-            Community Partners
-          </p>
-          <h1 className="text-4xl sm:text-5xl font-extrabold mb-6" style={{ color: "#F8F7F4" }}>
-            Sponsor The Wandering Man
-          </h1>
-          <p className="text-lg max-w-2xl" style={{ color: "rgba(248,247,244,0.7)" }}>
-            The Wandering Man is Geelong's home for men's mental health. Back our community and get in front of hundreds of local men who care about where they spend their money.
-          </p>
+      {/* Header */}
+      <header style={{ background: "#192821", padding: "72px 28px 64px" }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+          <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 15, color: "#79A886", letterSpacing: "0.16em", textTransform: "uppercase" }}>Our sponsors · Locals backing locals</p>
+          <h1 style={{ margin: "0 0 18px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(34px, 5vw, 56px)", lineHeight: 1.1, color: "#F4F1EA", maxWidth: "20ch" }}>Every free swim, coffee and BBQ has a local business behind it.</h1>
+          <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: "clamp(19px, 2.2vw, 22px)", lineHeight: 1.55, color: "#CBD5CB", maxWidth: "58ch" }}>Our sponsors keep community events free for every man in Geelong. Back them the way they back us - and mention The Wandering Man when you do.</p>
+        </div>
+      </header>
+
+      {/* Grovedale Meats - Gold */}
+      <section id="grovedale-meats" style={{ background: "#F4F1EA", padding: "84px 28px", scrollMarginTop: 70 }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center", marginBottom: 28 }}>
+            <div>
+              <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 14, color: "#48745A", letterSpacing: "0.12em", textTransform: "uppercase", display: "inline-block", border: "1.5px solid #79A886", borderRadius: 99, padding: "6px 14px" }}>Gold sponsor</p>
+              <h2 style={{ margin: "10px 0 8px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(32px, 4.4vw, 46px)", lineHeight: 1.12, color: "#24352B" }}>Grovedale Meats</h2>
+              <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 20, lineHeight: 1.4, color: "#41604F" }}>Your local family butcher · 13 Peter St, Grovedale</p>
+              <div style={{ background: "#5D8A6C", borderRadius: 12, padding: "18px 22px", marginBottom: 18 }}>
+                <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 20, lineHeight: 1.4, color: "#111C16" }}>10% off when you mention The Wandering Man</p>
+              </div>
+              <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}><strong style={{ color: "#24352B" }}>Why they back us:</strong> at every community BBQ we run, Grovedale Meats donates the snags and burgers on that grill. No fanfare, no conditions. That&apos;s what backing your community looks like.</p>
+              <p style={{ margin: "0 0 24px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}>Quality cuts, honest prices, and a butcher who knows your name. If you&apos;re buying meat in Geelong, buy it here.</p>
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+                <a href="https://maps.google.com/?q=13+Peter+St+Grovedale+VIC" target="_blank" rel="noopener noreferrer" style={{ background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "15px 24px", borderRadius: 10 }}>Get directions</a>
+                <Link href="/events#bbqs" style={{ border: "1.5px solid #24352B", color: "#24352B", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "15px 24px", borderRadius: 10 }}>See the BBQs they power</Link>
+              </div>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              <div style={{ height: 200, borderRadius: 16, background: "#1C1C1E", display: "flex", alignItems: "center", justifyContent: "center", padding: 32 }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/grovedale-logo-wide.png" alt="Grovedale Meats - Quality Butcher" style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }} />
+              </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/grovedale-bbq.jpg" alt="Grovedale Meats snags on the grill at a Wandering Man BBQ" style={{ width: "100%", height: 220, objectFit: "cover", borderRadius: 16, display: "block" }} />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Current sponsors */}
-      {sponsors.length > 0 && (
-        <section className="px-4 sm:px-6 lg:px-8 py-16 border-b" style={{ borderColor: "#E2E0DC" }}>
-          <div className="max-w-6xl mx-auto">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#39E75F" }}>
-              Thank you
-            </p>
-            <h2 className="text-2xl font-bold mb-10" style={{ color: "#0D0D0D" }}>
-              Our current sponsors
-            </h2>
-            <div className="space-y-10">
-              {byTier.map(({ tier, items }) =>
-                items.length === 0 ? null : (
-                  <div key={tier}>
-                    <p
-                      className="text-xs font-bold uppercase tracking-widest mb-4"
-                      style={{ color: "#6B6B6B" }}
-                    >
-                      {tier.charAt(0).toUpperCase() + tier.slice(1)} Partners
-                    </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                      {items.map((s) => {
-                        const href = s.use_landing_page
-                          ? `/sponsors/${s.slug}`
-                          : (s.external_url ?? "#");
-                        return (
-                          <Link
-                            key={s.id}
-                            href={href}
-                            target={s.use_landing_page ? undefined : "_blank"}
-                            rel={s.use_landing_page ? undefined : "noopener noreferrer"}
-                            className="flex items-start gap-4 p-5 rounded-2xl border transition-shadow hover:shadow-md"
-                            style={{ borderColor: "#E2E0DC" }}
-                          >
-                            {s.logo_url ? (
-                              // eslint-disable-next-line @next/next/no-img-element
-                              <img
-                                src={s.logo_url}
-                                alt={s.org_name}
-                                className="h-10 w-10 object-contain rounded shrink-0"
-                              />
-                            ) : (
-                              <div
-                                className="h-10 w-10 rounded flex items-center justify-center shrink-0 text-sm font-extrabold"
-                                style={{ backgroundColor: "#0D0D0D", color: "#39E75F" }}
-                              >
-                                {s.org_name[0]}
-                              </div>
-                            )}
-                            <div className="min-w-0">
-                              <p className="font-bold text-sm truncate" style={{ color: "#0D0D0D" }}>
-                                {s.org_name}
-                              </p>
-                              {s.suburb && (
-                                <p className="text-xs" style={{ color: "#6B6B6B" }}>
-                                  {s.suburb}
-                                </p>
-                              )}
-                              {s.tagline && (
-                                <p className="text-xs mt-1 line-clamp-2" style={{ color: "#6B6B6B" }}>
-                                  {s.tagline}
-                                </p>
-                              )}
-                            </div>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )
-              )}
-            </div>
+      {/* Hi-Lite Amusements - Silver */}
+      <section id="hi-lite-amusements" style={{ background: "#FBF8F1", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
+          <div style={{ height: 300, borderRadius: 16, background: "repeating-linear-gradient(45deg, #DDE5DD, #DDE5DD 12px, #EAEFEA 12px, #EAEFEA 24px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <span style={{ fontFamily: "ui-monospace, monospace", fontSize: 12, color: "#5C6B60", background: "rgba(255,255,255,0.85)", padding: "5px 10px", borderRadius: 4 }}>photo - hi-lite amusements at a community day</span>
           </div>
-        </section>
-      )}
+          <div>
+            <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 14, color: "#87988A", letterSpacing: "0.12em", textTransform: "uppercase", display: "inline-block", border: "1.5px solid #ABB9AE", borderRadius: 99, padding: "6px 14px" }}>Silver sponsor</p>
+            <h2 style={{ margin: "10px 0 8px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Hi-Lite Amusements</h2>
+            <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 20, lineHeight: 1.4, color: "#41604F" }}>Event &amp; amusement hire · Geelong</p>
+            <p style={{ margin: "0 0 24px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}><strong style={{ color: "#24352B" }}>Why they back us:</strong> when our community days need gear, rides and a hand on the ground, Hi-Lite shows up. They help turn a gathering into a day the whole family remembers - which is exactly how you get a reluctant bloke to come along.</p>
+            <a href="mailto:hello@thewanderingman.com.au?subject=Hi-Lite Amusements enquiry" style={{ display: "inline-block", background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "15px 24px", borderRadius: 10 }}>Enquire via our community</a>
+          </div>
+        </div>
+      </section>
 
-      {/* Tier breakdown */}
-      <section className="px-4 sm:px-6 lg:px-8 py-16 border-b" style={{ borderColor: "#E2E0DC" }}>
-        <div className="max-w-6xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#39E75F" }}>
-            Partnership tiers
+      {/* APCO Foundation - Gold */}
+      <section id="apco-foundation" style={{ background: "#F4F1EA", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
+          <div>
+            <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 14, color: "#48745A", letterSpacing: "0.12em", textTransform: "uppercase", display: "inline-block", border: "1.5px solid #79A886", borderRadius: 99, padding: "6px 14px" }}>Gold sponsor</p>
+            <h2 style={{ margin: "10px 0 8px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>APCO Foundation</h2>
+            <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 20, lineHeight: 1.4, color: "#41604F" }}>Fuel for a Cause · Geelong</p>
+            <p style={{ margin: "0 0 24px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}><strong style={{ color: "#24352B" }}>Why they back us:</strong> the APCO Foundation channels support into local causes across the Geelong region - and men&apos;s wellbeing is one of them. Their backing helps keep every coffee, BBQ and community day free.</p>
+            <a href="https://www.apcofoundation.org.au" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "15px 24px", borderRadius: 10 }}>Visit the APCO Foundation</a>
+          </div>
+          <div style={{ height: 280, borderRadius: 16, background: "#FFFFFF", border: "1px solid #E5DCC9", display: "flex", alignItems: "center", justifyContent: "center", padding: 32 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/apco-logo.png" alt="APCO Foundation - Fuel for a Cause" style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }} />
+          </div>
+        </div>
+      </section>
+
+      {/* MC Labour - Silver */}
+      <section id="mc-labour" style={{ background: "#FBF8F1", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
+          <div style={{ height: 280, borderRadius: 16, background: "#FFFFFF", border: "1px solid #E5DCC9", display: "flex", alignItems: "center", justifyContent: "center", padding: 32, order: 0 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/mclabour-logo.png" alt="MC Labour" style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }} />
+          </div>
+          <div>
+            <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 14, color: "#87988A", letterSpacing: "0.12em", textTransform: "uppercase", display: "inline-block", border: "1.5px solid #ABB9AE", borderRadius: 99, padding: "6px 14px" }}>Silver sponsor</p>
+            <h2 style={{ margin: "10px 0 8px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>MC Labour</h2>
+            <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 20, lineHeight: 1.4, color: "#41604F" }}>Labour hire &amp; workforce solutions · Victoria</p>
+            <p style={{ margin: "0 0 24px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}><strong style={{ color: "#24352B" }}>Why they back us:</strong> MC Labour puts blokes on the tools every day - and they know the industries where men do it toughest. Backing The Wandering Man is how they back the ones doing it tough off the clock too.</p>
+            <a href="https://www.mclabour.com.au" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "15px 24px", borderRadius: 10 }}>Visit MC Labour</a>
+          </div>
+        </div>
+      </section>
+
+      {/* indie Signage + CBR - Bronze */}
+      <section style={{ background: "#F4F1EA", borderTop: "1px solid #E5DCC9", padding: "84px 28px" }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 22 }}>
+          <div id="indie-signage" style={{ background: "#FFFFFF", border: "1px solid #E5DCC9", borderRadius: 16, padding: "32px 34px", scrollMarginTop: 70 }}>
+            <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 13, color: "#8A7F68", letterSpacing: "0.12em", textTransform: "uppercase", display: "inline-block", border: "1.5px solid #C9BC9F", borderRadius: 99, padding: "5px 12px" }}>Sponsor</p>
+            <h2 style={{ margin: "8px 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 28, lineHeight: 1.2, color: "#24352B" }}>indie Signage</h2>
+            <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 18, lineHeight: 1.4, color: "#41604F" }}>Graphic design, signage &amp; branding · Geelong</p>
+            <p style={{ margin: "0 0 16px", fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.6, color: "#46534A" }}>Designs and prints the flyers, banners and event signage that get blokes through the door - including the ones that probably got you here.</p>
+          </div>
+          <div id="cbr" style={{ background: "#FFFFFF", border: "1px solid #E5DCC9", borderRadius: 16, padding: "32px 34px", scrollMarginTop: 70 }}>
+            <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 13, color: "#8A7F68", letterSpacing: "0.12em", textTransform: "uppercase", display: "inline-block", border: "1.5px solid #C9BC9F", borderRadius: 99, padding: "5px 12px" }}>Sponsor</p>
+            <h2 style={{ margin: "8px 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 28, lineHeight: 1.2, color: "#24352B" }}>CBR</h2>
+            <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 18, lineHeight: 1.4, color: "#41604F" }}>Event sponsor · Geelong</p>
+            <p style={{ margin: "0 0 16px", fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.6, color: "#46534A" }}>Backs our community events throughout the year.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Become a sponsor */}
+      <section style={{ background: "#24352B", padding: "84px 28px" }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+          <h2 style={{ margin: "0 0 14px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(28px, 3.6vw, 40px)", lineHeight: 1.15, color: "#F4F1EA" }}>Sponsorship that actually sells for you</h2>
+          <p style={{ margin: "0 0 40px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#CBD5CB", maxWidth: "62ch" }}>
+            Not a logo on a banner. Every sponsor gets a fast, search-optimised landing page on our site, rotating placements across the site weighted by tier, and a report of the impressions and clicks we send you.
           </p>
-          <h2 className="text-2xl font-bold mb-10" style={{ color: "#0D0D0D" }}>
-            Find your level
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {TIERS.map((tier) => (
-              <div
-                key={tier.key}
-                className="rounded-2xl border p-6 flex flex-col"
-                style={{
-                  borderColor: tier.highlight ? "#39E75F" : "#E2E0DC",
-                  backgroundColor: tier.highlight ? "#F8F7F4" : "transparent",
-                }}
-              >
-                {tier.highlight && (
-                  <span
-                    className="text-xs font-bold uppercase tracking-widest mb-3"
-                    style={{ color: "#39E75F" }}
-                  >
-                    Most popular
-                  </span>
-                )}
-                <h3 className="text-xl font-extrabold mb-1" style={{ color: "#0D0D0D" }}>
-                  {tier.label}
-                </h3>
-                <p className="text-sm mb-5" style={{ color: "#6B6B6B" }}>
-                  {tier.tagline}
-                </p>
-                <ul className="space-y-2 flex-1 mb-6">
-                  {tier.perks.map((p) => (
-                    <li key={p} className="flex items-start gap-2 text-sm" style={{ color: "#0D0D0D" }}>
-                      <span className="mt-0.5 text-xs" style={{ color: "#39E75F" }}>✓</span>
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="#enquire"
-                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-bold border transition-colors hover:bg-black hover:text-white hover:border-black"
-                  style={{ borderColor: "#0D0D0D", color: "#0D0D0D" }}
-                >
-                  Enquire
-                </a>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 18, marginBottom: 36 }}>
+            {[
+              { tier: "Gold", desc: "Top rotation weight, premium placements, full landing page with your offer, story and photos.", borderColor: "#79A886", labelColor: "#79A886" },
+              { tier: "Silver", desc: "Regular rotation, standard placements, landing page with your story and link.", borderColor: "#ABB9AE", labelColor: "#CBD5CB" },
+              { tier: "Bronze", desc: "Entry rotation and a listing here - a genuine, affordable way to back the community.", borderColor: "#8A6E4B", labelColor: "#D9B48A" },
+            ].map((item) => (
+              <div key={item.tier} style={{ background: "#2E4136", border: `1.5px solid ${item.borderColor}`, borderRadius: 14, padding: "26px 28px" }}>
+                <p style={{ margin: "0 0 8px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 22, lineHeight: 1.2, color: item.labelColor }}>{item.tier}</p>
+                <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: 17, lineHeight: 1.6, color: "#CBD5CB" }}>{item.desc}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Enquiry form */}
-      <section id="enquire" className="px-4 sm:px-6 lg:px-8 py-20">
-        <div className="max-w-2xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#39E75F" }}>
-            Get in touch
-          </p>
-          <h2 className="text-2xl font-bold mb-2" style={{ color: "#0D0D0D" }}>
+          <a
+            href="mailto:hello@thewanderingman.com.au?subject=Sponsorship enquiry"
+            style={{ display: "inline-block", background: "#5D8A6C", color: "#111C16", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 18, textDecoration: "none", padding: "17px 28px", borderRadius: 10 }}
+          >
             Become a sponsor
-          </h2>
-          <p className="text-sm mb-10" style={{ color: "#6B6B6B" }}>
-            Tell us about your business and we'll be in touch within a couple of days.
-          </p>
-          <SponsorEnquiryForm />
+          </a>
         </div>
       </section>
     </>
