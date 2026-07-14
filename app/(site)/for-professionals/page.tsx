@@ -88,10 +88,6 @@ export default function ForProfessionalsPage() {
                 body: "Wednesdays 12:00–1:30pm, Orchid & Co, East Geelong. Hosted, informal, coffee provided - the lowest barrier and the usual first referral.",
               },
               {
-                title: "The Man Walk (partner)",
-                body: "A weekly walk run by a separate organisation; many of our members and leadership attend. Activity-based, shoulder-to-shoulder connection.",
-              },
-              {
                 title: "Community BBQs",
                 body: "Larger gatherings through the year, plus an \"Orphan Christmas\" lunch for men with no one to spend the day with.",
               },

@@ -110,7 +110,7 @@ export default function AboutPage() {
             The Wandering Man was founded on the belief that the solution isn&apos;t complicated - it&apos;s just hard. Getting men out of isolation and into genuine connection with other men is the most powerful thing we can do.
           </p>
           <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: 20, lineHeight: 1.65, color: "#46534A" }}>
-            We started in Geelong with a handful of blokes and the kind of conversation that doesn&apos;t happen at the pub or in a waiting room. Word spread the way it does when something fills a need people didn&apos;t know how to name. Today there&apos;s a rhythm to every week - coffee on Wednesday, a swim and a walk on Saturday, a river stroll on Sunday, BBQs and guest speakers through the year - and we show up in workplaces to help organisations take men&apos;s mental health seriously.
+            We started in Geelong with a handful of blokes and the kind of conversation that doesn&apos;t happen at the pub or in a waiting room. Word spread the way it does when something fills a need people didn&apos;t know how to name. Today there&apos;s a rhythm to every week - coffee on Wednesday, a swim on Saturday, a river stroll on Sunday, BBQs and guest speakers through the year - and we show up in workplaces to help organisations take men&apos;s mental health seriously.
           </p>
         </div>
       </section>

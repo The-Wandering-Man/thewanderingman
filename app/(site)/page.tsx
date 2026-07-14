@@ -131,12 +131,12 @@ export default async function HomePage() {
               },
               {
                 href: "/events#swim",
-                img: "/man-walk.png",
-                alt: "The Man Walk crew on the Geelong waterfront",
+                img: "/2809swim.jpg",
+                alt: "The Wandering Swim at Eastern Beach Tower, Geelong",
                 badge: "Weekly · Saturday mornings",
-                title: "Swim & Walk",
-                time: "Swim 7:00am · Man Walk 8:00am",
-                body: "The Wandering Swim at the Tower, Eastern Beach - then straight on to The Man Walk with our mates who run it. Not keen on a dip? Come for a yarn and cheer the boys on.",
+                title: "Wandering Swim",
+                time: "Every Saturday, 7:00am · Eastern Beach Tower",
+                body: "The Wandering Swim at the Tower, Eastern Beach. Cold water, good company, and a yarn on the beach after. Not keen on a dip? Come for the yarn.",
               },
             ].map((card) => (
               <Link

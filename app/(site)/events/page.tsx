@@ -7,7 +7,7 @@ import InlineSponsorAd from "@/components/site/InlineSponsorAd";
 export const metadata: Metadata = {
   title: "Events - The Wandering Man, Geelong",
   description:
-    "Join us at an upcoming men's mental health event in Geelong. Weekly coffee catch-ups, swims, walks, BBQs and more. Free and open to all men.",
+    "Join us at an upcoming men's mental health event in Geelong. Weekly coffee catch-ups, swims, BBQs and more. Free and open to all men.",
   alternates: { canonical: "/events" },
 };
 
@@ -32,7 +32,7 @@ export default async function EventsPage() {
           <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 15, color: "#79A886", letterSpacing: "0.16em", textTransform: "uppercase" }}>What&apos;s on · Geelong</p>
           <h1 style={{ margin: "0 0 18px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(34px, 5vw, 56px)", lineHeight: 1.1, color: "#F4F1EA", maxWidth: "18ch" }}>No booking. No cost. No story required.</h1>
           <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: "clamp(19px, 2.2vw, 22px)", lineHeight: 1.55, color: "#CBD5CB", maxWidth: "58ch" }}>
-            There&apos;s a rhythm to the week - coffee on Wednesday, swim and walk on Saturday, river stroll on Sunday. Miss one, come to the next. The whole point is that we&apos;re always there.
+            There&apos;s a rhythm to the week - coffee on Wednesday, swim on Saturday, river stroll on Sunday. Miss one, come to the next. The whole point is that we&apos;re always there.
           </p>
         </div>
       </header>
@@ -97,33 +97,6 @@ export default async function EventsPage() {
         </div>
       </section>
 
-      {/* The Man Walk */}
-      <section id="man-walk" style={{ background: "#F4F1EA", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
-        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
-          <div>
-            <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.14em", textTransform: "uppercase" }}>Weekly · Run by our mates at The Man Walk</p>
-            <h2 style={{ margin: "0 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Walk with us</h2>
-            <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 22, lineHeight: 1.35, color: "#41604F" }}>
-              Every Saturday, 8:00am - straight after the swim<br />
-              <span style={{ fontWeight: 400, fontSize: 19, color: "#5C6B60" }}>The Man Walk, Geelong · finishes with a well-earned coffee at Orchid &amp; Co</span>
-            </p>
-            <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}>
-              The Man Walk is run by another great organisation, and plenty of our members - and most of our leadership - walk every week. Shoulder-to-shoulder is the easiest way to talk, and a walk is the easiest way to start.
-            </p>
-            <p style={{ margin: "0 0 24px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 17, lineHeight: 1.6, color: "#5C6B60" }}>Look for the Wandering Man shirts - come say g&apos;day and walk with us. Post-walk coffee comes courtesy of the good folk at Right Mate.</p>
-            <a
-              href="https://themanwalk.com.au/walks/geelong"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ display: "inline-block", border: "1.5px solid #24352B", color: "#24352B", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "15px 24px", borderRadius: 10 }}
-            >
-              Find a walk at themanwalk.com.au →
-            </a>
-          </div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/man-walk.png" alt="The Man Walk crew on the Geelong waterfront, coffees in hand" style={{ width: "100%", height: 340, objectFit: "cover", borderRadius: 16, display: "block" }} />
-        </div>
-      </section>
 
       {/* Sunday Coffee & River Stroll */}
       <section id="sunday-stroll" style={{ background: "#F4F1EA", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
