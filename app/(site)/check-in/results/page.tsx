@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { createServiceClient } from "@/lib/supabase/server";
+import { melbourneDate, melbourneMidnightUTC } from "@/lib/melbourne-day";
 import CheckInResults from "./CheckInResults";
 
 export const metadata: Metadata = {
@@ -9,13 +10,19 @@ export const metadata: Metadata = {
   alternates: { canonical: "/check-in/results" },
 };
 
-export const revalidate = 60;
+// Render fresh on every request so the Melbourne midnight rollover to zero
+// shows up without a redeploy. (No ISR caching.)
+export const dynamic = "force-dynamic";
 
 export default async function CheckInResultsPage() {
   const supabase = await createServiceClient();
+  // Only today's check-ins, where "today" is the current calendar day in
+  // Australia/Melbourne. Historical rows stay in the table untouched.
+  const todayStart = melbourneMidnightUTC(melbourneDate());
   const { data: checkins } = await supabase
     .from("weekly_checkins")
     .select("rating, concern, gratitude")
+    .gte("created_at", todayStart)
     .order("created_at", { ascending: false });
 
   return (
