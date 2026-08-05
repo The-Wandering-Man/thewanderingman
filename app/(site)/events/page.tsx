@@ -3,6 +3,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import EventCard, { type Event } from "@/components/site/EventCard";
 import InlineSponsorAd from "@/components/site/InlineSponsorAd";
+import WeekCalendar from "@/components/site/WeekCalendar";
 
 export const metadata: Metadata = {
   title: "Events - The Wandering Man, Geelong",
@@ -34,14 +35,28 @@ export default async function EventsPage() {
           <p style={{ margin: "0 0 22px", fontFamily: "var(--font-body), sans-serif", fontSize: "clamp(19px, 2.2vw, 22px)", lineHeight: 1.55, color: "#CBD5CB", maxWidth: "58ch" }}>
             There&apos;s a rhythm to the week - coffee on Wednesday, swim on Saturday, river stroll every other Sunday. Miss one, come to the next. The whole point is that we&apos;re always there.
           </p>
-          <Link href="/calendar" style={{ display: "inline-block", background: "#5D8A6C", color: "#111C16", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "14px 22px", borderRadius: 10 }}>
-            This week at a glance →
-          </Link>
+          <a href="#calendar" style={{ display: "inline-block", background: "#5D8A6C", color: "#111C16", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "14px 22px", borderRadius: 10 }}>
+            This week at a glance ↓
+          </a>
         </div>
       </header>
 
+      {/* This week's calendar */}
+      <section id="calendar" style={{ background: "#F4F1EA", padding: "72px 28px", scrollMarginTop: 70 }}>
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.14em", textTransform: "uppercase", textAlign: "center" }}>This week at a glance</p>
+          <h2 style={{ margin: "0 0 28px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(26px, 3.4vw, 36px)", lineHeight: 1.2, color: "#24352B", textAlign: "center" }}>What&apos;s on this week</h2>
+          <WeekCalendar />
+          <p style={{ margin: "20px 0 0", fontFamily: "var(--font-body), sans-serif", fontSize: 16, lineHeight: 1.6, color: "#5C6B60", textAlign: "center" }}>
+            <Link href="/calendar" style={{ color: "#3C6349", fontWeight: 700 }}>
+              Next week&apos;s calendar + shareable view →
+            </Link>
+          </p>
+        </div>
+      </section>
+
       {/* Coffee Catch-Up */}
-      <section id="coffee-catchup" style={{ background: "#F4F1EA", padding: "84px 28px", scrollMarginTop: 70 }}>
+      <section id="coffee-catchup" style={{ background: "#F4F1EA", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
         <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
           <div>
             <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.14em", textTransform: "uppercase" }}>Every week · Coffee&apos;s on us · Permanent fixture</p>
