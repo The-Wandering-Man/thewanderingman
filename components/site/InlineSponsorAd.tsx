@@ -25,7 +25,7 @@ export default function InlineSponsorAd() {
   const [pick, setPick] = useState<Pick | null | undefined>(undefined);
 
   useEffect(() => {
-    fetch("/api/sponsor/pick")
+    fetch("/api/spotlight")
       .then((r) => (r.ok ? r.json() : null))
       .then((data) => setPick(data))
       .catch(() => setPick(null));

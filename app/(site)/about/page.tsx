@@ -29,25 +29,24 @@ const values = [
   },
 ];
 
-const leadership = [
+const committee: { initial: string; name: string; role: string; bio?: string }[] = [
   {
-    initial: "J",
-    name: "Jamie",
+    initial: "JH",
+    name: "Jamie Hobbs",
     role: "Founder & Community Lead",
     bio: "Jamie started The Wandering Man because he needed it. He's been showing up for Geelong men ever since - in parks, on walking tracks, in workplaces, and wherever the conversation needs to happen.",
   },
   {
-    initial: "H",
-    name: "Hoffy",
+    initial: "MH",
+    name: "Micheal Hoff",
     role: "Coffee Catch-Up Host",
-    bio: "The first face you'll see at the Wednesday Coffee Catch-Up. Hoffy makes sure no bloke stands at the door wondering if he's in the right place.",
+    bio: "Hoffy is the first face you'll see at the Wednesday Coffee Catch-Up. He makes sure no bloke stands at the door wondering if he's in the right place.",
   },
-  {
-    initial: "A",
-    name: "Aldo",
-    role: "Events & Rosters",
-    bio: "The bloke who turns a good idea into an actual event - rosters, BBQs, logistics, done.",
-  },
+  { initial: "NP", name: "Neill Price", role: "Committee Member" },
+  { initial: "CL", name: "Chris Link", role: "Committee Member" },
+  { initial: "RF", name: "Robyn Frank", role: "Committee Member" },
+  { initial: "MM", name: "Mark Melnyk", role: "Committee Member" },
+  { initial: "RB", name: "Ray Booth", role: "Committee Member" },
 ];
 
 const openRoles = ["Events Coordinator", "Community Support", "Communications", "Event Support"];
@@ -164,9 +163,9 @@ export default function AboutPage() {
           <h2 style={{ margin: "0 0 16px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(28px, 3.6vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Meet the team</h2>
           <p style={{ margin: "0 0 44px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#5C6B60", maxWidth: "62ch" }}>The Wandering Man is volunteer-powered. Every event, every walk, every conversation exists because these people choose to show up.</p>
 
-          <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.12em", textTransform: "uppercase" }}>Leadership</p>
+          <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.12em", textTransform: "uppercase" }}>Volunteer Committee</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20, marginBottom: 44 }}>
-            {leadership.map((m) => (
+            {committee.map((m) => (
               <div key={m.name} style={{ background: "#FFFFFF", border: "1px solid #E5DCC9", borderRadius: 14, padding: "30px 32px" }}>
                 <div
                   style={{
@@ -180,15 +179,15 @@ export default function AboutPage() {
                     justifyContent: "center",
                     fontFamily: "var(--font-display), sans-serif",
                     fontWeight: 700,
-                    fontSize: 28,
+                    fontSize: 24,
                     marginBottom: 16,
                   }}
                 >
                   {m.initial}
                 </div>
                 <h3 style={{ margin: "0 0 4px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 22, lineHeight: 1.25, color: "#24352B" }}>{m.name}</h3>
-                <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 16, lineHeight: 1.4, color: "#48745A" }}>{m.role}</p>
-                <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: 17, lineHeight: 1.55, color: "#5C6B60" }}>{m.bio}</p>
+                <p style={{ margin: m.bio ? "0 0 10px" : 0, fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 16, lineHeight: 1.4, color: "#48745A" }}>{m.role}</p>
+                {m.bio && <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: 17, lineHeight: 1.55, color: "#5C6B60" }}>{m.bio}</p>}
               </div>
             ))}
           </div>

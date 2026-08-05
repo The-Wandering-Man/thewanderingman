@@ -158,7 +158,7 @@ export default async function EventsPage() {
             <h2 style={{ margin: "0 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Sausage sizzle fundraisers</h2>
             <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 22, lineHeight: 1.35, color: "#41604F" }}>
               2026 Bunnings dates<br />
-              <span style={{ fontWeight: 400, fontSize: 19, color: "#5C6B60" }}>Fri 14 Aug · Thu 3 Sep · Thu 8 Oct · Fri 6 Nov</span>
+              <span style={{ fontWeight: 400, fontSize: 19, color: "#5C6B60" }}>Fri 7 Aug · Fri 14 Aug · Thu 3 Sep · Thu 8 Oct · Fri 6 Nov</span>
             </p>
             <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}>Every snag sold funds the free community work - the coffees, the BBQs, the Christmas lunch. Grab a sausage, say g&apos;day, or jump on the roster and flip a few with us. It&apos;s a surprisingly good day out.</p>
             <a

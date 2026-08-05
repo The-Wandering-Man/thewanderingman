@@ -10,6 +10,7 @@ const SUNDAY_WALK_ANCHOR = "2026-08-09";
 
 // One-off dates the committee has locked in (YYYY-MM-DD).
 const ONE_OFFS: { date: string; time: string; title: string; location: string }[] = [
+  { date: "2026-08-07", time: "All day", title: "Bunnings BBQ Fundraiser", location: "Bunnings - grab a snag, back the cause" },
   { date: "2026-08-14", time: "All day", title: "Bunnings Sausage Sizzle Fundraiser", location: "Bunnings - grab a snag, back the cause" },
   { date: "2026-09-03", time: "All day", title: "Bunnings Sausage Sizzle Fundraiser", location: "Bunnings - grab a snag, back the cause" },
   { date: "2026-10-08", time: "All day", title: "Bunnings Sausage Sizzle Fundraiser", location: "Bunnings - grab a snag, back the cause" },

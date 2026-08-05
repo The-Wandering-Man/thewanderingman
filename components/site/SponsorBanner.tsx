@@ -23,7 +23,7 @@ export default function SponsorBanner() {
   const [pick, setPick] = useState<Pick | null | undefined>(undefined);
 
   useEffect(() => {
-    fetch("/api/sponsor/pick")
+    fetch("/api/spotlight")
       .then((r) => (r.ok ? r.json() : null))
       .then((data) => setPick(data))
       .catch(() => setPick(null));
@@ -36,7 +36,7 @@ export default function SponsorBanner() {
     <aside
       className="px-4 sm:px-6 lg:px-8 border-b flex items-center"
       style={{ borderColor: "#E5DCC9", backgroundColor: "#FBF8F1", minHeight: 52 }}
-      aria-label="Sponsor"
+      aria-label="Community partner"
     >
       {pick && (
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between gap-4 flex-wrap py-2">
