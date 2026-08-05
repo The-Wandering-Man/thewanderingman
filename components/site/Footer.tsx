@@ -58,13 +58,15 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <Link href="/" className="inline-block mb-4" aria-label="The Wandering Man">
-              <Image
-                src="/twm-logo-green.png"
-                alt="The Wandering Man"
-                width={140}
-                height={44}
-                className="h-11 w-auto object-contain"
-              />
+              <div className="rounded-full overflow-hidden flex items-center justify-center" style={{ width: 44, height: 44, background: "#192821" }}>
+                <Image
+                  src="/twm-logo-green.png"
+                  alt="The Wandering Man"
+                  width={44}
+                  height={44}
+                  className="w-full h-full object-contain"
+                />
+              </div>
             </Link>
             <p className="text-sm leading-relaxed mb-2" style={{ color: "#5C6B60", fontFamily: "var(--font-body), sans-serif" }}>
               A men's mental health community in Geelong, Victoria.
