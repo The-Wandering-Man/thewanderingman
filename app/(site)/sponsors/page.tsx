@@ -34,8 +34,8 @@ export default function SponsorsPage() {
               <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}><strong style={{ color: "#24352B" }}>Why they back us:</strong> at every community BBQ we run, Grovedale Meats donates the snags and burgers on that grill. No fanfare, no conditions. That&apos;s what backing your community looks like.</p>
               <p style={{ margin: "0 0 24px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}>Quality cuts, honest prices, and a butcher who knows your name. If you&apos;re buying meat in Geelong, buy it here.</p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
-                <a href="https://maps.google.com/?q=13+Peter+St+Grovedale+VIC" target="_blank" rel="noopener noreferrer" style={{ background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "15px 24px", borderRadius: 10 }}>Get directions</a>
-                <Link href="/events#bbqs" style={{ border: "1.5px solid #24352B", color: "#24352B", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "15px 24px", borderRadius: 10 }}>See the BBQs they power</Link>
+                <Link href="/sponsors/grovedale-meats" style={{ background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "15px 24px", borderRadius: 10 }}>Their offer &amp; story</Link>
+                <a href="https://maps.google.com/?q=13+Peter+St+Grovedale+VIC" target="_blank" rel="noopener noreferrer" style={{ border: "1.5px solid #24352B", color: "#24352B", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "15px 24px", borderRadius: 10 }}>Get directions</a>
               </div>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>

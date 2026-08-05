@@ -69,7 +69,7 @@ export default async function EventsPage() {
             </p>
             <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}>
               BBQ supplied - snags and burgers on the grill, with the meat donated by{" "}
-              <Link href="/sponsors#grovedale-meats" style={{ color: "#3C6349", fontWeight: 700 }}>Grovedale Meats</Link>.{" "}
+              <Link href="/sponsors/grovedale-meats" style={{ color: "#3C6349", fontWeight: 700 }}>Grovedale Meats</Link>.{" "}
               Bring a dessert to share if you&apos;d like (completely optional, always appreciated). Come solo or bring a mate - there&apos;s always a good crowd.
             </p>
             <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 17, lineHeight: 1.6, color: "#5C6B60" }}>You&apos;ll also find us running the BBQ at local footy days - like the South Barwon FNC games at McDonald Reserve, Belmont.</p>

@@ -28,6 +28,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${siteUrl}/blog`, lastModified: new Date(), priority: 0.8 },
     { url: `${siteUrl}/resources`, lastModified: new Date(), priority: 0.8 },
     { url: `${siteUrl}/speaking`, lastModified: new Date(), priority: 0.7 },
+    { url: `${siteUrl}/sponsors`, lastModified: new Date(), priority: 0.7 },
+    { url: `${siteUrl}/sponsors/grovedale-meats`, lastModified: new Date(), priority: 0.7 },
+    { url: `${siteUrl}/for-professionals`, lastModified: new Date(), priority: 0.7 },
+    { url: `${siteUrl}/governance`, lastModified: new Date(), priority: 0.5 },
   ];
 
   const postRoutes: MetadataRoute.Sitemap = (posts ?? []).map((post) => ({
