@@ -8,6 +8,7 @@ const crisisLines = [
   { name: "Headspace", number: "1800 650 890", tel: "1800650890" },
   { name: "QLife", number: "1800 184 527", tel: "1800184527" },
   { name: "Suicide Call Back Service", number: "1300 659 467", tel: "1300659467" },
+  { name: "Kids Helpline", number: "1800 55 1800", tel: "1800551800" },
 ];
 
 const socialLinks = [
@@ -71,8 +72,11 @@ export default function Footer() {
             <p className="text-sm leading-relaxed mb-2" style={{ color: "#5C6B60", fontFamily: "var(--font-body), sans-serif" }}>
               A men's mental health community in Geelong, Victoria.
             </p>
-            <p className="text-xs font-semibold italic mb-5" style={{ color: "#87988A", fontFamily: "var(--font-body), sans-serif" }}>
+            <p className="text-xs font-semibold italic mb-1" style={{ color: "#87988A", fontFamily: "var(--font-body), sans-serif" }}>
               Show Up. Step Up. Stay Connected.
+            </p>
+            <p className="text-xs font-semibold italic mb-5" style={{ color: "#87988A", fontFamily: "var(--font-body), sans-serif" }}>
+              No man walks alone.
             </p>
             <div className="flex items-center gap-3">
               {socialLinks.map((s) =>
@@ -155,6 +159,10 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+            <p className="text-sm font-semibold mt-3" style={{ color: "#5C6B60", fontFamily: "var(--font-body), sans-serif" }}>
+              In an emergency, always call{" "}
+              <a href="tel:000" className="font-bold hover:opacity-70 transition-opacity" style={{ color: "#79A886", textDecoration: "none" }}>000</a>.
+            </p>
           </div>
         </div>
 

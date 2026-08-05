@@ -50,24 +50,8 @@ export default function SponsorsPage() {
         </div>
       </section>
 
-      {/* Hi-Lite Amusements - Silver */}
-      <section id="hi-lite-amusements" style={{ background: "#FBF8F1", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
-        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
-          <div style={{ height: 300, borderRadius: 16, background: "repeating-linear-gradient(45deg, #DDE5DD, #DDE5DD 12px, #EAEFEA 12px, #EAEFEA 24px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <span style={{ fontFamily: "ui-monospace, monospace", fontSize: 12, color: "#5C6B60", background: "rgba(255,255,255,0.85)", padding: "5px 10px", borderRadius: 4 }}>photo - hi-lite amusements at a community day</span>
-          </div>
-          <div>
-            <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 14, color: "#87988A", letterSpacing: "0.12em", textTransform: "uppercase", display: "inline-block", border: "1.5px solid #ABB9AE", borderRadius: 99, padding: "6px 14px" }}>Silver sponsor</p>
-            <h2 style={{ margin: "10px 0 8px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Hi-Lite Amusements</h2>
-            <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 20, lineHeight: 1.4, color: "#41604F" }}>Event &amp; amusement hire · Geelong</p>
-            <p style={{ margin: "0 0 24px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}><strong style={{ color: "#24352B" }}>Why they back us:</strong> when our community days need gear, rides and a hand on the ground, Hi-Lite shows up. They help turn a gathering into a day the whole family remembers - which is exactly how you get a reluctant bloke to come along.</p>
-            <a href="mailto:hello@thewanderingman.com.au?subject=Hi-Lite Amusements enquiry" style={{ display: "inline-block", background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "15px 24px", borderRadius: 10 }}>Enquire via our community</a>
-          </div>
-        </div>
-      </section>
-
       {/* APCO Foundation - Gold */}
-      <section id="apco-foundation" style={{ background: "#F4F1EA", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
+      <section id="apco-foundation" style={{ background: "#FBF8F1", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
         <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
           <div>
             <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 14, color: "#48745A", letterSpacing: "0.12em", textTransform: "uppercase", display: "inline-block", border: "1.5px solid #79A886", borderRadius: 99, padding: "6px 14px" }}>Gold sponsor</p>
@@ -84,7 +68,7 @@ export default function SponsorsPage() {
       </section>
 
       {/* MC Labour - Silver */}
-      <section id="mc-labour" style={{ background: "#FBF8F1", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
+      <section id="mc-labour" style={{ background: "#F4F1EA", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
         <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
           <div style={{ height: 280, borderRadius: 16, background: "#FFFFFF", border: "1px solid #E5DCC9", display: "flex", alignItems: "center", justifyContent: "center", padding: 32, order: 0 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -100,20 +84,14 @@ export default function SponsorsPage() {
         </div>
       </section>
 
-      {/* indie Signage + CBR - Bronze */}
-      <section style={{ background: "#F4F1EA", borderTop: "1px solid #E5DCC9", padding: "84px 28px" }}>
-        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 22 }}>
-          <div id="indie-signage" style={{ background: "#FFFFFF", border: "1px solid #E5DCC9", borderRadius: 16, padding: "32px 34px", scrollMarginTop: 70 }}>
+      {/* indie lime */}
+      <section style={{ background: "#FBF8F1", borderTop: "1px solid #E5DCC9", padding: "84px 28px" }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+          <div id="indie-lime" style={{ background: "#FFFFFF", border: "1px solid #E5DCC9", borderRadius: 16, padding: "32px 34px", scrollMarginTop: 70, maxWidth: 560 }}>
             <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 13, color: "#8A7F68", letterSpacing: "0.12em", textTransform: "uppercase", display: "inline-block", border: "1.5px solid #C9BC9F", borderRadius: 99, padding: "5px 12px" }}>Sponsor</p>
-            <h2 style={{ margin: "8px 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 28, lineHeight: 1.2, color: "#24352B" }}>indie Signage</h2>
-            <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 18, lineHeight: 1.4, color: "#41604F" }}>Graphic design, signage &amp; branding · Geelong</p>
-            <p style={{ margin: "0 0 16px", fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.6, color: "#46534A" }}>Designs and prints the flyers, banners and event signage that get blokes through the door - including the ones that probably got you here.</p>
-          </div>
-          <div id="cbr" style={{ background: "#FFFFFF", border: "1px solid #E5DCC9", borderRadius: 16, padding: "32px 34px", scrollMarginTop: 70 }}>
-            <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 13, color: "#8A7F68", letterSpacing: "0.12em", textTransform: "uppercase", display: "inline-block", border: "1.5px solid #C9BC9F", borderRadius: 99, padding: "5px 12px" }}>Sponsor</p>
-            <h2 style={{ margin: "8px 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 28, lineHeight: 1.2, color: "#24352B" }}>CBR</h2>
-            <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 18, lineHeight: 1.4, color: "#41604F" }}>Event sponsor · Geelong</p>
-            <p style={{ margin: "0 0 16px", fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.6, color: "#46534A" }}>Backs our community events throughout the year.</p>
+            <h2 style={{ margin: "8px 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 28, lineHeight: 1.2, color: "#24352B" }}>indie lime</h2>
+            <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 18, lineHeight: 1.4, color: "#41604F" }}>Design &amp; print · Geelong</p>
+            <p style={{ margin: "0 0 16px", fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.6, color: "#46534A" }}>Designs and prints the flyers and banners that get blokes through the door - including the ones that probably got you here.</p>
           </div>
         </div>
       </section>

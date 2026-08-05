@@ -32,7 +32,7 @@ export default async function EventsPage() {
           <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 15, color: "#79A886", letterSpacing: "0.16em", textTransform: "uppercase" }}>What&apos;s on · Geelong</p>
           <h1 style={{ margin: "0 0 18px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(34px, 5vw, 56px)", lineHeight: 1.1, color: "#F4F1EA", maxWidth: "18ch" }}>No booking. No cost. No story required.</h1>
           <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: "clamp(19px, 2.2vw, 22px)", lineHeight: 1.55, color: "#CBD5CB", maxWidth: "58ch" }}>
-            There&apos;s a rhythm to the week - coffee on Wednesday, swim on Saturday, river stroll on Sunday. Miss one, come to the next. The whole point is that we&apos;re always there.
+            There&apos;s a rhythm to the week - coffee on Wednesday, swim on Saturday, river stroll every other Sunday. Miss one, come to the next. The whole point is that we&apos;re always there.
           </p>
         </div>
       </header>
@@ -98,17 +98,32 @@ export default async function EventsPage() {
       </section>
 
 
-      {/* Sunday Coffee & River Stroll */}
-      <section id="sunday-stroll" style={{ background: "#F4F1EA", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
+      {/* Sunday River Walk & Coffee */}
+      <section id="sunday-stroll" style={{ background: "#FBF8F1", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
         <div style={{ maxWidth: 1120, margin: "0 auto" }}>
-          <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.14em", textTransform: "uppercase" }}>Every Sunday · Slow it down</p>
-          <h2 style={{ margin: "0 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Sunday Coffee &amp; River Stroll</h2>
+          <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.14em", textTransform: "uppercase" }}>Every other Sunday · Slow it down</p>
+          <h2 style={{ margin: "0 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Sunday River Walk &amp; Coffee</h2>
           <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 22, lineHeight: 1.35, color: "#41604F" }}>
-            Every Sunday, 9:00am - coffee first<br />
-            <span style={{ fontWeight: 400, fontSize: 19, color: "#5C6B60" }}>Barwon Edge Café, on the river</span>
+            Every other Sunday, 9:00am - walk first, coffee after<br />
+            <span style={{ fontWeight: 400, fontSize: 19, color: "#5C6B60" }}>Along the Barwon · coffee at Barwon Edge Café</span>
           </p>
           <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "62ch" }}>
-            This one&apos;s about slowing it down and checking in. Come for the coffee, come for the chat, come because you need it. Good people, good conversations - no pressure, just connection. Everyone&apos;s welcome. Always.
+            This one&apos;s about slowing it down and checking in. A stroll along the river, then a coffee and a chat. Come for the walk, come because you need it. Good people, good conversations - no pressure, just connection. Everyone&apos;s welcome. Always.
+          </p>
+        </div>
+      </section>
+
+      {/* Yoga, Breathwork & Pizza Nights */}
+      <section id="yoga-nights" style={{ background: "#F4F1EA", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+          <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.14em", textTransform: "uppercase" }}>Monthly · Wind down</p>
+          <h2 style={{ margin: "0 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Yoga, Breathwork &amp; Pizza Nights</h2>
+          <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 22, lineHeight: 1.35, color: "#41604F" }}>
+            Monthly<br />
+            <span style={{ fontWeight: 400, fontSize: 19, color: "#5C6B60" }}>Dates announced on our socials &amp; newsletter</span>
+          </p>
+          <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "62ch" }}>
+            Slowing down together, then eating together. A relaxed session of yoga and breathwork, then pizza after. No experience needed, no gear required - just turn up and give it a go.
           </p>
         </div>
       </section>
