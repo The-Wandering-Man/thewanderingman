@@ -46,8 +46,8 @@ export default async function HomePage() {
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             <div className="relative w-full rounded-2xl overflow-hidden" style={{ aspectRatio: "4/3", boxShadow: "0 24px 60px rgba(0,0,0,0.4)" }}>
               <Image
-                src="/BBQ012.jpg"
-                alt="The Wandering Man members gathered under the club logo after a coffee catch-up"
+                src="/group-session.jpg"
+                alt="A Wandering Man session in progress - a member speaking to the group"
                 fill
                 className="object-cover"
                 style={{ objectPosition: "center 30%" }}
