@@ -110,6 +110,7 @@ export default function Footer() {
               {[
                 ["About", "/about"],
                 ["Events", "/events"],
+                ["Calendar", "/calendar"],
                 ["Stories", "/blog"],
                 ["Speaking", "/speaking"],
                 ["Sponsors", "/sponsors"],

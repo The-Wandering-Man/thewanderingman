@@ -198,6 +198,8 @@ export default async function HomePage() {
         </section>
       )}
 
+      <InlineSponsorAd />
+
       {/* Story */}
       <section style={{ background: "#192821", padding: "92px 28px" }}>
         <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 48, alignItems: "center" }}>

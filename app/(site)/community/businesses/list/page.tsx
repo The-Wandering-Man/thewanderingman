@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import BusinessListForm from "@/components/site/BusinessListForm";
 
 export const metadata: Metadata = {
@@ -9,27 +10,22 @@ export const metadata: Metadata = {
 
 export default function BusinessListPage() {
   return (
-    <section className="px-4 sm:px-6 lg:px-8 py-16">
-      <div className="max-w-xl mx-auto">
-        <a
+    <section style={{ background: "#F4F1EA", padding: "64px 28px" }}>
+      <div style={{ maxWidth: 640, margin: "0 auto" }}>
+        <Link
           href="/community/businesses"
-          className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-widest mb-8 opacity-60 hover:opacity-100 transition-opacity"
-          style={{ color: "#0D0D0D" }}
+          style={{ display: "inline-block", marginBottom: 28, color: "#5C6B60", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase", textDecoration: "none" }}
         >
           &larr; Member businesses
-        </a>
-        <p
-          className="text-xs font-bold uppercase tracking-widest mb-3"
-          style={{ color: "#39E75F" }}
-        >
+        </Link>
+        <p style={{ margin: "0 0 12px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 15, color: "#48745A", letterSpacing: "0.16em", textTransform: "uppercase" }}>
           Community directory
         </p>
-        <h1 className="text-3xl font-extrabold mb-3" style={{ color: "#0D0D0D" }}>
+        <h1 style={{ margin: "0 0 12px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 40px)", lineHeight: 1.15, color: "#24352B" }}>
           List your business
         </h1>
-        <p className="text-sm mb-10" style={{ color: "#6B6B6B" }}>
-          Free for all Wandering Man members. Your listing goes live once
-          we've had a quick look. Usually within 24 hours.
+        <p style={{ margin: "0 0 36px", fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.6, color: "#5C6B60" }}>
+          Free for all Wandering Man members. Your listing goes live once we&apos;ve had a quick look - usually within 24 hours.
         </p>
         <BusinessListForm />
       </div>

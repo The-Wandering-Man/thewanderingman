@@ -31,9 +31,12 @@ export default async function EventsPage() {
         <div style={{ maxWidth: 1120, margin: "0 auto" }}>
           <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 15, color: "#79A886", letterSpacing: "0.16em", textTransform: "uppercase" }}>What&apos;s on · Geelong</p>
           <h1 style={{ margin: "0 0 18px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(34px, 5vw, 56px)", lineHeight: 1.1, color: "#F4F1EA", maxWidth: "18ch" }}>No booking. No cost. No story required.</h1>
-          <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: "clamp(19px, 2.2vw, 22px)", lineHeight: 1.55, color: "#CBD5CB", maxWidth: "58ch" }}>
+          <p style={{ margin: "0 0 22px", fontFamily: "var(--font-body), sans-serif", fontSize: "clamp(19px, 2.2vw, 22px)", lineHeight: 1.55, color: "#CBD5CB", maxWidth: "58ch" }}>
             There&apos;s a rhythm to the week - coffee on Wednesday, swim on Saturday, river stroll every other Sunday. Miss one, come to the next. The whole point is that we&apos;re always there.
           </p>
+          <Link href="/calendar" style={{ display: "inline-block", background: "#5D8A6C", color: "#111C16", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "14px 22px", borderRadius: 10 }}>
+            This week at a glance →
+          </Link>
         </div>
       </header>
 
@@ -96,6 +99,8 @@ export default async function EventsPage() {
           <img src="/2809swim.jpg" alt="The swim crew at the Tower, Eastern Beach" style={{ width: "100%", height: 340, objectFit: "cover", borderRadius: 16, display: "block" }} />
         </div>
       </section>
+
+      <InlineSponsorAd />
 
 
       {/* Sunday River Walk & Coffee */}

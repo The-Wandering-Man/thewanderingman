@@ -36,6 +36,7 @@ const LOOKING_FOR_OPTIONS = [
   { value: "full-time", label: "Full-time" },
   { value: "part-time", label: "Part-time" },
   { value: "casual", label: "Casual" },
+  { value: "extra-hours", label: "A few hours a week" },
   { value: "any", label: "Open to anything" },
 ];
 
@@ -52,12 +53,12 @@ function Field({
     <div className="mb-7">
       <label
         className="block text-base font-bold mb-1"
-        style={{ color: "#0D0D0D" }}
+        style={{ color: "#24352B" }}
       >
         {label}
       </label>
       {hint && (
-        <p className="text-sm mb-3" style={{ color: "#6B6B6B" }}>
+        <p className="text-sm mb-3" style={{ color: "#5C6B60" }}>
           {hint}
         </p>
       )}
@@ -68,7 +69,7 @@ function Field({
 
 const inputClass =
   "w-full rounded-xl border px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-offset-1";
-const inputStyle = { borderColor: "#E2E0DC", color: "#0D0D0D" };
+const inputStyle = { borderColor: "#E5DCC9", color: "#24352B", backgroundColor: "#FFFFFF" };
 
 export default function JobProfileForm() {
   const [step, setStep] = useState<Step>(1);
@@ -103,18 +104,18 @@ export default function JobProfileForm() {
     return (
       <div
         className="rounded-2xl border p-10 text-center"
-        style={{ borderColor: "#E2E0DC" }}
+        style={{ borderColor: "#E5DCC9", backgroundColor: "#FFFFFF" }}
       >
         <div
           className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5 text-2xl"
-          style={{ backgroundColor: "#39E75F" }}
+          style={{ backgroundColor: "#5D8A6C", color: "#111C16" }}
         >
           ✓
         </div>
-        <h2 className="text-xl font-extrabold mb-3" style={{ color: "#0D0D0D" }}>
+        <h2 className="text-xl font-extrabold mb-3" style={{ color: "#24352B" }}>
           Profile submitted
         </h2>
-        <p className="text-sm" style={{ color: "#6B6B6B" }}>
+        <p className="text-sm" style={{ color: "#5C6B60" }}>
           Thanks {form.first_name}. We'll review it and have you live within 24
           hours. Check back on the job board soon.
         </p>
@@ -130,18 +131,18 @@ export default function JobProfileForm() {
       {/* Progress bar */}
       <div
         className="w-full h-1.5 rounded-full mb-8"
-        style={{ backgroundColor: "#E2E0DC" }}
+        style={{ backgroundColor: "#E5DCC9" }}
       >
         <div
           className="h-1.5 rounded-full transition-all duration-300"
-          style={{ width: `${progress}%`, backgroundColor: "#39E75F" }}
+          style={{ width: `${progress}%`, backgroundColor: "#5D8A6C" }}
         />
       </div>
 
       {step === 1 && (
         <div>
-          <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: "#39E75F" }}>
-            Step 1 of {totalSteps} — About you
+          <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: "#48745A" }}>
+            Step 1 of {totalSteps} - About you
           </p>
           <Field label="What's your first name?">
             <input
@@ -155,7 +156,7 @@ export default function JobProfileForm() {
           </Field>
           <Field
             label="Last initial"
-            hint='We only show your last initial on the board, e.g. "Tony S." — keeps it private.'
+            hint='We only show your last initial on the board, e.g. "Tony S." - keeps it private.'
           >
             <input
               className={inputClass}
@@ -180,8 +181,8 @@ export default function JobProfileForm() {
 
       {step === 2 && (
         <div>
-          <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: "#39E75F" }}>
-            Step 2 of {totalSteps} — Your skills
+          <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: "#48745A" }}>
+            Step 2 of {totalSteps} - Your skills
           </p>
           <Field
             label="What type of work are you looking for?"
@@ -198,14 +199,14 @@ export default function JobProfileForm() {
           </Field>
           <Field
             label="What are your main skills?"
-            hint="Separate each one with a comma. Keep it practical - what would an employer search for?"
+            hint="Separate each one with a comma - and include any tickets or certs you hold (RSA, White Card, forklift licence, first aid)."
           >
             <input
               className={inputClass}
               style={inputStyle}
               value={form.skills_raw}
               onChange={(e) => set("skills_raw", e.target.value)}
-              placeholder="Plumbing, pipe fitting, drainage, hot water systems"
+              placeholder="Carpentry, renovations, White Card, hospitality, RSA"
             />
           </Field>
           <Field label="How many years of experience do you have?">
@@ -225,8 +226,8 @@ export default function JobProfileForm() {
 
       {step === 3 && (
         <div>
-          <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: "#39E75F" }}>
-            Step 3 of {totalSteps} — Your history
+          <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: "#48745A" }}>
+            Step 3 of {totalSteps} - Your history
           </p>
           <Field
             label="Where have you worked and what did you do?"
@@ -260,8 +261,8 @@ export default function JobProfileForm() {
 
       {step === 4 && (
         <div>
-          <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: "#39E75F" }}>
-            Step 4 of {totalSteps} — What you're after
+          <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: "#48745A" }}>
+            Step 4 of {totalSteps} - What you're after
           </p>
           <Field label="What type of work are you open to?">
             <div className="grid grid-cols-2 gap-3">
@@ -273,11 +274,11 @@ export default function JobProfileForm() {
                   className="rounded-xl border px-4 py-4 text-sm font-bold text-left transition-all"
                   style={{
                     borderColor:
-                      form.looking_for === opt.value ? "#0D0D0D" : "#E2E0DC",
+                      form.looking_for === opt.value ? "#24352B" : "#E5DCC9",
                     backgroundColor:
-                      form.looking_for === opt.value ? "#0D0D0D" : "transparent",
+                      form.looking_for === opt.value ? "#24352B" : "transparent",
                     color:
-                      form.looking_for === opt.value ? "#39E75F" : "#0D0D0D",
+                      form.looking_for === opt.value ? "#F4F1EA" : "#24352B",
                   }}
                 >
                   {opt.label}
@@ -290,10 +291,10 @@ export default function JobProfileForm() {
 
       {step === 5 && (
         <div>
-          <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: "#39E75F" }}>
-            Step 5 of {totalSteps} — How to reach you
+          <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: "#48745A" }}>
+            Step 5 of {totalSteps} - How to reach you
           </p>
-          <p className="text-sm mb-6" style={{ color: "#6B6B6B" }}>
+          <p className="text-sm mb-6" style={{ color: "#5C6B60" }}>
             Your contact details are private. We only share them if an employer
             specifically asks, and only with your permission.
           </p>
@@ -331,7 +332,7 @@ export default function JobProfileForm() {
             type="button"
             onClick={() => setStep((s) => (s - 1) as Step)}
             className="text-sm font-medium underline underline-offset-2 hover:opacity-70"
-            style={{ color: "#6B6B6B" }}
+            style={{ color: "#5C6B60" }}
           >
             Back
           </button>
@@ -344,7 +345,7 @@ export default function JobProfileForm() {
             type="button"
             onClick={() => setStep((s) => (s + 1) as Step)}
             className="inline-flex items-center justify-center px-8 py-3 rounded-full text-sm font-bold transition-opacity hover:opacity-90"
-            style={{ backgroundColor: "#0D0D0D", color: "#39E75F" }}
+            style={{ backgroundColor: "#24352B", color: "#F4F1EA" }}
           >
             Continue
           </button>
@@ -354,7 +355,7 @@ export default function JobProfileForm() {
             onClick={submit}
             disabled={submitting}
             className="inline-flex items-center justify-center px-8 py-3 rounded-full text-sm font-bold transition-opacity hover:opacity-90 disabled:opacity-50"
-            style={{ backgroundColor: "#39E75F", color: "#0D0D0D" }}
+            style={{ backgroundColor: "#5D8A6C", color: "#111C16" }}
           >
             {submitting ? "Submitting..." : "Submit my profile"}
           </button>

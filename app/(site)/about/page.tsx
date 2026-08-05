@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import InlineSponsorAd from "@/components/site/InlineSponsorAd";
 
 export const metadata: Metadata = {
   title: "About | The Wandering Man Geelong - Our Story, Mission & People",
@@ -246,6 +247,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <InlineSponsorAd />
     </>
   );
 }

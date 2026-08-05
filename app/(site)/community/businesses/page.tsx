@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
+import InlineSponsorAd from "@/components/site/InlineSponsorAd";
 
 export const metadata: Metadata = {
-  title: "Member Businesses | The Wandering Man Geelong",
+  title: "Member Businesses - Shop Local in Geelong | The Wandering Man",
   description:
-    "Shop local. Browse businesses owned and run by Wandering Man members across Geelong.",
+    "Shop local and back the community. Browse businesses owned and run by Wandering Man members across Geelong - trades, services, food and more.",
   alternates: { canonical: "/community/businesses" },
 };
 
@@ -22,12 +23,13 @@ interface MemberBusiness {
   phone: string | null;
 }
 
-const CATEGORY_COLOURS: Record<string, { bg: string; text: string }> = {
-  trades: { bg: "#FFF3E0", text: "#E65100" },
-  services: { bg: "#E3F2FD", text: "#1565C0" },
-  retail: { bg: "#F3E5F5", text: "#6A1B9A" },
-  food: { bg: "#E8F5E9", text: "#2E7D32" },
-  health: { bg: "#FCE4EC", text: "#880E4F" },
+const CATEGORY_LABEL: Record<string, string> = {
+  trades: "Trades",
+  services: "Services",
+  retail: "Retail",
+  food: "Food & Hospitality",
+  health: "Health & Wellbeing",
+  other: "Other",
 };
 
 export default async function BusinessesPage() {
@@ -46,127 +48,70 @@ export default async function BusinessesPage() {
   return (
     <>
       {/* Hero */}
-      <section
-        className="px-4 sm:px-6 lg:px-8 py-16 border-b"
-        style={{ borderColor: "#E2E0DC" }}
-      >
-        <div className="max-w-4xl mx-auto">
-          <p
-            className="text-xs font-bold uppercase tracking-widest mb-3"
-            style={{ color: "#39E75F" }}
-          >
-            Community
+      <header style={{ background: "#192821", padding: "72px 28px 64px" }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+          <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 15, color: "#79A886", letterSpacing: "0.16em", textTransform: "uppercase" }}>Community · Shop local</p>
+          <h1 style={{ margin: "0 0 18px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(34px, 5vw, 56px)", lineHeight: 1.1, color: "#F4F1EA", maxWidth: "18ch" }}>Member Businesses</h1>
+          <p style={{ margin: "0 0 28px", fontFamily: "var(--font-body), sans-serif", fontSize: "clamp(19px, 2.2vw, 22px)", lineHeight: 1.55, color: "#CBD5CB", maxWidth: "58ch" }}>
+            These businesses are owned and run by Wandering Man members. When you use them, you&apos;re backing a Geelong bloke and the community around him - directly.
           </p>
-          <h1
-            className="text-4xl sm:text-5xl font-extrabold mb-5"
-            style={{ color: "#0D0D0D" }}
-          >
-            Member Businesses
-          </h1>
-          <p className="text-lg mb-8 max-w-2xl" style={{ color: "#6B6B6B" }}>
-            Shop local. These businesses are owned and run by Wandering Man members.
-            When you use them, you're supporting the community directly.
-          </p>
-          <Link
-            href="/community/businesses/list"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold transition-opacity hover:opacity-90"
-            style={{ backgroundColor: "#0D0D0D", color: "#39E75F" }}
-          >
+          <Link href="/community/businesses/list" style={{ display: "inline-block", background: "#5D8A6C", color: "#111C16", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 18, textDecoration: "none", padding: "16px 26px", borderRadius: 10 }}>
             List your business
           </Link>
         </div>
-      </section>
+      </header>
 
       {/* Listings */}
-      <section className="px-4 sm:px-6 lg:px-8 py-16">
-        <div className="max-w-5xl mx-auto">
+      <section style={{ background: "#F4F1EA", padding: "64px 28px" }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto" }}>
           {businesses.length === 0 ? (
-            <div
-              className="rounded-2xl border p-12 text-center"
-              style={{ borderColor: "#E2E0DC" }}
-            >
-              <p className="text-lg font-bold mb-2" style={{ color: "#0D0D0D" }}>
-                No businesses listed yet
-              </p>
-              <p className="text-sm mb-6" style={{ color: "#6B6B6B" }}>
-                Be the first to list your business.
-              </p>
-              <Link
-                href="/community/businesses/list"
-                className="inline-flex items-center justify-center px-7 py-3 rounded-full text-sm font-bold transition-opacity hover:opacity-90"
-                style={{ backgroundColor: "#39E75F", color: "#0D0D0D" }}
-              >
+            <div style={{ background: "#FFFFFF", border: "1px solid #E5DCC9", borderRadius: 16, padding: "48px 32px", textAlign: "center" }}>
+              <p style={{ margin: "0 0 8px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 22, color: "#24352B" }}>No businesses listed yet</p>
+              <p style={{ margin: "0 0 24px", fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.6, color: "#5C6B60" }}>Run a business? Be the first on the board - it&apos;s free for members.</p>
+              <Link href="/community/businesses/list" style={{ display: "inline-block", background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "15px 24px", borderRadius: 10 }}>
                 List your business
               </Link>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {businesses.map((b) => {
-                const colours = b.category
-                  ? (CATEGORY_COLOURS[b.category] ?? { bg: "#F8F7F4", text: "#6B6B6B" })
-                  : { bg: "#F8F7F4", text: "#6B6B6B" };
-                return (
-                  <div
-                    key={b.id}
-                    className="rounded-2xl border p-6 flex flex-col"
-                    style={{ borderColor: "#E2E0DC" }}
-                  >
-                    <div className="flex items-start justify-between gap-2 mb-3">
-                      <h2 className="text-base font-extrabold" style={{ color: "#0D0D0D" }}>
-                        {b.business_name}
-                      </h2>
-                      {b.category && (
-                        <span
-                          className="shrink-0 px-2.5 py-0.5 rounded-full text-xs font-bold capitalize"
-                          style={{ backgroundColor: colours.bg, color: colours.text }}
-                        >
-                          {b.category}
-                        </span>
-                      )}
-                    </div>
-                    {b.owner_display_name && (
-                      <p className="text-xs mb-2" style={{ color: "#6B6B6B" }}>
-                        Run by {b.owner_display_name}
-                        {b.suburb ? ` · ${b.suburb}` : ""}
-                      </p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 18 }}>
+              {businesses.map((b) => (
+                <div key={b.id} style={{ background: "#FFFFFF", border: "1px solid #E5DCC9", borderRadius: 16, padding: "26px 28px", display: "flex", flexDirection: "column" }}>
+                  <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 10, marginBottom: 10 }}>
+                    <h2 style={{ margin: 0, fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 21, lineHeight: 1.25, color: "#24352B" }}>{b.business_name}</h2>
+                    {b.category && (
+                      <span style={{ flexShrink: 0, background: "#FBF8F1", border: "1px solid #E5DCC9", color: "#48745A", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 13, padding: "4px 10px", borderRadius: 99 }}>
+                        {CATEGORY_LABEL[b.category] ?? b.category}
+                      </span>
                     )}
-                    {b.description && (
-                      <p
-                        className="text-sm leading-relaxed flex-1 mb-4 line-clamp-3"
-                        style={{ color: "#0D0D0D" }}
-                      >
-                        {b.description}
-                      </p>
-                    )}
-                    <div className="flex flex-wrap gap-3 mt-auto">
-                      {b.phone && (
-                        <a
-                          href={`tel:${b.phone.replace(/\s/g, "")}`}
-                          className="text-xs font-medium underline underline-offset-2"
-                          style={{ color: "#0D0D0D" }}
-                        >
-                          {b.phone}
-                        </a>
-                      )}
-                      {b.website_url && (
-                        <a
-                          href={b.website_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs font-medium underline underline-offset-2"
-                          style={{ color: "#0D0D0D" }}
-                        >
-                          Website &rarr;
-                        </a>
-                      )}
-                    </div>
                   </div>
-                );
-              })}
+                  {(b.owner_display_name || b.suburb) && (
+                    <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontSize: 15, color: "#87988A" }}>
+                      {[b.owner_display_name, b.suburb].filter(Boolean).join(" · ")}
+                    </p>
+                  )}
+                  {b.description && (
+                    <p style={{ margin: "0 0 16px", fontFamily: "var(--font-body), sans-serif", fontSize: 17, lineHeight: 1.55, color: "#46534A", flex: 1 }}>{b.description}</p>
+                  )}
+                  <div style={{ display: "flex", gap: 14, flexWrap: "wrap", paddingTop: 12, borderTop: "1px solid #E5DCC9" }}>
+                    {b.phone && (
+                      <a href={`tel:${b.phone.replace(/\s/g, "")}`} style={{ fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#3C6349", textDecoration: "none" }}>
+                        {b.phone}
+                      </a>
+                    )}
+                    {b.website_url && (
+                      <a href={b.website_url} target="_blank" rel="noopener noreferrer" style={{ fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#3C6349", textDecoration: "none" }}>
+                        Visit website →
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           )}
         </div>
       </section>
+
+      <InlineSponsorAd />
     </>
   );
 }

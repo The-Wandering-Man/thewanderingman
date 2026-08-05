@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import JobProfileForm from "@/components/site/JobProfileForm";
 
 export const metadata: Metadata = {
@@ -9,27 +10,29 @@ export const metadata: Metadata = {
 
 export default function JobsJoinPage() {
   return (
-    <section className="px-4 sm:px-6 lg:px-8 py-16">
-      <div className="max-w-xl mx-auto">
-        <a
+    <section style={{ background: "#F4F1EA", padding: "64px 28px" }}>
+      <div style={{ maxWidth: 640, margin: "0 auto" }}>
+        <Link
           href="/community/jobs"
-          className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-widest mb-8 opacity-60 hover:opacity-100 transition-opacity"
-          style={{ color: "#0D0D0D" }}
+          style={{ display: "inline-block", marginBottom: 28, color: "#5C6B60", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 13, letterSpacing: "0.12em", textTransform: "uppercase", textDecoration: "none" }}
         >
           &larr; Job board
-        </a>
-        <p
-          className="text-xs font-bold uppercase tracking-widest mb-3"
-          style={{ color: "#39E75F" }}
-        >
+        </Link>
+        <p style={{ margin: "0 0 12px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 15, color: "#48745A", letterSpacing: "0.16em", textTransform: "uppercase" }}>
           Member profiles
         </p>
-        <h1 className="text-3xl font-extrabold mb-3" style={{ color: "#0D0D0D" }}>
+        <h1 style={{ margin: "0 0 12px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 40px)", lineHeight: 1.15, color: "#24352B" }}>
           Add your profile
         </h1>
-        <p className="text-sm mb-10" style={{ color: "#6B6B6B" }}>
-          Takes about 5 minutes. We'll ask you a few questions and put together
-          your profile. It'll go live once an admin has approved it.
+        <p style={{ margin: "0 0 12px", fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.6, color: "#5C6B60" }}>
+          Takes about 5 minutes. We&apos;ll ask a few questions and put your card together. It goes live once the committee has approved it.
+        </p>
+        <p style={{ margin: "0 0 36px", fontFamily: "var(--font-body), sans-serif", fontSize: 16, lineHeight: 1.6, color: "#5C6B60" }}>
+          Rather just send a resume? Email it to{" "}
+          <a href="mailto:hello@thewanderingman.com.au?subject=Job board - my resume" style={{ color: "#3C6349", fontWeight: 700 }}>
+            hello@thewanderingman.com.au
+          </a>{" "}
+          and we&apos;ll do the rest.
         </p>
         <JobProfileForm />
       </div>

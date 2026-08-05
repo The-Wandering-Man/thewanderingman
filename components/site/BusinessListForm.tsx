@@ -37,7 +37,7 @@ const CATEGORIES = [
 
 const inputClass =
   "w-full rounded-xl border px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-offset-1";
-const inputStyle = { borderColor: "#E2E0DC", color: "#0D0D0D" };
+const inputStyle = { borderColor: "#E5DCC9", color: "#24352B", backgroundColor: "#FFFFFF" };
 
 export default function BusinessListForm() {
   const [form, setForm] = useState<FormData>(EMPTY);
@@ -72,18 +72,18 @@ export default function BusinessListForm() {
     return (
       <div
         className="rounded-2xl border p-10 text-center"
-        style={{ borderColor: "#E2E0DC" }}
+        style={{ borderColor: "#E5DCC9", backgroundColor: "#FFFFFF" }}
       >
         <div
           className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5 text-2xl"
-          style={{ backgroundColor: "#39E75F" }}
+          style={{ backgroundColor: "#5D8A6C", color: "#111C16" }}
         >
           ✓
         </div>
-        <h2 className="text-xl font-extrabold mb-3" style={{ color: "#0D0D0D" }}>
+        <h2 className="text-xl font-extrabold mb-3" style={{ color: "#24352B" }}>
           Business submitted
         </h2>
-        <p className="text-sm" style={{ color: "#6B6B6B" }}>
+        <p className="text-sm" style={{ color: "#5C6B60" }}>
           Thanks {form.owner_first_name}. We'll have a look and get{" "}
           {form.business_name} live in the directory within 24 hours.
         </p>
@@ -94,7 +94,7 @@ export default function BusinessListForm() {
   return (
     <form onSubmit={submit} className="space-y-6">
       <div>
-        <label className="block text-base font-bold mb-1" style={{ color: "#0D0D0D" }}>
+        <label className="block text-base font-bold mb-1" style={{ color: "#24352B" }}>
           Business name
         </label>
         <input
@@ -109,7 +109,7 @@ export default function BusinessListForm() {
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-base font-bold mb-1" style={{ color: "#0D0D0D" }}>
+          <label className="block text-base font-bold mb-1" style={{ color: "#24352B" }}>
             Your first name
           </label>
           <input
@@ -122,7 +122,7 @@ export default function BusinessListForm() {
           />
         </div>
         <div>
-          <label className="block text-base font-bold mb-1" style={{ color: "#0D0D0D" }}>
+          <label className="block text-base font-bold mb-1" style={{ color: "#24352B" }}>
             Last initial
           </label>
           <input
@@ -138,7 +138,7 @@ export default function BusinessListForm() {
       </div>
 
       <div>
-        <label className="block text-base font-bold mb-2" style={{ color: "#0D0D0D" }}>
+        <label className="block text-base font-bold mb-2" style={{ color: "#24352B" }}>
           Category
         </label>
         <div className="grid grid-cols-2 gap-2">
@@ -149,9 +149,9 @@ export default function BusinessListForm() {
               onClick={() => set("category", cat.value)}
               className="rounded-xl border px-4 py-3 text-sm font-bold text-left transition-all"
               style={{
-                borderColor: form.category === cat.value ? "#0D0D0D" : "#E2E0DC",
-                backgroundColor: form.category === cat.value ? "#0D0D0D" : "transparent",
-                color: form.category === cat.value ? "#39E75F" : "#0D0D0D",
+                borderColor: form.category === cat.value ? "#24352B" : "#E5DCC9",
+                backgroundColor: form.category === cat.value ? "#24352B" : "transparent",
+                color: form.category === cat.value ? "#F4F1EA" : "#24352B",
               }}
             >
               {cat.label}
@@ -161,7 +161,7 @@ export default function BusinessListForm() {
       </div>
 
       <div>
-        <label className="block text-base font-bold mb-1" style={{ color: "#0D0D0D" }}>
+        <label className="block text-base font-bold mb-1" style={{ color: "#24352B" }}>
           Suburb
         </label>
         <input
@@ -174,10 +174,10 @@ export default function BusinessListForm() {
       </div>
 
       <div>
-        <label className="block text-base font-bold mb-1" style={{ color: "#0D0D0D" }}>
+        <label className="block text-base font-bold mb-1" style={{ color: "#24352B" }}>
           Tell us about your business
         </label>
-        <p className="text-sm mb-2" style={{ color: "#6B6B6B" }}>
+        <p className="text-sm mb-2" style={{ color: "#5C6B60" }}>
           What do you do? Who do you help? Keep it honest and straightforward.
         </p>
         <textarea
@@ -192,7 +192,7 @@ export default function BusinessListForm() {
       </div>
 
       <div>
-        <label className="block text-base font-bold mb-1" style={{ color: "#0D0D0D" }}>
+        <label className="block text-base font-bold mb-1" style={{ color: "#24352B" }}>
           Phone
         </label>
         <input
@@ -206,7 +206,7 @@ export default function BusinessListForm() {
       </div>
 
       <div>
-        <label className="block text-base font-bold mb-1" style={{ color: "#0D0D0D" }}>
+        <label className="block text-base font-bold mb-1" style={{ color: "#24352B" }}>
           Email
         </label>
         <input
@@ -221,7 +221,7 @@ export default function BusinessListForm() {
       </div>
 
       <div>
-        <label className="block text-base font-bold mb-1" style={{ color: "#0D0D0D" }}>
+        <label className="block text-base font-bold mb-1" style={{ color: "#24352B" }}>
           Website (optional)
         </label>
         <input
@@ -240,7 +240,7 @@ export default function BusinessListForm() {
         type="submit"
         disabled={submitting}
         className="w-full inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-bold transition-opacity hover:opacity-90 disabled:opacity-50"
-        style={{ backgroundColor: "#39E75F", color: "#0D0D0D" }}
+        style={{ backgroundColor: "#5D8A6C", color: "#111C16" }}
       >
         {submitting ? "Submitting..." : "Submit my business"}
       </button>
