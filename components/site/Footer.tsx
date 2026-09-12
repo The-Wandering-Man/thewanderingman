@@ -178,7 +178,7 @@ export default function Footer() {
           <span aria-hidden="true" style={{ color: "#5D8A6C" }}>♥</span>
           <span className="sr-only">love</span> by{" "}
           <a href="https://www.barwonai.com.au" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity" style={{ color: "#5C6B60", textDecoration: "none", fontWeight: 600 }}>
-            Barwon AI
+            Barwon Creative
           </a>
         </p>
       </div>

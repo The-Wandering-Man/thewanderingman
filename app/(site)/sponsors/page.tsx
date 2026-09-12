@@ -101,10 +101,10 @@ export default function SponsorsPage() {
 
           <div id="barwon-ai" style={{ background: "#FFFFFF", border: "1px solid #E5DCC9", borderRadius: 16, padding: "32px 34px", scrollMarginTop: 70, maxWidth: 560, marginTop: 24 }}>
             <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 13, color: "#8A7F68", letterSpacing: "0.12em", textTransform: "uppercase", display: "inline-block", border: "1.5px solid #C9BC9F", borderRadius: 99, padding: "5px 12px" }}>Sponsor</p>
-            <h2 style={{ margin: "8px 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 28, lineHeight: 1.2, color: "#24352B" }}>Barwon AI</h2>
+            <h2 style={{ margin: "8px 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 28, lineHeight: 1.2, color: "#24352B" }}>Barwon Creative</h2>
             <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 18, lineHeight: 1.4, color: "#41604F" }}>AI-native marketing &amp; web · Geelong</p>
             <p style={{ margin: "0 0 16px", fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.6, color: "#46534A" }}>Built and looks after this website - a men&apos;s mental health community in their own backyard, worth backing properly.</p>
-            <a href="https://www.barwonai.com.au" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 16, textDecoration: "none", padding: "13px 20px", borderRadius: 10 }}>Visit Barwon AI</a>
+            <a href="https://www.barwonai.com.au" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 16, textDecoration: "none", padding: "13px 20px", borderRadius: 10 }}>Visit Barwon Creative</a>
           </div>
         </div>
       </section>
