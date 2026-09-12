@@ -67,6 +67,23 @@ export default function SponsorsPage() {
         </div>
       </section>
 
+      {/* Barwon Creative - Gold */}
+      <section id="barwon-creative" style={{ background: "#F4F1EA", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
+          <div>
+            <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 14, color: "#48745A", letterSpacing: "0.12em", textTransform: "uppercase", display: "inline-block", border: "1.5px solid #79A886", borderRadius: 99, padding: "6px 14px" }}>Gold sponsor</p>
+            <h2 style={{ margin: "10px 0 8px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Barwon Creative</h2>
+            <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 20, lineHeight: 1.4, color: "#41604F" }}>AI-native marketing &amp; web · Geelong</p>
+            <p style={{ margin: "0 0 24px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}><strong style={{ color: "#24352B" }}>Why they back us:</strong> Barwon Creative built and looks after this website - a men&apos;s mental health community in their own backyard, worth backing properly.</p>
+            <a href="https://www.barwonai.com.au" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "15px 24px", borderRadius: 10 }}>Visit Barwon Creative</a>
+          </div>
+          <div style={{ height: 280, borderRadius: 16, background: "#FFFFFF", border: "1px solid #E5DCC9", display: "flex", alignItems: "center", justifyContent: "center", padding: 32 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/barwon-creative-logo.png" alt="Barwon Creative" style={{ maxWidth: "100%", maxHeight: "100%", objectFit: "contain" }} />
+          </div>
+        </div>
+      </section>
+
       {/* MC Labour - Silver */}
       <section id="mc-labour" style={{ background: "#F4F1EA", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
         <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
@@ -97,20 +114,6 @@ export default function SponsorsPage() {
             <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 18, lineHeight: 1.4, color: "#41604F" }}>Signage &amp; graphic design · Geelong</p>
             <p style={{ margin: "0 0 16px", fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.6, color: "#46534A" }}>Designs and prints the signage, flyers and banners that get blokes through the door - including the ones that probably got you here.</p>
             <a href="https://www.indielime.com.au" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 16, textDecoration: "none", padding: "13px 20px", borderRadius: 10 }}>Visit indie lime</a>
-          </div>
-
-          <div id="barwon-ai" style={{ background: "#FFFFFF", border: "1px solid #E5DCC9", borderRadius: 16, padding: "32px 34px", scrollMarginTop: 70, maxWidth: 560, marginTop: 24 }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
-              <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 13, color: "#8A7F68", letterSpacing: "0.12em", textTransform: "uppercase", display: "inline-block", border: "1.5px solid #C9BC9F", borderRadius: 99, padding: "5px 12px", alignSelf: "flex-start" }}>Sponsor</p>
-              <div style={{ background: "#1C1C1E", borderRadius: 10, padding: "10px 16px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/barwon-creative-logo.png" alt="Barwon Creative" style={{ height: 34, width: "auto", objectFit: "contain" }} />
-              </div>
-            </div>
-            <h2 style={{ margin: "8px 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 28, lineHeight: 1.2, color: "#24352B" }}>Barwon Creative</h2>
-            <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 18, lineHeight: 1.4, color: "#41604F" }}>AI-native marketing &amp; web · Geelong</p>
-            <p style={{ margin: "0 0 16px", fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.6, color: "#46534A" }}>Built and looks after this website - a men&apos;s mental health community in their own backyard, worth backing properly.</p>
-            <a href="https://www.barwonai.com.au" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 16, textDecoration: "none", padding: "13px 20px", borderRadius: 10 }}>Visit Barwon Creative</a>
           </div>
         </div>
       </section>
