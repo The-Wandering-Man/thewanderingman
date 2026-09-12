@@ -24,6 +24,10 @@ const faqs = [
     a: "13 Peter St, Grovedale - on Geelong's south side, an easy drive from Waurn Ponds, Belmont and Highton.",
   },
   {
+    q: "What are Grovedale Meats' opening hours?",
+    a: "Monday to Friday 6:30am-5:30pm, Saturday 6:30am-12:30pm, closed Sunday. Phone (03) 5243 8612 if you want to check ahead.",
+  },
+  {
     q: "How do I claim the 10% Wandering Man discount?",
     a: "Just mention The Wandering Man at the counter when you pay. No card, no code, no minimum spend - the discount comes off your order on the spot.",
   },
@@ -51,6 +55,11 @@ const structuredData = [
       addressRegion: "VIC",
       addressCountry: "AU",
     },
+    telephone: "(03) 5243 8612",
+    openingHoursSpecification: [
+      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "06:30", closes: "17:30" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "06:30", closes: "12:30" },
+    ],
     areaServed: "Geelong, Victoria",
     image: `${SITE_URL}/grovedale-bbq.jpg`,
     url: `${SITE_URL}/sponsors/grovedale-meats`,
@@ -119,6 +128,12 @@ export default function GrovedaleMeatsPage() {
                   style={{ background: "#F4F1EA", color: "#111C16", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 18, textDecoration: "none", padding: "16px 26px", borderRadius: 10 }}
                 >
                   Get directions
+                </a>
+                <a
+                  href="tel:0352438612"
+                  style={{ border: "1.5px solid rgba(203,213,203,0.45)", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 18, textDecoration: "none", padding: "16px 26px", borderRadius: 10 }}
+                >
+                  (03) 5243 8612
                 </a>
                 <Link
                   href="/events#bbqs"

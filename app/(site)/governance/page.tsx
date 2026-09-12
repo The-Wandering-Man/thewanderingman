@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Governance & Policies | The Wandering Man Geelong",
@@ -75,9 +76,14 @@ const policies = [
     id: "governing-rules",
     title: "Governing Rules",
     body: (
-      <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.6, color: "#46534A", maxWidth: "68ch" }}>
-        The Wandering Man Inc. is an incorporated association governed by a volunteer committee under our rules of association, with an annual general meeting open to members. Sponsorship funds go to community events - coffees, BBQs, fundraising costs - and the books are presented to members each year.
-      </p>
+      <>
+        <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.6, color: "#46534A", maxWidth: "68ch" }}>
+          The Wandering Man Inc. is an incorporated association governed by a volunteer committee under our rules of association, with an annual general meeting open to members. Sponsorship funds go to community events - coffees, BBQs, fundraising costs - and the books are presented to members each year.
+        </p>
+        <Link href="/governance/rules" style={{ color: "#3C6349", fontWeight: 700, fontFamily: "var(--font-body), sans-serif", fontSize: 17, textDecoration: "underline" }}>
+          Read the full rules of association →
+        </Link>
+      </>
     ),
   },
 ];
