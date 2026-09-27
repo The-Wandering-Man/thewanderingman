@@ -54,6 +54,13 @@ export default async function AdminCheckInsPage({
       >
         ← Live results
       </Link>
+      <Link
+        href="/check-in/over-time"
+        className="ml-6 inline-flex items-center gap-2 text-lg font-medium transition-opacity hover:opacity-70"
+        style={{ color: "#39E75F" }}
+      >
+        The group over time →
+      </Link>
 
       <div className="mt-6 mb-2">
         <p

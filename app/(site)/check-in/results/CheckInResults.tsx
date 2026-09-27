@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
+import { RATING_COLORS, distribution, mean, median } from "@/lib/checkin-stats";
 
 const CHART_COLORS = [
   "#39E75F", // brand green
@@ -87,6 +89,58 @@ function Legend({ slices, total }: { slices: Slice[]; total: number }) {
   );
 }
 
+// Vertical bars, one per rating 1-10, with the count above each bar.
+function RatingBreakdown({ ratings }: { ratings: number[] }) {
+  const counts = distribution(ratings);
+  const max = Math.max(...counts, 1);
+  const total = ratings.length;
+  return (
+    <div>
+      <div className="flex items-end gap-2 sm:gap-3" style={{ height: 220 }}>
+        {counts.map((c, i) => {
+          const pct = total ? Math.round((c / total) * 100) : 0;
+          return (
+            <div
+              key={i}
+              className="flex-1 flex flex-col items-center justify-end h-full"
+              title={`${c} ${c === 1 ? "person" : "people"} rated ${i + 1} (${pct}%)`}
+            >
+              <span
+                className="text-lg font-bold tabular-nums mb-1"
+                style={{ color: c ? "#0D0D0D" : "#B8B6B1" }}
+              >
+                {c}
+              </span>
+              <div
+                className="w-full"
+                style={{
+                  height: c ? `${(c / max) * 170}px` : "2px",
+                  backgroundColor: c ? RATING_COLORS[i] : "#E2E0DC",
+                  borderRadius: "4px 4px 0 0",
+                }}
+              />
+            </div>
+          );
+        })}
+      </div>
+      <div className="flex gap-2 sm:gap-3 pt-2" style={{ borderTop: "2px solid #E2E0DC" }}>
+        {counts.map((_, i) => (
+          <span
+            key={i}
+            className="flex-1 text-center text-lg font-extrabold"
+            style={{ color: "#0D0D0D" }}
+          >
+            {i + 1}
+          </span>
+        ))}
+      </div>
+      <p className="text-base mt-3" style={{ color: "#6B6B6B" }}>
+        1 = very hard &nbsp;·&nbsp; 10 = wonderful. Number above each bar = how many people.
+      </p>
+    </div>
+  );
+}
+
 type CheckIn = {
   rating: number;
   concern: string;
@@ -107,7 +161,9 @@ export default function CheckInResults({ checkins }: { checkins: CheckIn[] }) {
     );
   }
 
-  const avgRating = checkins.reduce((a, c) => a + c.rating, 0) / checkins.length;
+  const ratings = checkins.map((c) => c.rating);
+  const avgRating = mean(ratings);
+  const medianRating = median(ratings);
 
   const concernCounts: Record<string, number> = {};
   const gratitudeCounts: Record<string, number> = {};
@@ -135,7 +191,7 @@ export default function CheckInResults({ checkins }: { checkins: CheckIn[] }) {
       </p>
 
       {/* Big numbers */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
         <div className="p-8 rounded-3xl" style={{ backgroundColor: "#0D0D0D" }}>
           <p className="text-7xl font-extrabold mb-2" style={{ color: "#39E75F" }}>
             {avgRating.toFixed(1)}
@@ -145,6 +201,17 @@ export default function CheckInResults({ checkins }: { checkins: CheckIn[] }) {
           </p>
           <p className="text-lg" style={{ color: "rgba(248,247,244,0.6)" }}>
             out of 10
+          </p>
+        </div>
+        <div className="p-8 rounded-3xl" style={{ backgroundColor: "#0D0D0D" }}>
+          <p className="text-7xl font-extrabold mb-2" style={{ color: "#39E75F" }}>
+            {Number.isInteger(medianRating) ? medianRating : medianRating.toFixed(1)}
+          </p>
+          <p className="text-2xl font-bold mb-1" style={{ color: "#F8F7F4" }}>
+            Median rating
+          </p>
+          <p className="text-lg" style={{ color: "rgba(248,247,244,0.6)" }}>
+            the middle answer
           </p>
         </div>
         <div
@@ -162,6 +229,23 @@ export default function CheckInResults({ checkins }: { checkins: CheckIn[] }) {
           </p>
         </div>
       </div>
+
+      {/* Rating breakdown */}
+      <section aria-label="How everyone rated their week" className="mb-16">
+        <div className="flex flex-wrap items-baseline justify-between gap-4 mb-6">
+          <h2 className="text-2xl font-bold" style={{ color: "#0D0D0D" }}>
+            How everyone rated their week
+          </h2>
+          <Link
+            href="/check-in/over-time"
+            className="text-lg font-bold transition-opacity hover:opacity-70"
+            style={{ color: "#1F6F43" }}
+          >
+            See the group over time →
+          </Link>
+        </div>
+        <RatingBreakdown ratings={ratings} />
+      </section>
 
       {/* Pie charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-14">

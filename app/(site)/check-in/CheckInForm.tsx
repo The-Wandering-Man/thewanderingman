@@ -1,19 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-const RATING_COLORS = [
-  "#DC2626", // 1 — red
-  "#E55B20", // 2
-  "#F97316", // 3 — orange
-  "#F5A623", // 4
-  "#EDD212", // 5 — yellow
-  "#CDDE14", // 6
-  "#7DCF26", // 7
-  "#35C05E", // 8
-  "#1DAA5A", // 9
-  "#15803D", // 10 — deep green
-];
+import { RATING_COLORS } from "@/lib/checkin-stats";
 
 const CONCERNS = [
   "My health",
