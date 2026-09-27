@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-// Same check the route handler runs. Loose on purpose — catch typos, not
-// exotic-but-valid addresses.
+// Same check the route handler runs. Loose on purpose - catch typos, not
+// exotic-but-valid addresses. Only applied when an email is entered.
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const labelClass = "block text-xs font-bold uppercase tracking-widest mb-2";
@@ -22,6 +22,7 @@ const inputStyle = {
 export default function SignInForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "done">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -29,12 +30,9 @@ export default function SignInForm() {
     e.preventDefault();
     setErrorMsg("");
 
-    if (!name.trim()) {
-      setErrorMsg("Enter your full name.");
-      return;
-    }
-    if (!EMAIL_RE.test(email.trim())) {
-      setErrorMsg("Enter a valid email address.");
+    // Nothing is required, but a half-typed email is worth catching.
+    if (email.trim() && !EMAIL_RE.test(email.trim())) {
+      setErrorMsg("That email doesn't look right. Fix it or leave it blank.");
       return;
     }
 
@@ -43,7 +41,7 @@ export default function SignInForm() {
       const res = await fetch("/api/bbq/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email }),
+        body: JSON.stringify({ name, email, phone }),
       });
       const data = await res.json().catch(() => null);
 
@@ -97,7 +95,8 @@ export default function SignInForm() {
   return (
     <>
       <p className="mt-3 text-center" style={{ fontSize: "16px", color: "#87988A" }}>
-        Sign in so we know you're here.
+        Sign in so we know you're here. Nothing's compulsory, but it helps
+        us look after everyone (and keeps our insurance happy).
       </p>
 
       <form onSubmit={handleSubmit} noValidate className="mt-7 w-full flex flex-col gap-4">
@@ -109,7 +108,6 @@ export default function SignInForm() {
             id="bbq-name"
             name="name"
             type="text"
-            required
             autoComplete="name"
             autoCapitalize="words"
             enterKeyHint="next"
@@ -129,16 +127,34 @@ export default function SignInForm() {
             id="bbq-email"
             name="email"
             type="email"
-            required
             inputMode="email"
             autoComplete="email"
             autoCapitalize="none"
             autoCorrect="off"
             spellCheck={false}
-            enterKeyHint="done"
+            enterKeyHint="next"
             placeholder="you@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className={inputClass}
+            style={inputStyle}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="bbq-phone" className={labelClass} style={labelStyle}>
+            Phone
+          </label>
+          <input
+            id="bbq-phone"
+            name="phone"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            enterKeyHint="done"
+            placeholder="04xx xxx xxx"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             className={inputClass}
             style={inputStyle}
           />

@@ -2,22 +2,24 @@
 
 import { useRouter } from "next/navigation";
 
-// Simple day navigator for the admin history view. Pushes ?date=YYYY-MM-DD.
+// Simple day navigator for the admin history views. Pushes ?date=YYYY-MM-DD.
 export default function DatePicker({
   date,
   prev,
   next,
   isToday,
+  basePath = "/admin/check-ins",
 }: {
   date: string;
   prev: string;
   next: string;
   isToday: boolean;
+  basePath?: string;
 }) {
   const router = useRouter();
 
   function go(d: string) {
-    router.push(`/admin/check-ins?date=${d}`);
+    router.push(`${basePath}?date=${d}`);
   }
 
   return (

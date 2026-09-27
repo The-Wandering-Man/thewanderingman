@@ -3,8 +3,8 @@ import Image from "next/image";
 import SignInForm from "./SignInForm";
 
 export const metadata: Metadata = {
-  title: "Monthly BBQ",
-  description: "Sign in to the Monthly BBQ.",
+  title: "Event Sign-In",
+  description: "Sign in at the door of a Wandering Man event.",
   // Reached by scanning the QR at the door, not by search.
   robots: { index: false, follow: false },
 };
@@ -40,7 +40,7 @@ export default function BbqSignInPage() {
             color: "#F4F1EA",
           }}
         >
-          Monthly BBQ
+          Welcome in
         </h1>
 
         <SignInForm />

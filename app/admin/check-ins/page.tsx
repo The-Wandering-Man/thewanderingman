@@ -61,6 +61,13 @@ export default async function AdminCheckInsPage({
       >
         The group over time →
       </Link>
+      <Link
+        href="/admin/sign-ins"
+        className="ml-6 inline-flex items-center gap-2 text-lg font-medium transition-opacity hover:opacity-70"
+        style={{ color: "#39E75F" }}
+      >
+        Door sign-ins →
+      </Link>
 
       <div className="mt-6 mb-2">
         <p
