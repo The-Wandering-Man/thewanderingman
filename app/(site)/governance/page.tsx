@@ -121,14 +121,14 @@ export default function GovernancePage() {
 
           <div style={{ background: "#E6DECC", borderRadius: 14, padding: "26px 30px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
             <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: 17, lineHeight: 1.6, color: "#5C4F3A", maxWidth: "58ch" }}>
-              These are plain-English summaries. Full policy documents are being migrated from our current site - email us for a copy of any policy in the meantime.
+              These are plain-English summaries. The full documents - privacy, child safety, whistleblower, conflict of interest, work health and safety, sexual harassment and social media policies, plus our mission, values and strategy - are published in full.
             </p>
-            <a
-              href="mailto:hello@thewanderingman.com.au?subject=Policy request"
+            <Link
+              href="/governance/policies"
               style={{ background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "15px 24px", borderRadius: 10, flexShrink: 0 }}
             >
-              Request a policy
-            </a>
+              Read the full policies
+            </Link>
           </div>
         </div>
       </section>

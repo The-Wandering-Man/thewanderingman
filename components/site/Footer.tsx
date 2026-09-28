@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { policies } from "@/lib/policies";
 
 const crisisLines = [
   { name: "Lifeline", number: "13 11 14", tel: "131114" },
@@ -114,6 +115,7 @@ export default function Footer() {
                 ["Stories", "/blog"],
                 ["Speaking", "/speaking"],
                 ["Sponsors", "/sponsors"],
+                ["Governance & Policies", "/governance"],
               ].map(([label, href]) => (
                 <li key={href}>
                   <Link href={href} className="text-sm hover:opacity-70 transition-opacity" style={{ color: "#87988A", textDecoration: "none", fontFamily: "var(--font-body), sans-serif" }}>
@@ -167,7 +169,27 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t text-xs flex flex-col sm:flex-row justify-between gap-2" style={{ borderColor: "rgba(93,138,108,0.15)", color: "#3C4A40", fontFamily: "var(--font-body), sans-serif" }}>
+        {/* Governing documents */}
+        <nav aria-label="Governing documents" className="mt-10 pt-6 border-t" style={{ borderColor: "rgba(93,138,108,0.15)" }}>
+          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#3C4A40", fontFamily: "var(--font-body), sans-serif" }}>
+            Our documents
+          </p>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2">
+            {[
+              { label: "Rules of Association", href: "/governance/rules" },
+              ...policies.map((p) => ({ label: p.title, href: `/governance/policies/${p.slug}` })),
+              { label: "All policies", href: "/governance/policies" },
+            ].map((d) => (
+              <li key={d.href}>
+                <Link href={d.href} className="text-xs hover:opacity-70 transition-opacity" style={{ color: "#87988A", textDecoration: "none", fontFamily: "var(--font-body), sans-serif" }}>
+                  {d.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="mt-6 pt-6 border-t text-xs flex flex-col sm:flex-row justify-between gap-2" style={{ borderColor: "rgba(93,138,108,0.15)", color: "#3C4A40", fontFamily: "var(--font-body), sans-serif" }}>
           <p>© {new Date().getFullYear()} The Wandering Man Inc. Geelong, Victoria, Australia. ABN 707 257 545 13</p>
           <a href="mailto:hello@thewanderingman.com.au" className="hover:opacity-70 transition-opacity" style={{ color: "#5C6B60", textDecoration: "none" }}>
             hello@thewanderingman.com.au

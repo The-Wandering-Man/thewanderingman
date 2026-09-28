@@ -20,6 +20,15 @@ const resources = [
   { name: "ADIS", number: "1800 250 015", tel: "1800250015", what: "24/7 alcohol and other drug support" },
   { name: "QLife", number: "1800 184 527", tel: "1800184527", what: "LGBTIQ+ peer support, 3pm–midnight" },
   { name: "Black Dog Institute", number: "blackdoginstitute.org.au", tel: null, href: "https://www.blackdoginstitute.org.au", what: "Evidence-based tools and self-help resources" },
+  { name: "13YARN", number: "13 92 76", tel: "139276", what: "24/7 crisis support for Aboriginal and Torres Strait Islander people" },
+  { name: "Open Arms", number: "1800 011 046", tel: "1800011046", what: "24/7 counselling for veterans and their families" },
+  { name: "Griefline", number: "1300 845 745", tel: "1300845745", what: "Grief and loss support, 8am-8pm every day" },
+  { name: "Support After Suicide", number: "supportaftersuicide.org.au", tel: null, href: "https://www.supportaftersuicide.org.au", what: "Resources and groups for people bereaved by suicide" },
+  { name: "PANDA", number: "1300 726 306", tel: "1300726306", what: "Perinatal anxiety and depression, for new and expecting dads too" },
+  { name: "Butterfly Foundation", number: "1800 33 4673", tel: "1800334673", what: "Eating disorders and body image support, 8am-midnight" },
+  { name: "Counselling Online", number: "1800 888 236", tel: "1800888236", what: "24/7 alcohol and drug counselling by phone or chat" },
+  { name: "Quitline", number: "13 78 48", tel: "137848", what: "Support to quit smoking or vaping" },
+  { name: "GROW Australia", number: "1800 558 268", tel: "1800558268", what: "Peer support groups for mental wellbeing" },
 ];
 
 export default function ResourcesPage() {
