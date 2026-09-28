@@ -35,6 +35,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${siteUrl}/sponsors/grovedale-meats`, lastModified: new Date(), priority: 0.7 },
     { url: `${siteUrl}/for-professionals`, lastModified: new Date(), priority: 0.7 },
     { url: `${siteUrl}/governance`, lastModified: new Date(), priority: 0.5 },
+    { url: `${siteUrl}/governance/rules`, lastModified: new Date(), priority: 0.5 },
   ];
 
   const postRoutes: MetadataRoute.Sitemap = (posts ?? []).map((post) => ({

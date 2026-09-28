@@ -11,6 +11,16 @@ const crisisLines = [
   { name: "Kids Helpline", number: "1800 55 1800", tel: "1800551800" },
 ];
 
+const legalLinks = [
+  { label: "Governance & Policies", href: "/governance" },
+  { label: "Rules of Association", href: "/governance/rules" },
+  { label: "Core Values", href: "/governance#core-values" },
+  { label: "Privacy", href: "/governance#privacy" },
+  { label: "Child Safety", href: "/governance#child-safety" },
+  { label: "Health & Safety", href: "/governance#whs" },
+  { label: "Whistleblower", href: "/governance#whistleblower" },
+];
+
 const socialLinks = [
   {
     label: "Facebook",
@@ -173,6 +183,17 @@ export default function Footer() {
             hello@thewanderingman.com.au
           </a>
         </div>
+        <nav aria-label="Governance and policies" className="mt-3">
+          <ul className="flex flex-wrap gap-x-4 gap-y-1 text-xs">
+            {legalLinks.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="hover:opacity-70 transition-opacity" style={{ color: "#5C6B60", textDecoration: "none", fontFamily: "var(--font-body), sans-serif" }}>
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
         <p className="mt-3 text-xs" style={{ color: "#3C4A40", fontFamily: "var(--font-body), sans-serif" }}>
           From Geelong, with{" "}
           <span aria-hidden="true" style={{ color: "#5D8A6C" }}>♥</span>
