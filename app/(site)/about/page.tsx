@@ -44,9 +44,11 @@ const committee: { initial: string; name: string; role: string; bio?: string }[]
   },
   { initial: "NP", name: "Neill Price", role: "Committee Member" },
   { initial: "CL", name: "Chris Link", role: "Committee Member" },
-  { initial: "RF", name: "Robyn Frank", role: "Committee Member" },
+  { initial: "RP", name: "Robyn Parmenter", role: "Committee Member" },
   { initial: "MM", name: "Mark Melnyk", role: "Committee Member" },
   { initial: "RB", name: "Ray Booth", role: "Committee Member" },
+  { initial: "AE", name: "Abby Ellery", role: "Committee Member" },
+  { initial: "AF", name: "Alex Fernandez", role: "Committee Member" },
 ];
 
 const openRoles = ["Events Coordinator", "Community Support", "Communications", "Event Support"];

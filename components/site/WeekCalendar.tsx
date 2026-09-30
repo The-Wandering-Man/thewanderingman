@@ -8,14 +8,19 @@ const TZ = "Australia/Melbourne";
 // from this date - if the group walks the "other" Sunday, change it here.
 const SUNDAY_WALK_ANCHOR = "2026-08-09";
 
-// One-off dates the committee has locked in (YYYY-MM-DD).
-const ONE_OFFS: { date: string; time: string; title: string; location: string }[] = [
-  { date: "2026-08-07", time: "All day", title: "Bunnings BBQ Fundraiser", location: "Bunnings - grab a snag, back the cause" },
-  { date: "2026-08-14", time: "All day", title: "Bunnings Sausage Sizzle Fundraiser", location: "Bunnings - grab a snag, back the cause" },
-  { date: "2026-09-03", time: "All day", title: "Bunnings Sausage Sizzle Fundraiser", location: "Bunnings - grab a snag, back the cause" },
-  { date: "2026-10-08", time: "All day", title: "Bunnings Sausage Sizzle Fundraiser", location: "Bunnings - grab a snag, back the cause" },
-  { date: "2026-11-06", time: "All day", title: "Bunnings Sausage Sizzle Fundraiser", location: "Bunnings - grab a snag, back the cause" },
-  { date: "2026-12-25", time: "12:00pm-3:00pm", title: "Orphan Christmas BBQ Lunch", location: "For any man with nowhere to be on Christmas Day" },
+// One-off dates the committee has locked in (YYYY-MM-DD). Synced from the
+// committee's Zoho events calendar. sort is 24h start time for ordering.
+const ONE_OFFS: { date: string; time: string; sort: string; title: string; location: string }[] = [
+  { date: "2026-10-08", time: "8:30am-4:00pm", sort: "08:30", title: "Bunnings Sausage Sizzle Fundraiser", location: "Bunnings Waurn Ponds - grab a snag, back the cause" },
+  { date: "2026-10-17", time: "11:00am-1:00pm", sort: "11:00", title: "Coffee Catch-Up at Westfield", location: "7 Origins, Westfield Geelong (near Big W) - drop in, coffee's on us" },
+  { date: "2026-10-20", time: "6:30pm-8:30pm", sort: "18:30", title: "Breathwork & Pizza", location: "The Breath Bar, Malop St" },
+  { date: "2026-10-21", time: "8:30am-4:00pm", sort: "08:30", title: "Bunnings Sausage Sizzle - Geelong Cup Day", location: "Bunnings Waurn Ponds - grab a snag, back the cause" },
+  { date: "2026-10-25", time: "1:00pm-3:30pm", sort: "13:00", title: "Monthly BBQ", location: "Burgers, snags and coffee - details on our socials" },
+  { date: "2026-11-06", time: "8:30am-4:00pm", sort: "08:30", title: "Bunnings Sausage Sizzle Fundraiser", location: "Bunnings Waurn Ponds - grab a snag, back the cause" },
+  { date: "2026-11-29", time: "9:00am-1:00pm", sort: "09:00", title: "Wyndham Toy Run BBQ", location: "Brothers on K, 1 K Road, Werribee South" },
+  { date: "2026-12-04", time: "5:00pm-9:00pm", sort: "17:00", title: "Newcomb & District Cricket Club Twilight Market", location: "141 Coppards Rd, Moolap - burgers, snags and drinks" },
+  { date: "2026-12-18", time: "8:30am-4:00pm", sort: "08:30", title: "Bunnings Sausage Sizzle Fundraiser", location: "Bunnings Waurn Ponds - grab a snag, back the cause" },
+  { date: "2026-12-25", time: "12:00pm-3:00pm", sort: "12:00", title: "Orphan Christmas BBQ Lunch", location: "For any man with nowhere to be on Christmas Day" },
 ];
 
 interface Entry {
@@ -107,7 +112,7 @@ export default async function WeekCalendar({ weekOffset = 0 }: { weekOffset?: nu
     if (o.date >= monday && o.date <= sunday) {
       push(o.date, {
         time: o.time,
-        sort: o.time === "All day" ? "00:00" : "09:00",
+        sort: o.sort,
         title: o.title,
         location: o.location,
       });
