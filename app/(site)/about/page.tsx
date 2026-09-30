@@ -38,7 +38,7 @@ const committee: { initial: string; name: string; role: string; bio?: string }[]
   },
   {
     initial: "MH",
-    name: "Micheal Hoff",
+    name: "Michael Hoff",
     role: "Coffee Catch-Up Host",
     bio: "Hoffy is the first face you'll see at the Wednesday Coffee Catch-Up. He makes sure no bloke stands at the door wondering if he's in the right place.",
   },

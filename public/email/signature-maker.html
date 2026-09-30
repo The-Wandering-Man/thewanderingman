@@ -16,13 +16,13 @@ button.primary{background:var(--green);color:#fff}#msg{margin-top:10px;color:var
 #preview{padding:8px 0;overflow-x:auto}ol{margin:0;padding-left:20px;line-height:1.6}code{background:#EEF1EE;padding:1px 5px;border-radius:5px}
 </style></head><body><main>
 <h1>Signature maker</h1>
-<p class="sub">Fill in someone's details, then copy their signature into Zoho.</p>
+<p class="sub">Fill in someone's details, then copy their signature into Zoho. Everyone starts as Committee Member - change the role to whatever suits you.</p>
 <div class="card">
   <label for="pick">Quick fill</label>
   <select id="pick"><option value="">Choose a committee member (optional)</option></select>
   <div class="grid">
-    <div><label for="name">Name</label><input id="name" value="Jamie Hobbs"></div>
-    <div><label for="role">Role</label><input id="role" value="Founder"></div>
+    <div><label for="name">Name</label><input id="name" placeholder="Your Name"></div>
+    <div><label for="role">Role</label><input id="role" value="Committee Member"></div>
     <div><label for="phone">Mobile</label><input id="phone" placeholder="04xx xxx xxx"></div>
     <div><label for="email">Email</label><input id="email" placeholder="name@thewanderingman.com.au"></div>
   </div>
@@ -40,10 +40,10 @@ button.primary{background:var(--green);color:#fff}#msg{margin-top:10px;color:var
 </main>
 <script>
 const TPL = "<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;color:#24352B;\">\n  <tr>\n    <td style=\"padding:0 16px 0 0;vertical-align:middle;\">\n      <a href=\"https://www.thewanderingman.com.au\" style=\"text-decoration:none;\">\n        <img src=\"https://www.thewanderingman.com.au/email/twm-signature-logo.png\" width=\"88\" height=\"88\" alt=\"The Wandering Man\" style=\"display:block;border:0;width:88px;height:88px;border-radius:44px;\">\n      </a>\n    </td>\n    <td style=\"padding:0 0 0 16px;vertical-align:middle;border-left:3px solid #5D8A6C;\">\n      <p style=\"margin:0;font-size:17px;line-height:22px;font-weight:bold;color:#0D6343;\">{{NAME}}</p>\n      <p style=\"margin:2px 0 8px;font-size:13px;line-height:18px;color:#5C6B60;\">{{ROLE}} &middot; The Wandering Man</p>\n      <p style=\"margin:0;font-size:13px;line-height:20px;color:#24352B;\">\n        <span style=\"color:#0D6343;font-weight:bold;\">M</span>&nbsp;<a href=\"tel:{{PHONE}}\" style=\"color:#24352B;text-decoration:none;\">{{PHONE}}</a>\n        &nbsp;&nbsp;<span style=\"color:#0D6343;font-weight:bold;\">E</span>&nbsp;<a href=\"mailto:{{EMAIL}}\" style=\"color:#24352B;text-decoration:none;\">{{EMAIL}}</a>\n      </p>\n      <p style=\"margin:0;font-size:13px;line-height:20px;\">\n        <a href=\"https://www.thewanderingman.com.au\" style=\"color:#0D6343;font-weight:bold;text-decoration:none;\">thewanderingman.com.au</a>\n        <span style=\"color:#B8C2BA;\">&nbsp;|&nbsp;</span><a href=\"https://www.facebook.com/profile.php?id=100086297627044\" style=\"color:#5C6B60;text-decoration:none;\">Facebook</a>\n        <span style=\"color:#B8C2BA;\">&nbsp;|&nbsp;</span><a href=\"https://www.instagram.com/thewanderingmanofficial/\" style=\"color:#5C6B60;text-decoration:none;\">Instagram</a>\n      </p>\n    </td>\n  </tr>\n  <tr>\n    <td colspan=\"2\" style=\"padding:12px 0 0;\">\n      <p style=\"margin:0;font-size:13px;line-height:18px;font-style:italic;font-weight:bold;color:#0D6343;\">No man walks alone.</p>\n      <p style=\"margin:2px 0 0;font-size:11px;line-height:16px;color:#87988A;\">Need to talk right now? Lifeline <a href=\"tel:131114\" style=\"color:#87988A;text-decoration:none;\">13 11 14</a> &middot; MensLine <a href=\"tel:1300789978\" style=\"color:#87988A;text-decoration:none;\">1300 789 978</a> &middot; Emergency <a href=\"tel:000\" style=\"color:#87988A;text-decoration:none;\">000</a></p>\n    </td>\n  </tr>\n</table>";
-const PEOPLE = [["Jamie Hobbs","Founder"],["Micheal Hoff","Coffee Host"],["Neill Price","Committee Member"],["Chris Link","Committee Member"],["Robyn Frank","Committee Member"],["Mark Melnyk","Committee Member"],["Ray Booth","Committee Member"]];
+const PEOPLE = ["Jamie Hobbs","Michael Hoff","Neill Price","Chris Link","Robyn Frank","Mark Melnyk","Ray Booth"];
 const $ = id => document.getElementById(id);
 const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-PEOPLE.forEach(([n,r]) => { const o=document.createElement("option"); o.value=n+"|"+r; o.textContent=n+" - "+r; $("pick").appendChild(o); });
+PEOPLE.forEach(n => { const o=document.createElement("option"); o.value=n; o.textContent=n; $("pick").appendChild(o); });
 function build(){
   const name=esc($("name").value.trim()||"Your Name"), role=esc($("role").value.trim()||"Role");
   const phone=$("phone").value.trim()||"04xx xxx xxx", email=$("email").value.trim()||"name@thewanderingman.com.au";
@@ -53,7 +53,7 @@ function build(){
 }
 function render(){ $("preview").innerHTML = build(); }
 ["name","role","phone","email"].forEach(id => $(id).addEventListener("input", render));
-$("pick").addEventListener("change", e => { if(!e.target.value) return; const [n,r]=e.target.value.split("|"); $("name").value=n; $("role").value=r; render(); });
+$("pick").addEventListener("change", e => { if(!e.target.value) return; $("name").value=e.target.value; render(); });
 function say(t){ $("msg").textContent=t; setTimeout(()=>$("msg").textContent="",3000); }
 $("copyRich").onclick = async () => { const h=build(); try { await navigator.clipboard.write([new ClipboardItem({"text/html":new Blob([h],{type:"text/html"}),"text/plain":new Blob([$("name").value],{type:"text/plain"})})]); say("Copied. Paste it into the Zoho signature box."); } catch { say("Copy blocked by the browser. Use Copy HTML code instead."); } };
 $("copyHtml").onclick = async () => { try { await navigator.clipboard.writeText(build()); say("HTML copied."); } catch { say("Copy blocked by the browser."); } };
