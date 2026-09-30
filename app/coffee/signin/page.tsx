@@ -43,7 +43,11 @@ export default function CoffeeSignInPage() {
           Coffee catch-up
         </h1>
 
-        <SignInForm event="coffee" doneText="You're signed in. Grab a coffee and pull up a chair." />
+        <SignInForm
+          event="coffee"
+          intro="Sign in so we know you made it. Every name helps us watch our coffee crew grow, one catch-up at a time. Nothing's compulsory."
+          doneText="You're signed in. Grab a coffee and pull up a chair."
+        />
       </div>
     </main>
   );

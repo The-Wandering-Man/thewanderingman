@@ -23,9 +23,11 @@ const inputStyle = {
 export default function SignInForm({
   event = "bbq",
   doneText = "You're signed in. Grab a plate and pull up a seat.",
+  intro = "Sign in so we know you're here. Nothing's compulsory, but it helps us look after everyone (and keeps our insurance happy).",
 }: {
   event?: SignInEvent;
   doneText?: string;
+  intro?: string;
 }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -102,8 +104,7 @@ export default function SignInForm({
   return (
     <>
       <p className="mt-3 text-center" style={{ fontSize: "16px", color: "#87988A" }}>
-        Sign in so we know you're here. Nothing's compulsory, but it helps
-        us look after everyone (and keeps our insurance happy).
+        {intro}
       </p>
 
       <form onSubmit={handleSubmit} noValidate className="mt-7 w-full flex flex-col gap-4">
