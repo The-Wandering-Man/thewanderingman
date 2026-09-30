@@ -45,7 +45,8 @@ export default function CoffeeSignInPage() {
 
         <SignInForm
           event="coffee"
-          intro="Sign in so we know you made it. Every name helps us watch our coffee crew grow, one catch-up at a time. Nothing's compulsory."
+          lead="Sign in so we know you made it."
+          intro="Nothing's compulsory, but every name helps us watch our coffee crew grow, one catch-up at a time."
           doneText="You're signed in. Grab a coffee and pull up a chair."
         />
       </div>

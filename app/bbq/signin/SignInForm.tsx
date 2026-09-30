@@ -23,10 +23,12 @@ const inputStyle = {
 export default function SignInForm({
   event = "bbq",
   doneText = "You're signed in. Grab a plate and pull up a seat.",
-  intro = "Sign in so we know you're here. Nothing's compulsory, but it helps us look after everyone (and keeps our insurance happy).",
+  lead = "Sign in so we know you're here.",
+  intro = "Nothing's compulsory, but it helps us look after everyone (and keeps our insurance happy).",
 }: {
   event?: SignInEvent;
   doneText?: string;
+  lead?: string;
   intro?: string;
 }) {
   const [name, setName] = useState("");
@@ -103,7 +105,16 @@ export default function SignInForm({
 
   return (
     <>
-      <p className="mt-3 text-center" style={{ fontSize: "16px", color: "#87988A" }}>
+      <p
+        className="mt-4 text-center"
+        style={{ fontSize: "19px", fontWeight: 600, lineHeight: 1.35, color: "#F4F1EA" }}
+      >
+        {lead}
+      </p>
+      <p
+        className="mt-2 text-center"
+        style={{ fontSize: "16px", lineHeight: 1.5, color: "#87988A", textWrap: "balance" }}
+      >
         {intro}
       </p>
 
