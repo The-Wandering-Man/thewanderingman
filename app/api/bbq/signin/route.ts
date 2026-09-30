@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/server";
 import { melbourneDate } from "@/lib/melbourne-day";
+import { isSignInEvent } from "@/lib/signin-events";
 
 // Matches the client-side check in SignInForm. Deliberately loose: the point
 // is to catch typos at the door, not to police valid addresses.
@@ -22,10 +23,15 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Something went wrong. Try again." }, { status: 400 });
   }
 
-  const raw = (body ?? {}) as { name?: unknown; email?: unknown; phone?: unknown };
+  const raw = (body ?? {}) as { name?: unknown; email?: unknown; phone?: unknown; event?: unknown };
   const name = clean(raw.name, 200);
   const email = clean(raw.email, 320)?.toLowerCase() ?? null;
   const phone = clean(raw.phone, 40);
+  // Older cached copies of the BBQ page send no event, so default to it.
+  const event = raw.event === undefined ? "bbq" : raw.event;
+  if (!isSignInEvent(event)) {
+    return NextResponse.json({ error: "Something went wrong. Try again." }, { status: 400 });
+  }
 
   if (email && !EMAIL_RE.test(email)) {
     return NextResponse.json(
@@ -37,11 +43,12 @@ export async function POST(req: Request) {
   const supabase = await createServiceClient();
   // Send event_date explicitly rather than leaning on the column default, so
   // the day is decided in Melbourne time on our side either way.
-  const row = { name, email, phone, event_date: melbourneDate() };
-  // With an email, a second scan on the same day updates the existing row.
+  const row = { name, email, phone, event, event_date: melbourneDate() };
+  // With an email, a second scan of the same event on the same day updates
+  // the existing row.
   // Without one there's nothing to match on, so it's a plain insert.
   const { error } = email
-    ? await supabase.from("bbq_signins").upsert(row, { onConflict: "email,event_date" })
+    ? await supabase.from("bbq_signins").upsert(row, { onConflict: "email,event_date,event" })
     : await supabase.from("bbq_signins").insert(row);
 
   if (error) {

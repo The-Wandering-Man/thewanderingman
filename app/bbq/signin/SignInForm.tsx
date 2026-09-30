@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { SignInEvent } from "@/lib/signin-events";
 
 // Same check the route handler runs. Loose on purpose - catch typos, not
 // exotic-but-valid addresses. Only applied when an email is entered.
@@ -19,7 +20,13 @@ const inputStyle = {
   color: "#24352B",
 };
 
-export default function SignInForm() {
+export default function SignInForm({
+  event = "bbq",
+  doneText = "You're signed in. Grab a plate and pull up a seat.",
+}: {
+  event?: SignInEvent;
+  doneText?: string;
+}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -41,7 +48,7 @@ export default function SignInForm() {
       const res = await fetch("/api/bbq/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone }),
+        body: JSON.stringify({ name, email, phone, event }),
       });
       const data = await res.json().catch(() => null);
 
@@ -86,7 +93,7 @@ export default function SignInForm() {
             color: "#F4F1EA",
           }}
         >
-          You're signed in. Grab a plate and pull up a seat.
+          {doneText}
         </p>
       </div>
     );

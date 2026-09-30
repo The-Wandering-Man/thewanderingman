@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import SignInForm from "./SignInForm";
+import SignInForm from "../../bbq/signin/SignInForm";
 
 export const metadata: Metadata = {
-  title: "Event Sign-In",
-  description: "Sign in at the door of a Wandering Man event.",
+  title: "Coffee Catch-Up Sign-In",
+  description: "Sign in at a Wandering Man coffee catch-up.",
   // Reached by scanning the QR at the door, not by search.
   robots: { index: false, follow: false },
 };
 
-export default function BbqSignInPage() {
+export default function CoffeeSignInPage() {
   return (
     <main
       className="min-h-dvh flex flex-col items-center justify-center px-6 py-8"
@@ -40,10 +40,10 @@ export default function BbqSignInPage() {
             color: "#F4F1EA",
           }}
         >
-          Welcome in
+          Coffee catch-up
         </h1>
 
-        <SignInForm event="bbq" />
+        <SignInForm event="coffee" doneText="You're signed in. Grab a coffee and pull up a chair." />
       </div>
     </main>
   );
