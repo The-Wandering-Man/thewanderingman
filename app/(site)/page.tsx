@@ -130,13 +130,13 @@ export default async function HomePage() {
                 body: "Snags and burgers on the grill - meat by Grovedale Meats - open conversation, and a good crowd. Bring a mate, or come solo.",
               },
               {
-                href: "/events#swim",
-                img: "/2809swim.jpg",
-                alt: "The Wandering Swim at Eastern Beach Tower, Geelong",
-                badge: "Weekly · Saturday mornings",
-                title: "Wandering Swim",
-                time: "Every Saturday, 7:00am · Eastern Beach Tower",
-                body: "The Wandering Swim at the Tower, Eastern Beach. Cold water, good company, and a yarn on the beach after. Not keen on a dip? Come for the yarn.",
+                href: "/events#sunday-stroll",
+                img: "/man-walk.png",
+                alt: "The crew with coffees on the Geelong waterfront after a walk",
+                badge: "Fortnightly · Sunday mornings",
+                title: "Sunday River Walk",
+                time: "Every other Sunday, 9:00am · Along the Barwon",
+                body: "A stroll along the river, then a coffee and a chat at Barwon Edge. Slow it down, check in, no pressure.",
               },
             ].map((card) => (
               <Link

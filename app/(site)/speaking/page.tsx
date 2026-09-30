@@ -76,7 +76,7 @@ export default function SpeakingPage() {
               {
                 num: "03",
                 heading: "A door that stays open",
-                body: "Every attendee leaves knowing there's a free weekly community - the swim, the coffee, the BBQ - waiting for them or their mates, long after the talk ends.",
+                body: "Every attendee leaves knowing there's a free weekly community - the coffee, the walks, the BBQs - waiting for them or their mates, long after the talk ends.",
               },
             ].map((item) => (
               <div key={item.num} style={{ background: "#FFFFFF", border: "1px solid #E5DCC9", borderRadius: 14, padding: "28px 30px" }}>
@@ -134,7 +134,7 @@ export default function SpeakingPage() {
       <section style={{ background: "#E6DECC", padding: "80px 28px" }}>
         <div style={{ maxWidth: 780, margin: "0 auto", textAlign: "center" }}>
           <h2 style={{ margin: "0 0 14px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(28px, 3.6vw, 40px)", lineHeight: 1.15, color: "#24352B" }}>Serious about your people? Let&apos;s talk.</h2>
-          <p style={{ margin: "0 0 30px auto", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#5C6B60", maxWidth: "50ch" }}>One email starts it. And every dollar goes back into free swims, coffees and BBQs for the men of Geelong.</p>
+          <p style={{ margin: "0 0 30px auto", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#5C6B60", maxWidth: "50ch" }}>One email starts it. And every dollar goes back into free coffees, walks and BBQs for the men of Geelong.</p>
           <a
             href="mailto:hello@thewanderingman.com.au?subject=Book a talk"
             style={{ display: "inline-block", background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 19, textDecoration: "none", padding: "18px 30px", borderRadius: 10 }}

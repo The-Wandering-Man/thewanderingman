@@ -5,7 +5,7 @@ import WeekCalendar from "@/components/site/WeekCalendar";
 export const metadata: Metadata = {
   title: "This Week at The Wandering Man - Geelong Men's Events Calendar",
   description:
-    "What's on this week at The Wandering Man - coffee catch-ups, the Saturday swim, river walks, BBQs and more. Free men's events in Geelong. No bookings, just show up.",
+    "What's on this week at The Wandering Man - coffee catch-ups, river walks, BBQs and more. Free men's events in Geelong. No bookings, just show up.",
   alternates: { canonical: "/calendar" },
 };
 

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 const navLinks = [
+  { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Events", href: "/events" },
   { label: "Get help", href: "/resources" },
@@ -41,7 +42,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -63,7 +64,7 @@ export default function Header() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 rounded"
+          className="lg:hidden p-2 rounded"
           aria-label="Toggle menu"
           onClick={() => setOpen(!open)}
         >
@@ -75,7 +76,7 @@ export default function Header() {
 
       {/* Mobile nav */}
       {open && (
-        <div className="md:hidden px-5 pb-5 border-t" style={{ borderColor: "rgba(93,138,108,0.2)" }}>
+        <div className="lg:hidden px-5 pb-5 border-t" style={{ borderColor: "rgba(93,138,108,0.2)" }}>
           <nav className="flex flex-col gap-1 pt-3">
             {navLinks.map((link) => (
               <Link

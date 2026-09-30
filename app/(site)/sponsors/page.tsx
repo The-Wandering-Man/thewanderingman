@@ -15,7 +15,7 @@ export default function SponsorsPage() {
       <header style={{ background: "#192821", padding: "72px 28px 64px" }}>
         <div style={{ maxWidth: 1120, margin: "0 auto" }}>
           <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 15, color: "#79A886", letterSpacing: "0.16em", textTransform: "uppercase" }}>Our sponsors · Locals backing locals</p>
-          <h1 style={{ margin: "0 0 18px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(34px, 5vw, 56px)", lineHeight: 1.1, color: "#F4F1EA", maxWidth: "20ch" }}>Every free swim, coffee and BBQ has a local business behind it.</h1>
+          <h1 style={{ margin: "0 0 18px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(34px, 5vw, 56px)", lineHeight: 1.1, color: "#F4F1EA", maxWidth: "20ch" }}>Every free coffee, walk and BBQ has a local business behind it.</h1>
           <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: "clamp(19px, 2.2vw, 22px)", lineHeight: 1.55, color: "#CBD5CB", maxWidth: "58ch" }}>Our sponsors keep community events free for every man in Geelong. Back them the way they back us - and mention The Wandering Man when you do.</p>
         </div>
       </header>

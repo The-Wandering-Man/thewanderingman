@@ -162,7 +162,7 @@ export default function ResourcesPage() {
         <div style={{ maxWidth: 780, margin: "0 auto", textAlign: "center" }}>
           <h2 style={{ margin: "0 0 14px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(26px, 3.4vw, 36px)", lineHeight: 1.2, color: "#24352B" }}>And when you&apos;re ready - no rush -</h2>
           <p style={{ margin: "0 0 28px auto", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#5C6B60", maxWidth: "52ch" }}>
-            there&apos;s a coffee on Wednesday (coffee&apos;s on us), a swim on Saturday morning, and a river stroll every other Sunday - all with blokes who&apos;ve made calls like that themselves. No sign-up, no story required. Just show up.
+            there&apos;s a coffee on Wednesday (coffee&apos;s on us) and a river stroll every other Sunday - all with blokes who&apos;ve made calls like that themselves. No sign-up, no story required. Just show up.
           </p>
           <Link
             href="/events"

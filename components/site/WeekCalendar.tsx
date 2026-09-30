@@ -83,18 +83,11 @@ export default async function WeekCalendar({ weekOffset = 0 }: { weekOffset?: nu
 
   // Weekly rhythm
   const wednesday = addDays(monday, 2);
-  const saturday = addDays(monday, 5);
   push(wednesday, {
     time: "12:00pm-1:30pm",
     sort: "12:00",
     title: "Wednesday Coffee Catch-Up",
     location: "Orchid & Co, 26 Garden St, East Geelong - coffee's on us",
-  });
-  push(saturday, {
-    time: "7:00am",
-    sort: "07:00",
-    title: "The Wandering Swim",
-    location: "The Tower, Eastern Beach - swimming optional, yarns guaranteed",
   });
 
   // Fortnightly Sunday river walk

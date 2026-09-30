@@ -8,7 +8,7 @@ import WeekCalendar from "@/components/site/WeekCalendar";
 export const metadata: Metadata = {
   title: "Events - The Wandering Man, Geelong",
   description:
-    "Join us at an upcoming men's mental health event in Geelong. Weekly coffee catch-ups, swims, BBQs and more. Free and open to all men.",
+    "Join us at an upcoming men's mental health event in Geelong. Weekly coffee catch-ups, river walks, BBQs and more. Free and open to all men.",
   alternates: { canonical: "/events" },
 };
 
@@ -33,7 +33,7 @@ export default async function EventsPage() {
           <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 15, color: "#79A886", letterSpacing: "0.16em", textTransform: "uppercase" }}>What&apos;s on · Geelong</p>
           <h1 style={{ margin: "0 0 18px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(34px, 5vw, 56px)", lineHeight: 1.1, color: "#F4F1EA", maxWidth: "18ch" }}>No booking. No cost. No story required.</h1>
           <p style={{ margin: "0 0 22px", fontFamily: "var(--font-body), sans-serif", fontSize: "clamp(19px, 2.2vw, 22px)", lineHeight: 1.55, color: "#CBD5CB", maxWidth: "58ch" }}>
-            There&apos;s a rhythm to the week - coffee on Wednesday, swim on Saturday, river stroll every other Sunday. Miss one, come to the next. The whole point is that we&apos;re always there.
+            There&apos;s a rhythm to the week - coffee on Wednesday, a river stroll every other Sunday, BBQs through the month. Miss one, come to the next. The whole point is that we&apos;re always there.
           </p>
           <a href="#calendar" style={{ display: "inline-block", background: "#5D8A6C", color: "#111C16", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "14px 22px", borderRadius: 10 }}>
             This week at a glance ↓
@@ -92,26 +92,6 @@ export default async function EventsPage() {
             </p>
             <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 17, lineHeight: 1.6, color: "#5C6B60" }}>You&apos;ll also find us running the BBQ at local footy days - like the South Barwon FNC games at McDonald Reserve, Belmont.</p>
           </div>
-        </div>
-      </section>
-
-      {/* The Wandering Swim */}
-      <section id="swim" style={{ background: "#F4F1EA", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
-        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
-          <div>
-            <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.14em", textTransform: "uppercase" }}>Every Saturday · Free · Swimming optional</p>
-            <h2 style={{ margin: "0 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>The Wandering Swim</h2>
-            <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 22, lineHeight: 1.35, color: "#41604F" }}>
-              Every Saturday, 7:00am<br />
-              <span style={{ fontWeight: 400, fontSize: 19, color: "#5C6B60" }}>The Tower, Eastern Beach, Geelong Waterfront</span>
-            </p>
-            <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}>
-              Shake off the week. Clear the head. Start the weekend strong. The water&apos;s &ldquo;Geelong warm&rdquo; - big laughs, solid blokes, no egos, just good energy and genuine connection.
-            </p>
-            <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 17, lineHeight: 1.6, color: "#5C6B60" }}>Not keen on a dip? No dramas at all. Come down for a yarn, cheer the boys on, and be part of the crew. Presence matters.</p>
-          </div>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/2809swim.jpg" alt="The swim crew at the Tower, Eastern Beach" style={{ width: "100%", height: 340, objectFit: "cover", borderRadius: 16, display: "block" }} />
         </div>
       </section>
 

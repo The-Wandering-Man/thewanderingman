@@ -55,7 +55,7 @@ const policies = [
     title: "Workplace Health & Safety",
     body: (
       <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.6, color: "#46534A", maxWidth: "68ch" }}>
-        Our events are run with care: risk assessments for BBQs and fundraisers, food-safety practice on the grill, and clear expectations for volunteers. Water-based activities like the Wandering Swim are always optional, at your own assessment, and never run alone.
+        Our events are run with care: risk assessments for BBQs and fundraisers, food-safety practice on the grill, and clear expectations for volunteers.
       </p>
     ),
   },

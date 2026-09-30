@@ -35,7 +35,7 @@ export default function ForProfessionalsPage() {
                   "Emotionally stable and ready to take a step toward connection",
                   "Socially isolated, lonely, or lacking a support network",
                   "Recovering from a rough patch and needing somewhere to belong alongside (or after) clinical care",
-                  "Unlikely to engage with formal services, but open to a coffee or a swim with other blokes",
+                  "Unlikely to engage with formal services, but open to a coffee or a walk with other blokes",
                 ].map((item) => (
                   <li key={item} style={{ display: "flex", gap: 12, fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.55, color: "#46534A" }}>
                     <span style={{ color: "#4E7A5E", fontWeight: 700, flex: "none" }}>✓</span>

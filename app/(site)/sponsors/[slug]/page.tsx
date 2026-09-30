@@ -380,8 +380,8 @@ export default async function SponsorPage({
             <p className="text-base leading-relaxed mb-8" style={{ color: "rgba(248,247,244,0.6)" }}>
               When you choose a business that backs The Wandering Man, you're part of something
               bigger. You're supporting a local community that's quietly changing how men in
-              Geelong think about their mental health - one walk, one conversation, one Saturday
-              morning at a time.
+              Geelong think about their mental health - one walk, one coffee, one conversation
+              at a time.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
