@@ -4,10 +4,6 @@ import { melbourneDate, melbourneMidnightUTC } from "@/lib/melbourne-day";
 
 const TZ = "Australia/Melbourne";
 
-// A Sunday The Wandering Man river walk is on. Fortnight parity is computed
-// from this date - if the group walks the "other" Sunday, change it here.
-const SUNDAY_WALK_ANCHOR = "2026-08-09";
-
 // One-off dates the committee has locked in (YYYY-MM-DD). Synced from the
 // committee's Zoho events calendar. sort is 24h start time for ordering.
 const ONE_OFFS: { date: string; time: string; sort: string; title: string; location: string }[] = [
@@ -38,12 +34,6 @@ function addDays(dateStr: string, n: number): string {
 
 function dayOfWeek(dateStr: string): number {
   return new Date(`${dateStr}T12:00:00Z`).getUTCDay(); // 0 = Sunday
-}
-
-function diffDays(a: string, b: string): number {
-  return Math.round(
-    (new Date(`${b}T12:00:00Z`).getTime() - new Date(`${a}T12:00:00Z`).getTime()) / 86_400_000
-  );
 }
 
 function formatDay(dateStr: string) {
@@ -89,16 +79,6 @@ export default async function WeekCalendar({ weekOffset = 0 }: { weekOffset?: nu
     title: "Wednesday Coffee Catch-Up",
     location: "Orchid & Co, 26 Garden St, East Geelong - coffee's on us",
   });
-
-  // Fortnightly Sunday river walk
-  if (diffDays(SUNDAY_WALK_ANCHOR, sunday) % 14 === 0) {
-    push(sunday, {
-      time: "9:00am",
-      sort: "09:00",
-      title: "Sunday River Walk & Coffee",
-      location: "Along the Barwon - coffee at Barwon Edge after",
-    });
-  }
 
   // One-off fixtures
   for (const o of ONE_OFFS) {

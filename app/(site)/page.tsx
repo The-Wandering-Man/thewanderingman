@@ -129,15 +129,6 @@ export default async function HomePage() {
                 time: "Dates on our socials & newsletter",
                 body: "Snags and burgers on the grill - meat by Grovedale Meats - open conversation, and a good crowd. Bring a mate, or come solo.",
               },
-              {
-                href: "/events#sunday-stroll",
-                img: "/man-walk.png",
-                alt: "The crew with coffees on the Geelong waterfront after a walk",
-                badge: "Fortnightly · Sunday mornings",
-                title: "Sunday River Walk",
-                time: "Every other Sunday, 9:00am · Along the Barwon",
-                body: "A stroll along the river, then a coffee and a chat at Barwon Edge. Slow it down, check in, no pressure.",
-              },
             ].map((card) => (
               <Link
                 key={card.title}
