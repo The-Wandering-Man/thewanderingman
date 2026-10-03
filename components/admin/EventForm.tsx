@@ -120,6 +120,7 @@ export default function EventForm({ initial }: EventFormProps) {
             <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
             <option value="special">Special</option>
+            <option value="workplace">Workplace</option>
           </select>
         </div>
         <div className="flex items-end pb-1">

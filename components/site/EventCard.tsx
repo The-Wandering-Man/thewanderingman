@@ -19,6 +19,7 @@ const typeColour: Record<string, { bg: string; color: string }> = {
   weekly: { bg: "#E8F5E9", color: "#2E7D32" },
   monthly: { bg: "#E3F2FD", color: "#1565C0" },
   special: { bg: "#FFF8E1", color: "#F57F17" },
+  workplace: { bg: "#EDE7F6", color: "#5E35B1" },
 };
 
 function formatDate(iso: string) {
