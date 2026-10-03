@@ -38,7 +38,7 @@ jobs:
       # dynamic routes, API routes and middleware - so a plain
       # `--dir=.next` deploy would publish raw build artefacts and break them.
       - name: Build and deploy to production
-        run: npx --yes netlify-cli@latest deploy --build --prod --message "$GITHUB_SHA"
+        run: npx --yes netlify-cli@27 deploy --build --prod --message "$GITHUB_SHA"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
