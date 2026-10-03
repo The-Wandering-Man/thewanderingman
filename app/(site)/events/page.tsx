@@ -73,24 +73,76 @@ export default async function EventsPage() {
         </div>
       </section>
 
-      {/* Community BBQs */}
+      {/* Monthly BBQ */}
       <section id="bbqs" style={{ background: "#FBF8F1", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
         <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/11126.jpg" alt="Community BBQ at Eastern Beach, Geelong" style={{ width: "100%", height: 340, objectFit: "cover", borderRadius: 16, display: "block", order: 0 }} />
           <div>
-            <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.14em", textTransform: "uppercase" }}>Regularly · Free feed · Everyone welcome</p>
-            <h2 style={{ margin: "0 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Community BBQs</h2>
+            <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.14em", textTransform: "uppercase" }}>Monthly · Free feed · Everyone welcome</p>
+            <h2 style={{ margin: "0 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Monthly BBQ</h2>
             <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 22, lineHeight: 1.35, color: "#41604F" }}>
-              Dates announced on our socials &amp; newsletter<br />
-              <span style={{ fontWeight: 400, fontSize: 19, color: "#5C6B60" }}>Recent spots: Barrabool Hills Centre, Highton · Eastern Beach</span>
+              Once a month · dates on our socials &amp; newsletter<br />
+              <span style={{ fontWeight: 400, fontSize: 19, color: "#5C6B60" }}>Barrabool Hills Centre, Highton · sometimes Eastern Beach</span>
             </p>
             <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}>
-              BBQ supplied - snags and burgers on the grill, with the meat donated by{" "}
+              The one that comes around every month. BBQ supplied - snags and burgers on the grill, with the meat donated by{" "}
               <Link href="/sponsors/grovedale-meats" style={{ color: "#3C6349", fontWeight: 700 }}>Grovedale Meats</Link>.{" "}
-              Bring a dessert to share if you&apos;d like (completely optional, always appreciated). Come solo or bring a mate - there&apos;s always a good crowd.
+              Bring a dessert or a salad to share if you&apos;d like (completely optional, always appreciated). Come solo or bring a mate - there&apos;s always a good crowd.
             </p>
-            <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 17, lineHeight: 1.6, color: "#5C6B60" }}>You&apos;ll also find us running the BBQ at local footy days - like the South Barwon FNC games at McDonald Reserve, Belmont.</p>
+            <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 17, lineHeight: 1.6, color: "#5C6B60" }}>We often have a guest speaker along - blokes like Mark Thomas from the Code 9 Foundation, sharing what they&apos;ve been through. Come for the feed, stay for the conversation.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Special event BBQs */}
+      <section id="special-bbqs" style={{ background: "#F4F1EA", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
+          <div>
+            <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.14em", textTransform: "uppercase" }}>Through the year · Families welcome</p>
+            <h2 style={{ margin: "0 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Special event BBQs</h2>
+            <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 22, lineHeight: 1.35, color: "#41604F" }}>
+              Grand Final · Christmas break-up · Easter<br />
+              <span style={{ fontWeight: 400, fontSize: 19, color: "#5C6B60" }}>Dates announced on our socials &amp; newsletter</span>
+            </p>
+            <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}>
+              The ones that mark the year. The Grand Final public holiday BBQ down at the Eastern Beach BBQ area - rock up in your team colours. The Christmas break-up to close out the year. Easter long weekend. Same deal every time: BBQ supplied, bring a salad or dessert if you&apos;d like.
+            </p>
+            <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 17, lineHeight: 1.6, color: "#5C6B60" }}>These ones are open to everyone - men, women and kids. Bring the family. You&apos;ll also find us running the BBQ at local footy days, like the South Barwon FNC games at McDonald Reserve, Belmont.</p>
+          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/BBQ012.jpg" alt="The crew around the grill at a Wandering Man BBQ" style={{ width: "100%", height: 340, objectFit: "cover", borderRadius: 16, display: "block" }} />
+        </div>
+      </section>
+
+      {/* Workplace BBQs */}
+      <section id="workplace-bbqs" style={{ background: "#FBF8F1", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/bunnings-bbq.jpg" alt="The crew with the Wandering Man BBQ trailer" style={{ width: "100%", height: 340, objectFit: "cover", borderRadius: 16, display: "block", order: 0 }} />
+          <div>
+            <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.14em", textTransform: "uppercase" }}>For workplaces · We come to you</p>
+            <h2 style={{ margin: "0 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>BBQs at workplaces</h2>
+            <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 22, lineHeight: 1.35, color: "#41604F" }}>
+              We bring the trailer to your site<br />
+              <span style={{ fontWeight: 400, fontSize: 19, color: "#5C6B60" }}>Geelong and surrounds · get in touch for a date</span>
+            </p>
+            <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}>
+              Some conversations are easier over a snag than in a meeting room. We roll the BBQ trailer into your yard, depot or car park, cook for your crew, and get people talking about how they&apos;re actually going. Works just as well on a worksite as it does in an office.
+            </p>
+            <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 17, lineHeight: 1.6, color: "#5C6B60" }}>
+              Pair it with a{" "}
+              <Link href="/speaking" style={{ color: "#3C6349", fontWeight: 700 }}>speaking session</Link>{" "}
+              if you want something more structured, or see{" "}
+              <Link href="/for-professionals" style={{ color: "#3C6349", fontWeight: 700 }}>for professionals</Link>{" "}
+              for how we work alongside services.
+            </p>
+            <a
+              href="mailto:hello@thewanderingman.com.au?subject=Workplace BBQ enquiry"
+              style={{ display: "inline-block", background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "15px 24px", borderRadius: 10 }}
+            >
+              Enquire about a workplace BBQ
+            </a>
           </div>
         </div>
       </section>
