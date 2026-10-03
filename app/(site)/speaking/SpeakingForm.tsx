@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 
-export default function SpeakingForm() {
+export default function SpeakingForm({ initialMessage }: { initialMessage?: string }) {
   const [form, setForm] = useState({
     organisation: "",
     contact_name: "",
     contact_email: "",
     contact_phone: "",
-    message: "",
+    message: initialMessage ? `${initialMessage}: ` : "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 

@@ -115,38 +115,6 @@ export default async function EventsPage() {
         </div>
       </section>
 
-      {/* Workplace BBQs */}
-      <section id="workplace-bbqs" style={{ background: "#FBF8F1", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
-        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/bunnings-bbq.jpg" alt="The crew with the Wandering Man BBQ trailer" style={{ width: "100%", height: 340, objectFit: "cover", borderRadius: 16, display: "block", order: 0 }} />
-          <div>
-            <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.14em", textTransform: "uppercase" }}>For workplaces · We come to you</p>
-            <h2 style={{ margin: "0 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>BBQs at workplaces</h2>
-            <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 22, lineHeight: 1.35, color: "#41604F" }}>
-              We bring the trailer to your site<br />
-              <span style={{ fontWeight: 400, fontSize: 19, color: "#5C6B60" }}>Geelong and surrounds · get in touch for a date</span>
-            </p>
-            <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}>
-              Some conversations are easier over a snag than in a meeting room. We roll the BBQ trailer into your yard, depot or car park, cook for your crew, and get people talking about how they&apos;re actually going. Works just as well on a worksite as it does in an office.
-            </p>
-            <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 17, lineHeight: 1.6, color: "#5C6B60" }}>
-              Pair it with a{" "}
-              <Link href="/speaking" style={{ color: "#3C6349", fontWeight: 700 }}>speaking session</Link>{" "}
-              if you want something more structured, or see{" "}
-              <Link href="/for-professionals" style={{ color: "#3C6349", fontWeight: 700 }}>for professionals</Link>{" "}
-              for how we work alongside services.
-            </p>
-            <a
-              href="mailto:hello@thewanderingman.com.au?subject=Workplace BBQ enquiry"
-              style={{ display: "inline-block", background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "15px 24px", borderRadius: 10 }}
-            >
-              Enquire about a workplace BBQ
-            </a>
-          </div>
-        </div>
-      </section>
-
       <InlineSponsorAd />
 
 
@@ -177,6 +145,39 @@ export default async function EventsPage() {
           <p style={{ margin: 0, fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "62ch" }}>
             Slowing down together, then eating together. A relaxed session of yoga and breathwork, then pizza after. No experience needed, no gear required - just turn up and give it a go.
           </p>
+        </div>
+      </section>
+
+      {/* Breathe - monthly breathwork with Chill Breathe Revive */}
+      <section id="breathe" style={{ background: "#FBF8F1", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
+          {/* TODO: placeholder photo - swap for a shot from a Breathe session */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/Adelines0031506.jpg" alt="Placeholder - a Wandering Man gathering" style={{ width: "100%", height: 340, objectFit: "cover", borderRadius: 16, display: "block", order: 0 }} />
+          <div>
+            <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.14em", textTransform: "uppercase" }}>Monthly · Free for members · Pizza after</p>
+            <h2 style={{ margin: "0 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Breathe</h2>
+            <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 22, lineHeight: 1.35, color: "#41604F" }}>
+              {/* TODO_DAY_TIME - replace with the real day and time */}
+              <span style={{ background: "#FFE9A8", color: "#7A5A00", padding: "1px 8px", borderRadius: 6 }}>TODO_DAY_TIME</span><br />
+              <span style={{ fontWeight: 400, fontSize: 19, color: "#5C6B60" }}>The Breath Bar, Level 1, 138a Malop Street, Geelong</span>
+            </p>
+            <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}>
+              Once a month we head to The Breath Bar on Malop Street for a guided breathwork session with{" "}
+              <Link href="https://www.chillbreatherevive.com" target="_blank" rel="noopener noreferrer" style={{ color: "#3C6349", fontWeight: 700 }}>Chill Breathe Revive</Link>.{" "}
+              Gorge Camorra runs it. He&apos;s a good friend of the group and he knows how to get a room full of blokes to slow down.
+            </p>
+            <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}>
+              No experience needed. You lie on a mat, you follow the breath, you let go of whatever you walked in with. Most men come out calmer than they&apos;ve felt in weeks.
+            </p>
+            <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 17, lineHeight: 1.6, color: "#5C6B60" }}>It&apos;s free for Wandering Man members. Pizza after, same as always. Spots are limited to 24, so let us know you&apos;re coming.</p>
+            <a
+              href="mailto:hello@thewanderingman.com.au?subject=Breathe session"
+              style={{ display: "inline-block", background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 17, textDecoration: "none", padding: "15px 24px", borderRadius: 10 }}
+            >
+              I&apos;m coming
+            </a>
+          </div>
         </div>
       </section>
 
