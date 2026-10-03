@@ -132,7 +132,7 @@ export default async function EventsPage() {
       <section id="bunnings" style={{ background: "#FBF8F1", borderTop: "1px solid #E5DCC9", padding: "84px 28px", scrollMarginTop: 70 }}>
         <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/bunnings-trailer-crew.png" alt="The crew posing in front of the Wandering Man BBQ trailer at Bunnings" style={{ width: "100%", height: 340, objectFit: "cover", borderRadius: 16, display: "block", order: 0 }} />
+          <img src="/bunnings-bbq.jpg" alt="The crew posing in front of the Wandering Man BBQ trailer at Bunnings" style={{ width: "100%", height: 340, objectFit: "cover", borderRadius: 16, display: "block", order: 0 }} />
           <div>
             <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.14em", textTransform: "uppercase" }}>Fundraiser · Volunteers welcome</p>
             <h2 style={{ margin: "0 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Sausage sizzle fundraisers</h2>
