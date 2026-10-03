@@ -1,0 +1,13 @@
+# Netlify build settings, kept in the repo so CI and any Netlify-side build use
+# the same configuration. Previously these lived only in the Netlify dashboard.
+#
+# publish = ".next" is correct for a server-rendered Next.js site: the Next.js
+# runtime plugin reads that directory and turns it into static assets plus the
+# serverless functions that run the dynamic routes, API routes and middleware.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
