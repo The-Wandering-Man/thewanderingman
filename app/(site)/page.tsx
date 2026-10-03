@@ -44,13 +44,14 @@ export default async function HomePage() {
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-            <div className="relative w-full rounded-2xl overflow-hidden" style={{ aspectRatio: "4/3", boxShadow: "0 24px 60px rgba(0,0,0,0.4)" }}>
+            {/* 16/9 matches the collage's own 602x339, so it fills the box with
+                no letterboxing and nothing cropped off the sides. */}
+            <div className="relative w-full rounded-2xl overflow-hidden" style={{ aspectRatio: "16/9", boxShadow: "0 24px 60px rgba(0,0,0,0.4)" }}>
               <Image
-                src="/speaker-session.jpg"
-                alt="A Wandering Man speaker addressing the group at a session"
+                src="/frontpage.jpg"
+                alt="The Wandering Man community - group photos from the walks, swims, rides and BBQs"
                 fill
                 className="object-cover"
-                style={{ objectPosition: "center 30%" }}
                 priority
                 sizes="(max-width: 768px) 100vw, 560px"
               />
