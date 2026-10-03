@@ -131,8 +131,8 @@ export default async function HomePage() {
               },
               {
                 href: "/events#sunday-stroll",
-                img: "/man-walk.png",
-                alt: "The crew with coffees on the Geelong waterfront after a walk",
+                img: "/barwon-edge-coffee.jpg",
+                alt: "The crew around the table over coffees at Barwon Edge after the river walk",
                 badge: "Fortnightly · Sunday mornings",
                 title: "Sunday River Walk",
                 time: "Every other Sunday, 9:00am · Along the Barwon",
