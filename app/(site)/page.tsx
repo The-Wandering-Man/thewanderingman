@@ -131,8 +131,8 @@ export default async function HomePage() {
               },
               {
                 href: "/events#sunday-stroll",
-                img: "/barwon-edge-coffee.jpg",
-                alt: "The crew around the table over coffees at Barwon Edge after the river walk",
+                img: "/coffee-and-river-walk.jpg",
+                alt: "The crew outside Barwon Edge under The Wandering Man sign after the river walk",
                 badge: "Fortnightly · Sunday mornings",
                 title: "Sunday River Walk",
                 time: "Every other Sunday, 9:00am · Along the Barwon",
