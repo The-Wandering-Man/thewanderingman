@@ -114,6 +114,7 @@ export default async function HomePage() {
               {
                 href: "/events#coffee-catchup",
                 img: "/Adelines0031506.jpg",
+                imgPos: "center",
                 alt: "Blokes around the fire pit at a coffee catch-up",
                 badge: "Weekly · Coffee’s on us",
                 title: "Coffee Catch-Up",
@@ -123,6 +124,7 @@ export default async function HomePage() {
               {
                 href: "/events#bbqs",
                 img: "/11126.jpg",
+                imgPos: "center",
                 alt: "The Wandering Man community BBQ at Eastern Beach",
                 badge: "Monthly · Free feed",
                 title: "Monthly BBQ",
@@ -132,6 +134,7 @@ export default async function HomePage() {
               {
                 href: "/events#sunday-stroll",
                 img: "/coffee-and-river-walk.jpg",
+                imgPos: "center 25%",
                 alt: "The crew outside Barwon Edge under The Wandering Man sign after the river walk",
                 badge: "Fortnightly · Sunday mornings",
                 title: "Sunday River Walk",
@@ -145,7 +148,7 @@ export default async function HomePage() {
                 style={{ textDecoration: "none", background: "#FFFFFF", border: "1px solid #E5DCC9", borderRadius: 14, overflow: "hidden", display: "flex", flexDirection: "column" }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={card.img} alt={card.alt} style={{ height: 190, width: "100%", objectFit: "cover", display: "block" }} />
+                <img src={card.img} alt={card.alt} style={{ height: 190, width: "100%", objectFit: "cover", objectPosition: card.imgPos, display: "block" }} />
                 <div style={{ padding: 24, display: "flex", flexDirection: "column", gap: 8 }}>
                   <span style={{ fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 14, lineHeight: 1, color: "#48745A", letterSpacing: "0.12em", textTransform: "uppercase" }}>{card.badge}</span>
                   <h3 style={{ margin: 0, fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 24, lineHeight: 1.2, color: "#24352B" }}>{card.title}</h3>
