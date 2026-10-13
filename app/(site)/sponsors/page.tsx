@@ -101,10 +101,10 @@ export default function SponsorsPage() {
         </div>
       </section>
 
-      {/* indie lime */}
+      {/* Sponsors - indie lime & Porter Avenue */}
       <section style={{ background: "#FBF8F1", borderTop: "1px solid #E5DCC9", padding: "84px 28px" }}>
-        <div style={{ maxWidth: 1120, margin: "0 auto" }}>
-          <div id="indie-lime" style={{ background: "#FFFFFF", border: "1px solid #E5DCC9", borderRadius: 16, padding: "32px 34px", scrollMarginTop: 70, maxWidth: 560 }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24, alignItems: "start" }}>
+          <div id="indie-lime" style={{ background: "#FFFFFF", border: "1px solid #E5DCC9", borderRadius: 16, padding: "32px 34px", scrollMarginTop: 70 }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
               <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 13, color: "#8A7F68", letterSpacing: "0.12em", textTransform: "uppercase", display: "inline-block", border: "1.5px solid #C9BC9F", borderRadius: 99, padding: "5px 12px", alignSelf: "flex-start" }}>Sponsor</p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -114,6 +114,17 @@ export default function SponsorsPage() {
             <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 18, lineHeight: 1.4, color: "#41604F" }}>Signage &amp; graphic design · Geelong</p>
             <p style={{ margin: "0 0 16px", fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.6, color: "#46534A" }}>Designs and prints the signage, flyers and banners that get blokes through the door - including the ones that probably got you here.</p>
             <a href="https://www.indielime.com.au" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 16, textDecoration: "none", padding: "13px 20px", borderRadius: 10 }}>Visit indie lime</a>
+          </div>
+          <div id="porter-avenue" style={{ background: "#FFFFFF", border: "1px solid #E5DCC9", borderRadius: 16, padding: "32px 34px", scrollMarginTop: 70 }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
+              <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 13, color: "#8A7F68", letterSpacing: "0.12em", textTransform: "uppercase", display: "inline-block", border: "1.5px solid #C9BC9F", borderRadius: 99, padding: "5px 12px", alignSelf: "flex-start" }}>Sponsor</p>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/porter-avenue-logo.jpg" alt="Porter Avenue Pies and Cakes - Highton, Geelong" style={{ height: 88, width: "auto", objectFit: "contain", borderRadius: 8 }} />
+            </div>
+            <h2 style={{ margin: "8px 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: 28, lineHeight: 1.2, color: "#24352B" }}>Porter Avenue Pies &amp; Cakes</h2>
+            <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontWeight: 600, fontSize: 18, lineHeight: 1.4, color: "#41604F" }}>Where every bite tells a delicious story · Highton, Geelong</p>
+            <p style={{ margin: "0 0 16px", fontFamily: "var(--font-body), sans-serif", fontSize: 18, lineHeight: 1.6, color: "#46534A" }}><strong style={{ color: "#24352B" }}>Why they back us:</strong> a family-owned bakery handcrafting pies, cakes and sweet treats from quality ingredients. They back The Wandering Man with their handmade treats as a thank you for the connections we nurture, the mentorship, and the support we give men going through a challenging season in their lives.</p>
+            <a href="https://www.porteravenuepiescakes.com.au/" target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#24352B", color: "#F4F1EA", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 16, textDecoration: "none", padding: "13px 20px", borderRadius: 10 }}>Visit Porter Avenue</a>
           </div>
         </div>
       </section>
