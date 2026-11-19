@@ -2,6 +2,7 @@ import TalkToSomeoneBanner from "@/components/site/TalkToSomeoneBanner";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
 import SponsorBanner from "@/components/site/SponsorBanner";
+import ChristmasPopup from "@/components/site/ChristmasPopup";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -11,6 +12,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
+      <ChristmasPopup />
     </>
   );
 }

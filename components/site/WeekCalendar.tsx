@@ -25,7 +25,7 @@ const ONE_OFFS: { date: string; time: string; sort: string; title: string; locat
   { date: "2026-12-09", time: "6:00pm-9:00pm", sort: "18:00", title: "Outpost Dinner BBQ", location: "Outpost" },
   { date: "2026-12-18", time: "8:30am-4:00pm", sort: "08:30", title: "Bunnings Sausage Sizzle Fundraiser", location: "Bunnings Waurn Ponds - grab a snag, back the cause" },
   { date: "2026-12-19", time: "1:00pm-8:00pm", sort: "13:00", title: "Lethbridge Cricket Club Community Christmas Party BBQ", location: "Lethbridge Cricket Club, Stephenson St, Lethbridge" },
-  { date: "2026-12-25", time: "11:00am-3:00pm", sort: "11:00", title: "Orphan Christmas BBQ Lunch", location: "For any man with nowhere to be on Christmas Day" },
+  { date: "2026-12-25", time: "11:00am-3:00pm", sort: "11:00", title: "Christmas Connections - free community lunch", location: "Geelong Masonic Centre, 27 Regent St, Belmont - book your seat on our events page" },
 ];
 
 interface Entry {

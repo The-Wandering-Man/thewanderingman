@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import EventCard, { type Event } from "@/components/site/EventCard";
 import InlineSponsorAd from "@/components/site/InlineSponsorAd";
 import WeekCalendar from "@/components/site/WeekCalendar";
+import { CHRISTMAS_BOOKING_URL } from "@/lib/christmas";
 
 export const metadata: Metadata = {
   title: "Events - The Wandering Man, Geelong",
@@ -40,6 +41,27 @@ export default async function EventsPage() {
           </a>
         </div>
       </header>
+
+      {/* Christmas Connections 2026 - remove after 25 Dec 2026 */}
+      <section id="christmas" style={{ background: "#123A24", padding: "84px 28px", scrollMarginTop: 70 }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 44, alignItems: "center" }}>
+          <div>
+            <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#E8C66A", letterSpacing: "0.14em", textTransform: "uppercase" }}>Christmas Day · Free · Alcohol free</p>
+            <h2 style={{ margin: "0 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#F4F1EA" }}>Christmas Connections</h2>
+            <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 22, lineHeight: 1.35, color: "#E8C66A" }}>
+              Friday 25 December, 11:00am–3:00pm<br />
+              <span style={{ fontWeight: 400, fontSize: 19, color: "#CBD5CB" }}>Geelong Masonic Centre, 27 Regent Street, Belmont</span>
+            </p>
+            <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#E3E8E1", maxWidth: "56ch" }}>A free community Christmas lunch. Come together, share a meal, enjoy good company and celebrate the day. All members of the community are welcome.</p>
+            <p style={{ margin: "0 0 26px", fontFamily: "var(--font-body), sans-serif", fontSize: 17, lineHeight: 1.6, color: "#CBD5CB", maxWidth: "56ch" }}>Coming by bus? Take Line 53 and get off at the Regent Street and High Street stop.</p>
+            <a href={CHRISTMAS_BOOKING_URL} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", background: "#B3261E", color: "#FFF", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 18, textDecoration: "none", padding: "15px 24px", borderRadius: 10 }}>
+              Book your seat at the table →
+            </a>
+          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/christmas-connections-2026.jpg" alt="Christmas Connections flyer: free community Christmas lunch, 25 December 2026, 11am to 3pm, Geelong Masonic Centre, Belmont" style={{ width: "100%", maxWidth: 460, justifySelf: "center", borderRadius: 16, display: "block", boxShadow: "0 8px 32px rgba(0,0,0,0.35)" }} />
+        </div>
+      </section>
 
       {/* This week's calendar */}
       <section id="calendar" style={{ background: "#F4F1EA", padding: "72px 28px", scrollMarginTop: 70 }}>
