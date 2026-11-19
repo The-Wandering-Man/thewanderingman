@@ -180,8 +180,7 @@ export default async function EventsPage() {
             <p style={{ margin: "0 0 10px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 15, color: "#48745A", letterSpacing: "0.14em", textTransform: "uppercase" }}>Monthly · Free for members · Pizza after</p>
             <h2 style={{ margin: "0 0 6px", fontFamily: "var(--font-display), sans-serif", fontWeight: 700, fontSize: "clamp(30px, 4vw, 42px)", lineHeight: 1.15, color: "#24352B" }}>Breathe</h2>
             <p style={{ margin: "0 0 18px", fontFamily: "var(--font-body), sans-serif", fontWeight: 700, fontSize: 22, lineHeight: 1.35, color: "#41604F" }}>
-              {/* TODO_DAY_TIME - replace with the real day and time */}
-              <span style={{ background: "#FFE9A8", color: "#7A5A00", padding: "1px 8px", borderRadius: 6 }}>TODO_DAY_TIME</span><br />
+              At least once a month, dates posted on our socials<br />
               <span style={{ fontWeight: 400, fontSize: 19, color: "#5C6B60" }}>The Breath Bar, Level 1, 138a Malop Street, Geelong</span>
             </p>
             <p style={{ margin: "0 0 14px", fontFamily: "var(--font-body), sans-serif", fontSize: 19, lineHeight: 1.6, color: "#46534A", maxWidth: "56ch" }}>
