@@ -17,10 +17,15 @@ const ONE_OFFS: { date: string; time: string; sort: string; title: string; locat
   { date: "2026-10-21", time: "8:30am-4:00pm", sort: "08:30", title: "Bunnings Sausage Sizzle - Geelong Cup Day", location: "Bunnings Waurn Ponds - grab a snag, back the cause" },
   { date: "2026-10-25", time: "1:00pm-3:30pm", sort: "13:00", title: "Monthly BBQ", location: "Burgers, snags and coffee - details on our socials" },
   { date: "2026-11-06", time: "8:30am-4:00pm", sort: "08:30", title: "Bunnings Sausage Sizzle Fundraiser", location: "Bunnings Waurn Ponds - grab a snag, back the cause" },
-  { date: "2026-11-29", time: "9:00am-1:00pm", sort: "09:00", title: "Wyndham Toy Run BBQ", location: "Brothers on K, 1 K Road, Werribee South" },
+  { date: "2026-11-28", time: "7:30am-5:00pm", sort: "07:30", title: "Bunnings Sausage Sizzle Fundraiser", location: "Bunnings Waurn Ponds - grab a snag, back the cause" },
+  { date: "2026-11-29", time: "10:00am-4:00pm", sort: "10:00", title: "Wyndham Toy Run BBQ", location: "Brothers on K, 1 K Road, Werribee South" },
+  { date: "2026-12-03", time: "4:00pm-7:00pm", sort: "16:00", title: "Bunnings Christmas BBQ", location: "Bunnings Waurn Ponds - grab a snag, back the cause" },
   { date: "2026-12-04", time: "5:00pm-9:00pm", sort: "17:00", title: "Newcomb & District Cricket Club Twilight Market", location: "141 Coppards Rd, Moolap - burgers, snags and drinks" },
+  { date: "2026-12-06", time: "7:00am-1:30pm", sort: "07:00", title: "Beckley Park Swap Meet BBQ", location: "HRV Geelong - sausages and burgers, fundraising for the cause" },
+  { date: "2026-12-09", time: "6:00pm-9:00pm", sort: "18:00", title: "Outpost Dinner BBQ", location: "Outpost" },
   { date: "2026-12-18", time: "8:30am-4:00pm", sort: "08:30", title: "Bunnings Sausage Sizzle Fundraiser", location: "Bunnings Waurn Ponds - grab a snag, back the cause" },
-  { date: "2026-12-25", time: "12:00pm-3:00pm", sort: "12:00", title: "Orphan Christmas BBQ Lunch", location: "For any man with nowhere to be on Christmas Day" },
+  { date: "2026-12-19", time: "1:00pm-8:00pm", sort: "13:00", title: "Lethbridge Cricket Club Community Christmas Party BBQ", location: "Lethbridge Cricket Club, Stephenson St, Lethbridge" },
+  { date: "2026-12-25", time: "11:00am-3:00pm", sort: "11:00", title: "Orphan Christmas BBQ Lunch", location: "For any man with nowhere to be on Christmas Day" },
 ];
 
 interface Entry {
